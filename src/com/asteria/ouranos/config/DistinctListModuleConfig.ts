@@ -1,4 +1,4 @@
-import { AsteriaModuleConfig } from './AsteriaModuleConfig';
+import { AsteriaModuleConfig } from '../../spec/config/AsteriaModuleConfig';
 
 /**
  * The <code>DistinctListModuleConfig</code> interface defines the common

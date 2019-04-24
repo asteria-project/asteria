@@ -3,8 +3,8 @@ import { AsteriaData } from '../../spec/data/AsteriaData';
 import { StringData } from '../../spec/data/StringData';
 import { AbstractAsteriaModule } from '../../spec/module/AbstractAsteriaModule';
 import { AsteriaDataBuilder } from '../util/AsteriaDataBuilder';
-import { CsvToListModuleConfig } from '../../spec/config/CsvToListModuleConfig';
-import { CsvColumnMapper } from '../../spec/util/CsvColumnMapper';
+import { CsvToListModuleConfig } from '../config/CsvToListModuleConfig';
+import { CsvColumnMapper } from '../util/CsvColumnMapper';
 
 /**
  * An Asteria module that takes a CSV string as input and turns it into a list 
@@ -28,7 +28,7 @@ export class CsvToListModule extends AbstractAsteriaModule
     /**
      * The reference to the CSV default separator.
      */
-    private static readonly DEFAULT_SEPARATOR: string = ';';
+    private static readonly DEFAULT_SEPARATOR: string = ',';
 
     /**
      * The reference to the CSV separator. Default value is <code>;</code>.

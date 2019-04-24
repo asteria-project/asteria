@@ -55,3 +55,9 @@ src/**/*.js
 # Ignore JavaScript files in test folder
 test/**/*.js
 
+#####################################
+# temp
+#####################################
+
+# Ignore temporary files
+src/temp-data

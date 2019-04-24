@@ -1,7 +1,7 @@
 import { AsteriaModule } from '../../spec/module/AsteriaModule';
 import { AsteriaData } from '../../spec/data/AsteriaData';
 import { AbstractAsteriaModule } from '../../spec/module/AbstractAsteriaModule';
-import { FilterListModuleConfig } from '../../spec/config/FilterListModuleConfig';
+import { FilterListModuleConfig } from '../config/FilterListModuleConfig';
 import { FilterDefinition } from '../../spec/filter/FilterDefinition';
 import { AsteriaFilterManager } from '../filter/AsteriaFilterManager';
 import { AsteriaDataBuilder } from '../util/AsteriaDataBuilder';

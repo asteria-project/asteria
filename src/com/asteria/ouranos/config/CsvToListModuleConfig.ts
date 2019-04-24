@@ -1,4 +1,4 @@
-import { AsteriaModuleConfig } from './AsteriaModuleConfig';
+import { AsteriaModuleConfig } from '../../spec/config/AsteriaModuleConfig';
 import { CsvColumnMapper } from '../util/CsvColumnMapper';
 
 /**
@@ -25,7 +25,7 @@ export interface CsvToListModuleConfig extends AsteriaModuleConfig {
     colsMapping?: Array<CsvColumnMapper>;
 
     /**
-     * The reference to the CSV separator. Default value is <code>;</code>.
+     * The reference to the CSV separator. Default value is <code>,</code>.
      */
     separator?: string;
 }

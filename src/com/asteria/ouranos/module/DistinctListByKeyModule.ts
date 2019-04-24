@@ -2,7 +2,7 @@ import { AsteriaModule } from '../../spec/module/AsteriaModule';
 import { AsteriaData } from '../../spec/data/AsteriaData';
 import { AbstractAsteriaModule } from '../../spec/module/AbstractAsteriaModule';
 import { AsteriaDataBuilder } from '../util/AsteriaDataBuilder';
-import { DistinctListModuleConfig } from '../../spec/config/DistinctListModuleConfig';
+import { DistinctListModuleConfig } from '../config/DistinctListModuleConfig';
 
 /**
  * An Asteria module that takes an array of complex objects as input and turns 

@@ -1,37 +1,40 @@
 import { AsteriaProcessManager } from './com/asteria/spec/process/AsteriaProcessManager';
-import { AsteriaManagerFactory } from './com/asteria/cronos/factory/AsteriaManagerFactory';
+import { AsteriaManagerFactory } from './com/asteria/ouranos/factory/AsteriaManagerFactory';
 import { AsteriaProcess } from './com/asteria/spec/process/AsteriaProcess';
-import { AsteriaProcessBuilder } from './com/asteria/cronos/util/AsteriaProcessBuilder';
+import { AsteriaProcessBuilder } from './com/asteria/ouranos/util/AsteriaProcessBuilder';
 import { AsteriaData } from './com/asteria/spec/data/AsteriaData';
-import { StringData } from './com/asteria/spec/data/StringData';
-import { CsvToListModule } from './com/asteria/cronos/module/CsvToListModule';
-import { CsvToListModuleConfig } from './com/asteria/spec/config/CsvToListModuleConfig';
-import { MOCK_DATA } from './MockData';
-import { DataInputModule } from './com/asteria/cronos/module/DataInputModule';
-import { AsteriaDataBuilder } from './com/asteria/cronos/util/AsteriaDataBuilder';
-import { FilterListModule } from './com/asteria/cronos/module/FilterListModule';
-import { FilterListModuleConfig } from './com/asteria/spec/config/FilterListModuleConfig';
+import { CsvToListModule } from './com/asteria/ouranos/module/CsvToListModule';
+import { CsvToListModuleConfig } from './com/asteria/ouranos/config/CsvToListModuleConfig';
+import { AsteriaDataBuilder } from './com/asteria/ouranos/util/AsteriaDataBuilder';
+import { FilterListModule } from './com/asteria/ouranos/module/FilterListModule';
+import { FilterListModuleConfig } from './com/asteria/ouranos/config/FilterListModuleConfig';
 import { FilterOperator } from './com/asteria/spec/filter/FilterOperator';
-import { DistinctListByKeyModule } from './com/asteria/cronos/module/DistinctListByKeyModule';
-
-const input: AsteriaData<string> = AsteriaDataBuilder.getInstance().build(MOCK_DATA);
+import { DistinctListByKeyModule } from './com/asteria/ouranos/module/DistinctListByKeyModule';
+import * as path from 'path';
+import { FileLoaderModule } from './com/asteria/cronos/module/FileLoaderModule';
 
 const processBuilder: AsteriaProcessBuilder = AsteriaProcessBuilder.getInstance();
 
-const inputModule: AsteriaProcess<StringData> = 
-    processBuilder.build<StringData>(new DataInputModule(), null, input);
+const inputPath: AsteriaData<string> = AsteriaDataBuilder.getInstance().build(
+    path.join(__dirname, 'temp-data', 'GeoLite2-City-Blocks-IPv4.csv')
+);
+const loadFileProcess: AsteriaProcess<any> =
+    processBuilder.build<any>(new FileLoaderModule(), null, inputPath);
+
 const csvToListConfig: CsvToListModuleConfig = {
     trimFirstRow: true,
     colsMapping: [
-        { index: 2, property: 'zipcode' },
-        { index: 3, property: 'city' }
+        { index: 1, property: 'geonameId' },
+        { index: 6, property: 'postalCode' },
+        { index: 7, property: 'latitude' },
+        { index: 8, property: 'longitude' }
     ]
 };
-const csvToListModule: AsteriaProcess<any> =
+const csvToListProcess: AsteriaProcess<any> =
     processBuilder.build<any>(new CsvToListModule(), csvToListConfig);
 
 const distinctListModule: AsteriaProcess<any> =
-   processBuilder.build<any>(new DistinctListByKeyModule(), { key: 'zipcode' });
+processBuilder.build<any>(new DistinctListByKeyModule(), { key: 'zipcode' });
 
 const filterListModuleConfig: FilterListModuleConfig = {
     filters: [
@@ -47,13 +50,15 @@ const filterListModule: AsteriaProcess<any> =
 
 const manager: AsteriaProcessManager = AsteriaManagerFactory.getInstance()
                                                             .getManager();
-manager.add(inputModule);
-manager.add(csvToListModule);
-manager.add(filterListModule);
+manager.add(loadFileProcess);
+manager.add(csvToListProcess);
+//manager.add(filterListModule);
 //manager.add(distinctListModule);
 manager.run()
-       .then((value: AsteriaData<Array<any>>)=> {
-            console.log(value.data);
-       }).catch((err: any)=> {
+        .then((value: AsteriaData<Array<any>>)=> {
+            console.log(value.data.length);
+            console.log(value.data[0]);
+        }).catch((err: any)=> {
             console.log('err=' + err);
-       });
+        });
+

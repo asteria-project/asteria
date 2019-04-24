@@ -1,6 +1,6 @@
-import { AsteriaModuleConfig } from './AsteriaModuleConfig';
-import { FilterDefinition } from '../filter/FilterDefinition';
-import { FilterCondition } from '../filter/FilterCondition';
+import { AsteriaModuleConfig } from '../../spec/config/AsteriaModuleConfig';
+import { FilterDefinition } from '../../spec/filter/FilterDefinition';
+import { FilterCondition } from '../../spec/filter/FilterCondition';
 
 /**
  * The <code>FilterListModuleConfig</code> interface defines the common
