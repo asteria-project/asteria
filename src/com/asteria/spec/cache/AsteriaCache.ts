@@ -30,4 +30,13 @@ export interface AsteriaCache {
      * @returns {AsteriaData<T>} the object associated with the specified key.
      */
     get<T>(key: string): AsteriaData<T>;
+
+    /**
+     * Returns 
+     *
+     * @param {string} key 
+     * 
+     * @returns {boolean} 
+     */
+    has(key: string): boolean;
 }

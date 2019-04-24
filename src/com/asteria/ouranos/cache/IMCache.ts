@@ -46,4 +46,11 @@ export class IMCache implements AsteriaCache {
     public get(key: string): AsteriaData<any> {
         return this.CACHED_OBJ.get(key);
     }
+
+    /**
+     * @inheritdoc
+     */
+    public has(key: string): boolean {
+        return this.CACHED_OBJ.has(key);
+    }
 }
