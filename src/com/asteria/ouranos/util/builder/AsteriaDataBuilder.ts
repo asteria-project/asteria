@@ -1,5 +1,5 @@
-import { AsteriaData } from '../../spec/data/AsteriaData';
-import { AsteriaDataImpl } from '../data/AsteriaDataImpl';
+import { AsteriaData } from '../../../spec/data/AsteriaData';
+import { AsteriaDataImpl } from '../../data/AsteriaDataImpl';
 
 /**
  * A utility class for building <code>AsteriaData</code> objects, available as

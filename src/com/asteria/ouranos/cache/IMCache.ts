@@ -1,5 +1,5 @@
 import { AsteriaCache } from '../../spec/cache/AsteriaCache';
-import { guid } from '../lang/guid';
+import { Uuid } from '../lang/Uuid';
 import { AsteriaData } from '../../spec/data/AsteriaData';
 
 /**
@@ -22,7 +22,7 @@ export class IMCache implements AsteriaCache {
      * Creates a new <code>IMCache</code> instance.
      */
     constructor() {
-        this.ID = guid();
+        this.ID = Uuid.v4();
         this.CACHED_OBJ = new Map<string, any>();
     }
 

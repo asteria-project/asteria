@@ -1,7 +1,7 @@
 import { AsteriaModule } from '../../spec/module/AsteriaModule';
 import { AsteriaData } from '../../spec/data/AsteriaData';
 import { AbstractAsteriaModule } from '../../spec/module/AbstractAsteriaModule';
-import { AsteriaDataBuilder } from '../../ouranos/util/AsteriaDataBuilder';
+import { AsteriaDataBuilder } from '../../ouranos/util/builder/AsteriaDataBuilder';
 import * as fs from 'fs';
 
 /**

@@ -4,7 +4,7 @@ import { AbstractAsteriaModule } from '../../spec/module/AbstractAsteriaModule';
 import { MergeListByKeyModuleConfig } from '../config/MergeListByKeyModuleConfig';
 import { CacheManager } from '../cache/CacheManager';
 import { AsteriaCache } from '../../spec/cache/AsteriaCache';
-import { AsteriaDataBuilder } from '../util/AsteriaDataBuilder';
+import { AsteriaDataBuilder } from '../util/builder/AsteriaDataBuilder';
 
 /**
  * An implementation of the <code>AsteriaModule</code> interface that merges all

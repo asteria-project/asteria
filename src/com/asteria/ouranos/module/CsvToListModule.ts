@@ -2,7 +2,7 @@ import { AsteriaModule } from '../../spec/module/AsteriaModule';
 import { AsteriaData } from '../../spec/data/AsteriaData';
 import { StringData } from '../../spec/data/StringData';
 import { AbstractAsteriaModule } from '../../spec/module/AbstractAsteriaModule';
-import { AsteriaDataBuilder } from '../util/AsteriaDataBuilder';
+import { AsteriaDataBuilder } from '../util/builder/AsteriaDataBuilder';
 import { CsvToListModuleConfig } from '../config/CsvToListModuleConfig';
 import { CsvColumnMapper } from '../util/CsvColumnMapper';
 

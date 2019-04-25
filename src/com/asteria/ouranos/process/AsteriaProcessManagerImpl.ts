@@ -1,6 +1,10 @@
 import { AsteriaData } from '../../spec/data/AsteriaData';
 import { AsteriaProcessManager } from '../../spec/process/AsteriaProcessManager';
 import { AsteriaProcess } from '../../spec/process/AsteriaProcess';
+import { AsteriaLoggerImpl } from '../util/logging/AsteriaLoggerImpl';
+import { AsteriaLogger } from '../../spec/util/logging/AsteriaLogger';
+
+const LOGGER: AsteriaLogger = AsteriaLoggerImpl.getLogger();
 
 /**
  * The default implementation of the <code>AsteriaProcessManager</code>
@@ -52,6 +56,9 @@ export class AsteriaProcessManagerImpl implements AsteriaProcessManager {
      * @inheritdoc
      */
     public run(): Promise<AsteriaData<any>> {
+        const len: number = this.PROCESSES.length;
+        LOGGER.info('ouranos processing start');
+        LOGGER.info(`processing ${len} module${ len !== 1 ? 's' : ''}`);
         const result: Promise<AsteriaData<any>> = new Promise<AsteriaData<any>>(
             (resolve: Function, reject: Function)=> {
                 this.resolveProcess(resolve, reject);
@@ -67,9 +74,11 @@ export class AsteriaProcessManagerImpl implements AsteriaProcessManager {
                     this._data = output;
                     this.resolveProcess(resolve, reject);
                 }).catch((err: any)=> {
+                    LOGGER.fatal(err);
                     reject(err);
                 });
         } else {
+            LOGGER.info('ouranos processing complete');
             resolve(this._data);
         }
     }
@@ -77,7 +86,7 @@ export class AsteriaProcessManagerImpl implements AsteriaProcessManager {
     private processNext(): Promise<AsteriaData<any>> {
         const next: AsteriaProcess<any> = this.PROCESSES[++this._cursor];
         const input: AsteriaData<any> = next.input || this._data;
-        console.log("running module: " + next.module.name);
+        LOGGER.info(`running module #${this._cursor + 1}: ${next.module.name}`);
         return next.module.process(input, next.config);       
     }
 

@@ -1,11 +1,11 @@
 import { AsteriaProcessManager } from './com/asteria/spec/process/AsteriaProcessManager';
 import { AsteriaManagerFactory } from './com/asteria/ouranos/factory/AsteriaManagerFactory';
 import { AsteriaProcess } from './com/asteria/spec/process/AsteriaProcess';
-import { AsteriaProcessBuilder } from './com/asteria/ouranos/util/AsteriaProcessBuilder';
+import { AsteriaProcessBuilder } from './com/asteria/ouranos/util/builder/AsteriaProcessBuilder';
 import { AsteriaData } from './com/asteria/spec/data/AsteriaData';
 import { CsvToListModule } from './com/asteria/ouranos/module/CsvToListModule';
 import { CsvToListModuleConfig } from './com/asteria/ouranos/config/CsvToListModuleConfig';
-import { AsteriaDataBuilder } from './com/asteria/ouranos/util/AsteriaDataBuilder';
+import { AsteriaDataBuilder } from './com/asteria/ouranos/util/builder/AsteriaDataBuilder';
 import { FileLoaderModule } from './com/asteria/cronos/module/FileLoaderModule';
 import * as path from 'path';
 import { DataStorageModule } from './com/asteria/ouranos/module/DataStorageModule';
