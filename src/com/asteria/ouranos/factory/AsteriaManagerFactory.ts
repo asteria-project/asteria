@@ -2,8 +2,7 @@ import { AsteriaProcessManager } from '../../spec/process/AsteriaProcessManager'
 import { AsteriaProcessManagerImpl } from '../process/AsteriaProcessManagerImpl';
 
 /**
- * Provides functionality to create new <code>AsteriaProcessManager</code> 
- * instances through a singleton implementation.
+ * Provides functionality to create new <code>AsteriaProcessManager</code> instances through a singleton implementation.
  */
 export class AsteriaManagerFactory {
 
@@ -23,15 +22,13 @@ export class AsteriaManagerFactory {
      * @returns {AsteriaProcessManager} the reference to this singleton.
      */
     public static getInstance(): AsteriaManagerFactory {
-        return AsteriaManagerFactory._instance ||
-               (AsteriaManagerFactory._instance = new AsteriaManagerFactory());
+        return AsteriaManagerFactory._instance || (AsteriaManagerFactory._instance = new AsteriaManagerFactory());
     }
 
     /**
      * Returns a new <code>AsteriaProcessManager</code> object.
      * 
-     * @returns {AsteriaProcessManager} a new <code>AsteriaProcessManager</code>
-     *                                  object.
+     * @returns {AsteriaProcessManager} a new <code>AsteriaProcessManager</code> object.
      */
     public getManager(): AsteriaProcessManager {
         return new AsteriaProcessManagerImpl();

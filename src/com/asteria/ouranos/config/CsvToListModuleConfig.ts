@@ -2,15 +2,13 @@ import { AsteriaModuleConfig } from '../../spec/config/AsteriaModuleConfig';
 import { CsvColumnMapper } from '../util/CsvColumnMapper';
 
 /**
- * The <code>CsvToListModuleConfig</code> interface defines the common
- * functionality implemented by context configuration objects applyed to
- * <code>CsvToListModule</code> modules.
+ * The <code>CsvToListModuleConfig</code> interface defines the common functionality implemented by context
+ * configuration objects applyed to <code>CsvToListModule</code> modules.
  */
 export interface CsvToListModuleConfig extends AsteriaModuleConfig {
 
     /**
-     * Indicates whether the first row must be removed (<code>true</code>), or
-     * not (<code>false</code>).
+     * Indicates whether the first row must be removed (<code>true</code>), or not (<code>false</code>).
      */
     trimFirstRow?: boolean;
 

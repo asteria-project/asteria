@@ -1,6 +1,5 @@
 /**
- * A utility that allows to map a column of a CSV file to an object property
- * name.
+ * A utility that allows to map a column of a CSV file to an object property name.
  */
 export class CsvColumnMapper {
 

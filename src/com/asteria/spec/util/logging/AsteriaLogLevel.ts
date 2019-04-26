@@ -4,6 +4,9 @@
  */
 export enum AsteriaLogLevel {
 
+    /**
+     * <code>DEBUG</code> defines logs that are used for interactive investigation during development.
+     */
     DEBUG = 'DEBUG',
 
     /**
@@ -16,7 +19,14 @@ export enum AsteriaLogLevel {
      */
     WARN = 'WARN',
 
+    /**
+     * <code>ERROR</code> is a message level indicating that the current flow of execution is stopped due to a failure.
+     */
     ERROR = 'ERROR',
 
+    /**
+     * <code>ERROR</code> is a message level indicating an unrecoverable application or system crash, or a catastrophic
+     * failure that requires immediate attention.
+     */
     FATAL = 'FATAL'
 }

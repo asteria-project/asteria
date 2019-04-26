@@ -10,8 +10,7 @@ import { FilterCondition } from '../../spec/filter/FilterCondition';
 /**
  * An Asteria module that filters list of literal JavaScript objects.
  */
-export class FilterListModule extends AbstractAsteriaModule
-                              implements AsteriaModule {
+export class FilterListModule extends AbstractAsteriaModule implements AsteriaModule {
 
     /**
      * Creates a new <code>FilterListModule</code> instance.
@@ -27,11 +26,9 @@ export class FilterListModule extends AbstractAsteriaModule
     /**
      * @inheritdoc
      */
-    public process(input: AsteriaData<Array<any>>,
-            config?: FilterListModuleConfig): Promise<AsteriaData<Array<any>>> {
+    public process(input: AsteriaData<Array<any>>, config?: FilterListModuleConfig): Promise<AsteriaData<Array<any>>> {
         this.initFilters(config);
-        const result: Promise<AsteriaData<Array<any>>> = 
-            new Promise<AsteriaData<Array<any>>>(
+        const result: Promise<AsteriaData<Array<any>>> = new Promise<AsteriaData<Array<any>>>(
             (resolve, reject)=> {
                 let objArr: Array<any> = this.doFilters(input.data);
                 try {
@@ -49,7 +46,7 @@ export class FilterListModule extends AbstractAsteriaModule
     private initFilters(config: FilterListModuleConfig): void {
         AsteriaFilterManager.getInstance();
         if (config && config.filters) {
-            config.filters.forEach((value: FilterDefinition)=>{
+            config.filters.forEach((value: FilterDefinition)=> {
                 this._filters.push(value);
             });
         }

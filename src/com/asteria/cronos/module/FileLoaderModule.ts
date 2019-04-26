@@ -5,11 +5,9 @@ import { AsteriaDataBuilder } from '../../ouranos/util/builder/AsteriaDataBuilde
 import * as fs from 'fs';
 
 /**
- * A generic implementation of the <code>AsteriaModule</code> interface that
- * loads files from a local path.
+ * A generic implementation of the <code>AsteriaModule</code> interface that loads files from a local path.
  */
-export class FileLoaderModule extends AbstractAsteriaModule
-                              implements AsteriaModule {
+export class FileLoaderModule extends AbstractAsteriaModule implements AsteriaModule {
 
     /**
      * Creates a new <code>FileLoaderModule</code> instance.
@@ -22,25 +20,24 @@ export class FileLoaderModule extends AbstractAsteriaModule
      * @inheritdoc
      */
     public process(input: AsteriaData<string>): Promise<AsteriaData<string>> {
-        const result: Promise<AsteriaData<string>> =
-            new Promise<AsteriaData<string>>(
-                (resolve: Function, reject: Function)=> {
-                    fs.readFile(
-                        input.data,
-                        (err: NodeJS.ErrnoException, data: Buffer)=> {
-                            if(err) {
-                                reject(err);
-                            } else {
-                                resolve(
-                                    AsteriaDataBuilder.getInstance().build(
-                                        data.toString()
-                                    )
-                                );
-                            }
+        const result: Promise<AsteriaData<string>> = new Promise<AsteriaData<string>>(
+            (resolve: Function, reject: Function)=> {
+                fs.readFile(
+                    input.data,
+                    (err: NodeJS.ErrnoException, data: Buffer)=> {
+                        if(err) {
+                            reject(err);
+                        } else {
+                            resolve(
+                                AsteriaDataBuilder.getInstance().build(
+                                    data.toString()
+                                )
+                            );
                         }
-                    );
-                }
-            );
+                    }
+                );
+            }
+        );
         return result;
     }
 }

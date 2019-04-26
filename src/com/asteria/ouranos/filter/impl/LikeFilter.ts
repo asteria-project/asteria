@@ -2,8 +2,8 @@ import { AsteriaFilter } from '../../../spec/filter/AsteriaFilter';
 import { FilterOperator } from '../../../spec/filter/FilterOperator';
 
 /**
- * The <code>LikeFilter</code> filter determines whether an object property 
- * string contains the characters of a specified string.
+ * The <code>LikeFilter</code> filter determines whether an object property string contains the characters of a
+ * specified string.
  */
 export class LikeFilter implements AsteriaFilter {
 

@@ -1,6 +1,5 @@
 /**
- * The <code>AsteriaData</code> interface defines the common data set consumed
- * by Asteria modules.
+ * The <code>AsteriaData</code> interface defines the common data set consumed by Asteria modules.
  */
 export interface AsteriaData<T> {
 

@@ -2,8 +2,7 @@ import { AsteriaData } from '../../../spec/data/AsteriaData';
 import { AsteriaDataImpl } from '../../data/AsteriaDataImpl';
 
 /**
- * A utility class for building <code>AsteriaData</code> objects, available as
- * a singleton.
+ * A utility class for building <code>AsteriaData</code> objects, available as a singleton.
  */
 export class AsteriaDataBuilder {
 
@@ -23,15 +22,13 @@ export class AsteriaDataBuilder {
      * @returns {AsteriaDataBuilder} the reference to this singleton.
      */
     public static getInstance(): AsteriaDataBuilder {
-        return AsteriaDataBuilder._instance ||
-               (AsteriaDataBuilder._instance = new AsteriaDataBuilder());
+        return AsteriaDataBuilder._instance || (AsteriaDataBuilder._instance = new AsteriaDataBuilder());
     }
 
     /**
      * Builds and returns a new <code>AsteriaData</code> instance.
      * 
-     * @param {any} data the data set defined by the new 
-     *                   <code>AsteriaData</code> instance. 
+     * @param {any} data the data set defined by the new <code>AsteriaData</code> instance. 
      * 
      * @return {AsteriaData<T>} a new <code>AsteriaData</code> instance.
      */

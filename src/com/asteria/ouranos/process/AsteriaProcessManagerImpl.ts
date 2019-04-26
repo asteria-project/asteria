@@ -7,17 +7,14 @@ import { AsteriaLogger } from '../../spec/util/logging/AsteriaLogger';
 const LOGGER: AsteriaLogger = AsteriaLoggerImpl.getLogger();
 
 /**
- * The default implementation of the <code>AsteriaProcessManager</code>
- * interface.
+ * The default implementation of the <code>AsteriaProcessManager</code> interface.
  */
 export class AsteriaProcessManagerImpl implements AsteriaProcessManager {
 
     /**
-     * The list of <code>AsteriaModule</code> objects registered whithin this
-     * Asteria module processor.
+     * The list of <code>AsteriaModule</code> objects registered whithin this Asteria module processor.
      */
-    private readonly PROCESSES: AsteriaProcess<any>[] =
-                                               new Array<AsteriaProcess<any>>();
+    private readonly PROCESSES: AsteriaProcess<any>[] = new Array<AsteriaProcess<any>>();
 
     /**
      * The internal position that indicates the current module to be processed.
@@ -91,11 +88,11 @@ export class AsteriaProcessManagerImpl implements AsteriaProcessManager {
     }
 
     /**
-     * Returns a boolean that indicates whether this manager has processes to be
-     * executed (<code>true</code>), or not (<code>false</code>).
+     * Returns a boolean that indicates whether this manager has processes to be executed (<code>true</code>), or not
+     * (<code>false</code>).
      * 
-     * @returns {boolean} <code>true</code> whether this manager has processes
-     *                    to be executed; <code>false</code> otherwise.
+     * @returns {boolean} <code>true</code> whether this manager has processes  to be executed; <code>false</code>
+     *                    otherwise.
      */
     private hasNext(): boolean {
         return (this._cursor + 1) < this.PROCESSES.length;
@@ -104,8 +101,7 @@ export class AsteriaProcessManagerImpl implements AsteriaProcessManager {
     /**
      * Returns the index of the specified Asteria process.
      * 
-     * @param {AsteriaProcess<any>} process the process for which to get the
-     *                                      index.
+     * @param {AsteriaProcess<any>} process the process for which to get the index.
      * 
      * @returns {number} the index of the specified Asteria process.
      */

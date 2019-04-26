@@ -3,8 +3,7 @@ import { AsteriaData } from '../data/AsteriaData';
 import { AsteriaModule } from './AsteriaModule';
 
 /**
- * The abstract class for all implementations of the <code>AsteriaModule</code>
- * interface.
+ * The abstract class for all implementations of the <code>AsteriaModule</code> interface.
  */
 export abstract class AbstractAsteriaModule implements AsteriaModule {
 
@@ -25,6 +24,5 @@ export abstract class AbstractAsteriaModule implements AsteriaModule {
     /**
      * @inheritdoc
      */
-    abstract process(input: AsteriaData<any>,
-            config?: AsteriaModuleConfig): Promise<AsteriaData<any>>;
+    abstract process(input: AsteriaData<any>, config?: AsteriaModuleConfig): Promise<AsteriaData<any>>;
 }

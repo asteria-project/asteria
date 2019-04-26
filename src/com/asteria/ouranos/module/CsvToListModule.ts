@@ -7,11 +7,9 @@ import { CsvToListModuleConfig } from '../config/CsvToListModuleConfig';
 import { CsvColumnMapper } from '../util/CsvColumnMapper';
 
 /**
- * An Asteria module that takes a CSV string as input and turns it into a list 
- * of literal JavaScript objects.
+ * An Asteria module that takes a CSV string as input and turns it into a list of literal JavaScript objects.
  */
-export class CsvToListModule extends AbstractAsteriaModule
-                             implements AsteriaModule {
+export class CsvToListModule extends AbstractAsteriaModule implements AsteriaModule {
 
     /**
      * Creates a new <code>CsvToListModule</code> instance.
@@ -36,8 +34,7 @@ export class CsvToListModule extends AbstractAsteriaModule
     private _separator: string = CsvToListModule.DEFAULT_SEPARATOR;
 
     /**
-     * Indicates whether the first row must be removed (<code>true</code>), or
-     * not (<code>false</code>).
+     * Indicates whether the first row must be removed (<code>true</code>), or not (<code>false</code>).
      */
     private _trimFirstRow: boolean = false;
 
@@ -49,10 +46,8 @@ export class CsvToListModule extends AbstractAsteriaModule
     /**
      * @inheritdoc
      */
-    public process(input: AsteriaData<StringData>,
-             config?: CsvToListModuleConfig): Promise<AsteriaData<Array<any>>> {
-        const result: Promise<AsteriaData<any>> = 
-            new Promise<AsteriaData<Array<string>>>(
+    public process(input: AsteriaData<StringData>, config?: CsvToListModuleConfig): Promise<AsteriaData<Array<any>>> {
+        const result: Promise<AsteriaData<any>> = new Promise<AsteriaData<Array<string>>>(
             (resolve, reject)=> {
                 let objArr: Array<string> = null;
                 try {
@@ -76,17 +71,13 @@ export class CsvToListModule extends AbstractAsteriaModule
     /**
      * Initializes the module properties according to the config object.
      * 
-     * @param {CsvToListModuleConfig} config the reference to the module
-     *                                         config object.
-     * @param {Array<string>} input the reference to the header line of the CSV
-     *                              input.
+     * @param {CsvToListModuleConfig} config the reference to the module config object.
+     * @param {Array<string>} input the reference to the header line of the CSV input.
      */
-    private initConfig(config: CsvToListModuleConfig,
-                       input: Array<string>): void {
+    private initConfig(config: CsvToListModuleConfig, input: Array<string>): void {
         if (config) {
             this._trimFirstRow = config.trimFirstRow;
-            this._separator = config.separator ||
-                              CsvToListModule.DEFAULT_SEPARATOR;
+            this._separator = config.separator || CsvToListModule.DEFAULT_SEPARATOR;
             this.initColsMapping(config.colsMapping, input);
         } else {
             this.initColsMapping(null, input);
@@ -94,27 +85,24 @@ export class CsvToListModule extends AbstractAsteriaModule
     }
 
     /**
-     * Initializes the "columns to properties" mapping, regarding the specified
-     * parameters.
+     * Initializes the "columns to properties" mapping, regarding the specified parameters.
      * 
-     * @param {Array<CsvColumnMapper>} mapping the reference to the mapping
-     *                                         values, defined in the module
-     *                                         config object.
-     * @param {Array<string>} input the reference to the header line of the CSV
-     *                              input.
+     * @param {Array<CsvColumnMapper>} mapping the reference to the mapping values, defined in the module config object.
+     * @param {Array<string>} input the reference to the header line of the CSV input.
      */
-    private initColsMapping(mapping: Array<CsvColumnMapper>,
-                            input: Array<string>): void{
+    private initColsMapping(mapping: Array<CsvColumnMapper>, input: Array<string>): void{
         if (mapping)  {
             this._mappingRefs = mapping;
         } else {
             this._mappingRefs = new Array<CsvColumnMapper>();
             const firstRow: Array<string> = input[0].split(this._separator);
             firstRow.forEach((value: string, index: number)=> {
-                this._mappingRefs.push({
-                    index: index,
-                    property: value
-                });
+                this._mappingRefs.push(
+                    {
+                        index: index,
+                        property: value
+                    }
+                );
             });
         }
     }

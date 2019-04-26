@@ -2,8 +2,8 @@ import { AsteriaFilter } from '../../../spec/filter/AsteriaFilter';
 import { FilterOperator } from '../../../spec/filter/FilterOperator';
 
 /**
- * The <code>StartsWithFilter</code> filter determines whether an object  
- * property string begins with the characters of a specified string.
+ * The <code>StartsWithFilter</code> filter determines whether an object property string begins with the characters of
+ * a specified string.
  */
 export class StartsWithFilter implements AsteriaFilter {
 

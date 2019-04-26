@@ -1,8 +1,8 @@
 import { FilterOperator } from './FilterOperator';
 
 /**
- * The <code>FilterDefinition</code> interface defines a filter that can be
- * applyed over a collection of objects in an Asteria module.
+ * The <code>FilterDefinition</code> interface defines a filter that can be applyed over a collection of objects in an
+ * Asteria module.
  */
 export interface FilterDefinition {
 

@@ -2,9 +2,8 @@
 import { AsteriaModuleConfig } from '../../spec/config/AsteriaModuleConfig';
 
 /**
- * The <code>MergeListByKeyModuleConfig</code> interface defines the common
- * functionality implemented by context configuration objects applyed to
- * <code>MergeListByKeyModule</code> modules.
+ * The <code>MergeListByKeyModuleConfig</code> interface defines the common functionality implemented by context
+ * configuration objects applyed to <code>MergeListByKeyModule</code> modules.
  */
 export interface MergeListByKeyModuleConfig extends AsteriaModuleConfig {
 

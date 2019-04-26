@@ -1,5 +1,9 @@
-import { AsteriaLogLevel } from "./AsteriaLogLevel";
+import { AsteriaLogLevel } from './AsteriaLogLevel';
 
+/**
+ * The <code>AsteriaLogger</code> interface defines the API you must implement to create loggers in the Asteria
+ * environment.
+ */
 export interface AsteriaLogger {
     
     /**

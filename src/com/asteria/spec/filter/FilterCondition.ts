@@ -1,6 +1,6 @@
 /**
- * The <code>FilterCondition</code> enum defines a list of conditions that can 
- * be used by an Asteria module to filter objects.
+ * The <code>FilterCondition</code> enum defines a list of conditions that can  be used by an Asteria module to filter
+ * objects.
  */
 export enum FilterCondition {
 

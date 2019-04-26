@@ -3,15 +3,13 @@ import { FilterDefinition } from '../../spec/filter/FilterDefinition';
 import { FilterCondition } from '../../spec/filter/FilterCondition';
 
 /**
- * The <code>FilterListModuleConfig</code> interface defines the common
- * functionality implemented by context configuration objects applyed to
- * <code>FilterListModule</code> modules.
+ * The <code>FilterListModuleConfig</code> interface defines the common functionality implemented by context
+ * configuration objects applyed to <code>FilterListModule</code> modules.
  */
 export interface FilterListModuleConfig extends AsteriaModuleConfig {
 
     /**
-     * The condition to be applyed to filter a list of objects. Default value is
-     * <code>FilterCondition.OR</code>.
+     * The condition to be applyed to filter a list of objects. Default value is <code>FilterCondition.OR</code>.
      */
     condition?: FilterCondition;
 

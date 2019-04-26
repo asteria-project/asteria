@@ -6,8 +6,7 @@ import * as uuid from 'uuid';
 export class Uuid {
   
   /**
-   * Generates and returns a unique identifier string according to the
-   * "version 4" RFC4122 specification.
+   * Generates and returns a unique identifier string according to the "version 4" RFC4122 specification.
    * 
    * @returns {string} a "version 4" genuine unique identifier string.
    */

@@ -38,8 +38,7 @@ export class CacheManager implements AsteriaCacheManager {
      * @returns {AsteriaCacheManager} the reference to this singleton.
      */
     public static getInstance(): AsteriaCacheManager {
-        return CacheManager._instance ||
-               (CacheManager._instance = new CacheManager());
+        return CacheManager._instance || (CacheManager._instance = new CacheManager());
     }
 
     /**

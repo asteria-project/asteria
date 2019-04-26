@@ -3,8 +3,7 @@ import { StartsWithFilter } from './impl/StartsWithFilter';
 import { LikeFilter } from './impl/LikeFilter';
 
 /**
- * Provides functionality to work with new <code>AsteriaFilter</code> 
- * instances through a singleton implementation.
+ * Provides functionality to work with new <code>AsteriaFilter</code> instances through a singleton implementation.
  */
 export class AsteriaFilterManager {
 
@@ -31,8 +30,7 @@ export class AsteriaFilterManager {
      * @returns {AsteriaFilterManager} the reference to this singleton.
      */
     public static getInstance(): AsteriaFilterManager {
-        return AsteriaFilterManager._instance ||
-               (AsteriaFilterManager._instance = new AsteriaFilterManager());
+        return AsteriaFilterManager._instance || (AsteriaFilterManager._instance = new AsteriaFilterManager());
     }
 
     /**

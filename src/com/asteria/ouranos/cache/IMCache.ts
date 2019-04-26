@@ -3,8 +3,7 @@ import { Uuid } from '../lang/Uuid';
 import { AsteriaData } from '../../spec/data/AsteriaData';
 
 /**
- * An <code>AsteriaCache</code> interface implementation that provides "in
- * memory" data storage.
+ * An <code>AsteriaCache</code> interface implementation that provides "in memory" data storage.
  */
 export class IMCache implements AsteriaCache {
 

@@ -7,11 +7,10 @@ import { AsteriaCache } from '../../spec/cache/AsteriaCache';
 import { AsteriaDataBuilder } from '../util/builder/AsteriaDataBuilder';
 
 /**
- * An implementation of the <code>AsteriaModule</code> interface that merges all
- * objects in two lists, bu using a key correspondence.
+ * An implementation of the <code>AsteriaModule</code> interface that merges all objects in two lists, bu using a key
+ * correspondence.
  */
-export class MergeListByKeyModule extends AbstractAsteriaModule
-                                  implements AsteriaModule {
+export class MergeListByKeyModule extends AbstractAsteriaModule implements AsteriaModule {
 
     /**
      * Creates a new <code>MergeListByKeyModule</code> instance.
@@ -23,14 +22,12 @@ export class MergeListByKeyModule extends AbstractAsteriaModule
     /**
      * @inheritdoc
      */
-    public process(input: AsteriaData<any>,
-                config: MergeListByKeyModuleConfig): Promise<AsteriaData<any>> {
-        const result: Promise<AsteriaData<any>> =
-            new Promise<AsteriaData<any>>(
-                (resolve: Function, reject: Function)=> {
-                    resolve(this.doMerge(config));
-                }
-            );
+    public process(input: AsteriaData<any>, config: MergeListByKeyModuleConfig): Promise<AsteriaData<any>> {
+        const result: Promise<AsteriaData<any>> = new Promise<AsteriaData<any>>(
+            (resolve: Function, reject: Function)=> {
+                resolve(this.doMerge(config));
+            }
+        );
         return result;
     }
 
@@ -39,11 +36,7 @@ export class MergeListByKeyModule extends AbstractAsteriaModule
         const src1: any = cache.get(config.source1).data;
         const src2: any = cache.get(config.source2).data;
         const key: string = config.key;
-        return this.buildMergedData(
-            src1,
-            key,
-            this.getBuffer(src2, key),
-        );
+        return this.buildMergedData(src1, key, this.getBuffer(src2, key));
     }
 
     private getBuffer(src: Array<any>, key: string): Map<string, any> {
@@ -56,8 +49,7 @@ export class MergeListByKeyModule extends AbstractAsteriaModule
         return buffer;
     }
 
-    private buildMergedData(src: Array<any>, key: string,
-                           buffer: Map<string, any>): AsteriaData<any> {
+    private buildMergedData(src: Array<any>, key: string, buffer: Map<string, any>): AsteriaData<any> {
         const result: Array<any> = new Array<any>();
         let len: number = src.length;
         while (len--) {

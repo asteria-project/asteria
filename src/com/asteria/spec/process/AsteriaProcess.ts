@@ -3,8 +3,7 @@ import { AsteriaModuleConfig } from '../config/AsteriaModuleConfig';
 import { AsteriaModule } from '../module/AsteriaModule';
 
 /**
- * The <code>AsteriaProcess</code> interface provides information about a
- * process executed by the Asteria environment.
+ * The <code>AsteriaProcess</code> interface provides information about a process executed by the Asteria environment.
  */
 export interface AsteriaProcess<T> {
 

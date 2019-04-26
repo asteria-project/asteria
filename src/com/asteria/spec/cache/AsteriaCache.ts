@@ -1,8 +1,7 @@
 import { AsteriaData } from '../data/AsteriaData';
 
 /**
- * The <code>AsteriaCache</code> interface represents a cache object of any
- * Asteria framework.
+ * The <code>AsteriaCache</code> interface represents a cache object of any Asteria framework.
  */
 export interface AsteriaCache {
 
@@ -16,8 +15,7 @@ export interface AsteriaCache {
     /**
      * Adds the specified object to this cache.
      *
-     * @param {string} key the string used to retreive the object added to this
-     *                     cache.
+     * @param {string} key the string used to retreive the object added to this cache.
      * @param {AsteriaData<T>} obj the object to add to this cache.
      */
     add<T>(key: string, obj: AsteriaData<T>): void;
