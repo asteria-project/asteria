@@ -10,3 +10,10 @@
 | Crios | `asteria-crios` | Crios provides the Asteria modules for the Ouranos implementation. |
 | Cronos | `asteria-cronos` | Cronos provides a set of Asteria modules that can be deployed within a Node.js environment. |
 | Atlas | `asteria-atlas` | Atlas provides a set of Asteria modules that can be used by Angular applications. |
+
+## Assets
+
+### Logos
+
+- [asteria.ai](#) - The Asteria Project logo in vectorial format (_illustrator_).
+- [asteria.png](#) - The Asteria Project logo in PNG format (_512x512 px_).
