@@ -1,5 +1,7 @@
 # Asteria Project
 
+Asteria is a specification for building data analytics modules that are executed through sequential data processors.
+
 ## Understanding the Theogony
 
 | Project | Module | Description |
