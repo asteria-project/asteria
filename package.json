@@ -1,8 +1,8 @@
 {
   "name": "asteria",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "The specification module of the Asteria Project.",
-  "main": "src/index.js",
+  "main": "src/asteria/asteria.index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node src/index.js"
