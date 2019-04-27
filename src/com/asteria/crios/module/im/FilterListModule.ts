@@ -1,11 +1,11 @@
-import { AsteriaModule } from '../../spec/module/AsteriaModule';
-import { AsteriaData } from '../../spec/data/AsteriaData';
-import { AbstractAsteriaModule } from '../../spec/module/AbstractAsteriaModule';
-import { FilterListModuleConfig } from '../config/FilterListModuleConfig';
-import { FilterDefinition } from '../../spec/filter/FilterDefinition';
-import { AsteriaFilterManager } from '../filter/AsteriaFilterManager';
-import { AsteriaDataBuilder } from '../util/builder/AsteriaDataBuilder';
-import { FilterCondition } from '../../spec/filter/FilterCondition';
+import { AsteriaModule } from '../../../gaia/module/AsteriaModule';
+import { AsteriaData } from '../../../gaia/data/AsteriaData';
+import { AbstractAsteriaModule } from '../../../gaia/module/AbstractAsteriaModule';
+import { FilterListModuleConfig } from '../../config/im/FilterListModuleConfig';
+import { FilterDefinition } from '../../../gaia/filter/FilterDefinition';
+import { FilterCondition } from '../../../gaia/filter/FilterCondition';
+import { AsteriaDataBuilder } from '../../../ouranos/util/builder/AsteriaDataBuilder';
+import { AsteriaFilterManager } from '../../../ouranos/filter/AsteriaFilterManager';
 
 /**
  * An Asteria module that filters list of literal JavaScript objects.

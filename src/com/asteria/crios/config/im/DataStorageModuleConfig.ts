@@ -1,4 +1,4 @@
-import { AsteriaModuleConfig } from '../../spec/config/AsteriaModuleConfig';
+import { AsteriaModuleConfig } from '../../../gaia/config/AsteriaModuleConfig';
 
 /**
  * The <code>DataStorageModuleConfig</code> interface defines the common functionality implemented by context

@@ -1,5 +1,5 @@
-import { AsteriaFilter } from '../../../spec/filter/AsteriaFilter';
-import { FilterOperator } from '../../../spec/filter/FilterOperator';
+import { AsteriaFilter } from '../../../gaia/filter/AsteriaFilter';
+import { FilterOperator } from '../../../gaia/filter/FilterOperator';
 
 /**
  * The <code>LikeFilter</code> filter determines whether an object property string contains the characters of a

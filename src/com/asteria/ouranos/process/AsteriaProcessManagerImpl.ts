@@ -1,8 +1,8 @@
-import { AsteriaData } from '../../spec/data/AsteriaData';
-import { AsteriaProcessManager } from '../../spec/process/AsteriaProcessManager';
-import { AsteriaProcess } from '../../spec/process/AsteriaProcess';
+import { AsteriaData } from '../../gaia/data/AsteriaData';
+import { AsteriaProcessManager } from '../../gaia/process/AsteriaProcessManager';
+import { AsteriaProcess } from '../../gaia/process/AsteriaProcess';
 import { AsteriaLoggerImpl } from '../util/logging/AsteriaLoggerImpl';
-import { AsteriaLogger } from '../../spec/util/logging/AsteriaLogger';
+import { AsteriaLogger } from '../../gaia/util/logging/AsteriaLogger';
 
 const LOGGER: AsteriaLogger = AsteriaLoggerImpl.getLogger();
 
@@ -27,6 +27,8 @@ export class AsteriaProcessManagerImpl implements AsteriaProcessManager {
      */
     private _data: AsteriaData<any> = null;
 
+    private _timestamp: number = 0;
+
     /**
      * @inheritdoc
      */
@@ -47,6 +49,7 @@ export class AsteriaProcessManagerImpl implements AsteriaProcessManager {
     public reset(): void {
         this._data = null;
         this._cursor = -1;
+        this._timestamp = 0;
     }
     
     /**
@@ -65,7 +68,14 @@ export class AsteriaProcessManagerImpl implements AsteriaProcessManager {
     }
 
     private resolveProcess(resolve: Function, reject: Function): void {
+        if (this._cursor === -1) {
+            this._timestamp = Date.now();
+        } else {
+            const currTime: number = Date.now();
+            LOGGER.info(`process duration: ${currTime - this._timestamp} ms`);
+        }
         if (this.hasNext()) {
+            this._timestamp = Date.now();
             this.processNext()
                 .then((output: AsteriaData<any>)=> {
                     this._data = output;
@@ -77,6 +87,7 @@ export class AsteriaProcessManagerImpl implements AsteriaProcessManager {
         } else {
             LOGGER.info('ouranos processing complete');
             resolve(this._data);
+            this.reset();
         }
     }
 

@@ -1,8 +1,8 @@
-import { AsteriaModule } from '../../spec/module/AsteriaModule';
-import { AsteriaData } from '../../spec/data/AsteriaData';
-import { AbstractAsteriaModule } from '../../spec/module/AbstractAsteriaModule';
-import { DataStorageModuleConfig } from '../config/DataStorageModuleConfig';
-import { CacheManager } from '../cache/CacheManager';
+import { AsteriaModule } from '../../../gaia/module/AsteriaModule';
+import { AsteriaData } from '../../../gaia/data/AsteriaData';
+import { AbstractAsteriaModule } from '../../../gaia/module/AbstractAsteriaModule';
+import { DataStorageModuleConfig } from '../../config/im/DataStorageModuleConfig';
+import { CacheManager } from '../../../ouranos/cache/CacheManager';
 
 /**
  * An implementation of the <code>AsteriaModule</code> interface that stores input data into the specified cache.

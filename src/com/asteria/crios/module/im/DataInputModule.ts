@@ -1,6 +1,6 @@
-import { AsteriaModule } from '../../spec/module/AsteriaModule';
-import { AsteriaData } from '../../spec/data/AsteriaData';
-import { AbstractAsteriaModule } from '../../spec/module/AbstractAsteriaModule';
+import { AsteriaModule } from '../../../gaia/module/AsteriaModule';
+import { AsteriaData } from '../../../gaia/data/AsteriaData';
+import { AbstractAsteriaModule } from '../../../gaia/module/AbstractAsteriaModule';
 
 /**
  * A generic implementation of the <code>AsteriaModule</code> interface that can be used as entry point of the process

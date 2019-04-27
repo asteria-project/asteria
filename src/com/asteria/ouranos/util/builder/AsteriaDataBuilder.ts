@@ -1,5 +1,7 @@
-import { AsteriaData } from '../../../spec/data/AsteriaData';
-import { AsteriaDataImpl } from '../../data/AsteriaDataImpl';
+import { AsteriaData } from '../../../gaia/data/AsteriaData';
+import { AsteriaDataBase } from '../../../gaia/data/impl/AsteriaDataBase';
+import { UrlData } from '../../../gaia/data/UrlData';
+import { StringData } from '../../../gaia/data/StringData';
 
 /**
  * A utility class for building <code>AsteriaData</code> objects, available as a singleton.
@@ -28,13 +30,25 @@ export class AsteriaDataBuilder {
     /**
      * Builds and returns a new <code>AsteriaData</code> instance.
      * 
-     * @param {any} data the data set defined by the new <code>AsteriaData</code> instance. 
+     * @param {T} data the data set defined by the new <code>AsteriaData</code> instance. 
      * 
      * @return {AsteriaData<T>} a new <code>AsteriaData</code> instance.
      */
-    public build<T>(data: any): AsteriaData<T> {
-        const asteriaData: AsteriaData<T> = new AsteriaDataImpl<T>();
+    public build<T>(data: T): AsteriaData<T> {
+        const asteriaData: AsteriaData<T> = new AsteriaDataBase<T>();
         asteriaData.data = data;
+        return asteriaData;
+    }
+
+    public buildStringData(data: any): AsteriaData<StringData> {
+        const asteriaData: AsteriaData<StringData> = new AsteriaDataBase<StringData>();
+        asteriaData.data = String(data);
+        return asteriaData;
+    }
+
+    public buildUrlData(data: any): AsteriaData<UrlData> {
+        const asteriaData: AsteriaData<UrlData> = new AsteriaDataBase<UrlData>();
+        asteriaData.data = String(data);
         return asteriaData;
     }
 }

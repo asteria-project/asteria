@@ -60,4 +60,5 @@ test/**/*.js
 #####################################
 
 # Ignore temporary files
-src/temp-data
+src/temp-data/*.csv
+src/temp-data/*.ts

@@ -1,6 +1,6 @@
-import { AsteriaCache } from '../../spec/cache/AsteriaCache';
+import { AsteriaCache } from '../../gaia/cache/AsteriaCache';
 import { Uuid } from '../lang/Uuid';
-import { AsteriaData } from '../../spec/data/AsteriaData';
+import { AsteriaData } from '../../gaia/data/AsteriaData';
 
 /**
  * An <code>AsteriaCache</code> interface implementation that provides "in memory" data storage.

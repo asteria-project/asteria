@@ -1,6 +1,6 @@
-import { AsteriaModuleConfig } from '../../spec/config/AsteriaModuleConfig';
-import { FilterDefinition } from '../../spec/filter/FilterDefinition';
-import { FilterCondition } from '../../spec/filter/FilterCondition';
+import { AsteriaModuleConfig } from '../../../gaia/config/AsteriaModuleConfig';
+import { FilterDefinition } from '../../../gaia/filter/FilterDefinition';
+import { FilterCondition } from '../../../gaia/filter/FilterCondition';
 
 /**
  * The <code>FilterListModuleConfig</code> interface defines the common functionality implemented by context

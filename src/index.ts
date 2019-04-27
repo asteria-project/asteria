@@ -1,16 +1,18 @@
-import { AsteriaProcessManager } from './com/asteria/spec/process/AsteriaProcessManager';
+import { AsteriaProcessManager } from './com/asteria/gaia/process/AsteriaProcessManager';
 import { AsteriaManagerFactory } from './com/asteria/ouranos/factory/AsteriaManagerFactory';
-import { AsteriaProcess } from './com/asteria/spec/process/AsteriaProcess';
+import { AsteriaProcess } from './com/asteria/gaia/process/AsteriaProcess';
 import { AsteriaProcessBuilder } from './com/asteria/ouranos/util/builder/AsteriaProcessBuilder';
-import { AsteriaData } from './com/asteria/spec/data/AsteriaData';
-import { CsvToListModule } from './com/asteria/ouranos/module/CsvToListModule';
-import { CsvToListModuleConfig } from './com/asteria/ouranos/config/CsvToListModuleConfig';
+import { AsteriaData } from './com/asteria/gaia/data/AsteriaData';
+import { CsvToListModule } from './com/asteria/crios/module/im/CsvToListModule';
+import { CsvToListModuleConfig } from './com/asteria/crios/config/im/CsvToListModuleConfig';
 import { AsteriaDataBuilder } from './com/asteria/ouranos/util/builder/AsteriaDataBuilder';
-import { FileLoaderModule } from './com/asteria/cronos/module/FileLoaderModule';
+import { FileLoaderModule } from './com/asteria/cronos/module/im/FileLoaderModule';
+import { DataStorageModule } from './com/asteria/crios/module/im/DataStorageModule';
+import { MergeListByKeyModule } from './com/asteria/crios/module/im/MergeListByKeyModule';
+import { MergeListByKeyModuleConfig } from './com/asteria/crios/config/im/MergeListByKeyModuleConfig';
+import { StringData } from './com/asteria/gaia/data/StringData';
+
 import * as path from 'path';
-import { DataStorageModule } from './com/asteria/ouranos/module/DataStorageModule';
-import { MergeListByKeyModule } from './com/asteria/ouranos/module/MergeListByKeyModule';
-import { MergeListByKeyModuleConfig } from './com/asteria/ouranos/config/MergeListByKeyModuleConfig';
 
 const buildFilePath: Function = (fileName: string)=> { 
     return path.join(__dirname, 'temp-data', fileName);
@@ -18,18 +20,15 @@ const buildFilePath: Function = (fileName: string)=> {
 
 const processBuilder: AsteriaProcessBuilder = AsteriaProcessBuilder.getInstance();
 
-const inputPath1: AsteriaData<string> = AsteriaDataBuilder.getInstance().build(
-    buildFilePath('GeoLite2-City-Blocks-IPv4.csv')
-);
-const inputPath2: AsteriaData<string> = AsteriaDataBuilder.getInstance().build(
-    buildFilePath('GeoLite2-City-Locations-en.csv')
-);
+const inputPath1: AsteriaData<StringData> = 
+    AsteriaDataBuilder.getInstance().buildStringData( buildFilePath('GeoLite2-City-Blocks-IPv4.csv') );
 
-const loadFile1Process: AsteriaProcess<any> =
-    processBuilder.build<any>(new FileLoaderModule(), null, inputPath1);
+const loadFile1Process: AsteriaProcess<any> = processBuilder.build<any>(new FileLoaderModule(), null, inputPath1);
 
-const loadFile2Process: AsteriaProcess<any> =
-    processBuilder.build<any>(new FileLoaderModule(), null, inputPath2);
+const inputPath2: AsteriaData<StringData> = 
+    AsteriaDataBuilder.getInstance().buildStringData( buildFilePath('GeoLite2-City-Locations-en.csv') );
+
+const loadFile2Process: AsteriaProcess<any> = processBuilder.build<any>(new FileLoaderModule(), null, inputPath2);
 
 const csv1ToListConfig: CsvToListModuleConfig = {
     trimFirstRow: true,
@@ -41,6 +40,8 @@ const csv1ToListConfig: CsvToListModuleConfig = {
     ]
 };
 
+const csv1ToListProcess: AsteriaProcess<any> = processBuilder.build<any>(new CsvToListModule(), csv1ToListConfig);
+
 const csv2ToListConfig: CsvToListModuleConfig = {
     trimFirstRow: true,
     colsMapping: [
@@ -49,25 +50,21 @@ const csv2ToListConfig: CsvToListModuleConfig = {
     ]
 };
 
-const csv1ToListProcess: AsteriaProcess<any> =
-    processBuilder.build<any>(new CsvToListModule(), csv1ToListConfig);
+const csv2ToListProcess: AsteriaProcess<any> = processBuilder.build<any>(new CsvToListModule(), csv2ToListConfig);
 
-const csv2ToListProcess: AsteriaProcess<any> =
-    processBuilder.build<any>(new CsvToListModule(), csv2ToListConfig);
+const storageProcess1: AsteriaProcess<any> = processBuilder.build<any>(new DataStorageModule(), { key: 'csv1' });
 
-const storageProcess1: AsteriaProcess<any> =
-    processBuilder.build<any>(new DataStorageModule(), { key: 'csv1' });
-
-const storageProcess2: AsteriaProcess<any> =
-    processBuilder.build<any>(new DataStorageModule(), { key: 'csv2' });
+const storageProcess2: AsteriaProcess<any> = processBuilder.build<any>(new DataStorageModule(), { key: 'csv2' });
 
 const mergeListByKeyConfig: MergeListByKeyModuleConfig = {
     key: 'geonameId',
     source1: 'csv1',
     source2: 'csv2'
 };
-const mergeListByKeyProcess: AsteriaProcess<any> =
-    processBuilder.build<any>(new MergeListByKeyModule(), mergeListByKeyConfig);
+
+const mergeListByKeyProcess: AsteriaProcess<any> = processBuilder.build<any>(
+    new MergeListByKeyModule(), mergeListByKeyConfig
+ );
     
 
 /*const filterListModuleConfig: FilterListModuleConfig = {

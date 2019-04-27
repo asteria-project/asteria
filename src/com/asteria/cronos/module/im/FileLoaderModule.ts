@@ -1,7 +1,8 @@
-import { AsteriaModule } from '../../spec/module/AsteriaModule';
-import { AsteriaData } from '../../spec/data/AsteriaData';
-import { AbstractAsteriaModule } from '../../spec/module/AbstractAsteriaModule';
-import { AsteriaDataBuilder } from '../../ouranos/util/builder/AsteriaDataBuilder';
+import { AsteriaModule } from '../../../gaia/module/AsteriaModule';
+import { AsteriaData } from '../../../gaia/data/AsteriaData';
+import { AbstractAsteriaModule } from '../../../gaia/module/AbstractAsteriaModule';
+import { AsteriaDataBuilder } from '../../../ouranos/util/builder/AsteriaDataBuilder';
+import { StringData } from '../../../gaia/data/StringData';
 import * as fs from 'fs';
 
 /**
@@ -19,11 +20,11 @@ export class FileLoaderModule extends AbstractAsteriaModule implements AsteriaMo
     /**
      * @inheritdoc
      */
-    public process(input: AsteriaData<string>): Promise<AsteriaData<string>> {
-        const result: Promise<AsteriaData<string>> = new Promise<AsteriaData<string>>(
+    public process(input: AsteriaData<StringData>): Promise<AsteriaData<StringData>> {
+        const result: Promise<AsteriaData<StringData>> = new Promise<AsteriaData<StringData>>(
             (resolve: Function, reject: Function)=> {
                 fs.readFile(
-                    input.data,
+                    input.data.toString(),
                     (err: NodeJS.ErrnoException, data: Buffer)=> {
                         if(err) {
                             reject(err);

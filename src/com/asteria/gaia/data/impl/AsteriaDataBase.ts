@@ -1,9 +1,9 @@
-import { AsteriaData } from '../../spec/data/AsteriaData';
+import { AsteriaData } from '../AsteriaData';
 
 /**
  * The default implementation of the <code>AsteriaData</code> interface.
  */
-export class AsteriaDataImpl<T> implements AsteriaData<T> {
+export class AsteriaDataBase<T> implements AsteriaData<T> {
 
     /**
      * @inheritdoc

@@ -1,7 +1,7 @@
-import { AsteriaModule } from '../../spec/module/AsteriaModule';
-import { AsteriaData } from '../../spec/data/AsteriaData';
-import { AsteriaModuleConfig } from '../../spec/config/AsteriaModuleConfig';
-import { AsteriaProcess } from '../../spec/process/AsteriaProcess';
+import { AsteriaModule } from '../../gaia/module/AsteriaModule';
+import { AsteriaData } from '../../gaia/data/AsteriaData';
+import { AsteriaModuleConfig } from '../../gaia/config/AsteriaModuleConfig';
+import { AsteriaProcess } from '../../gaia/process/AsteriaProcess';
 
 /**
  * The default implementation of the <code>AsteriaProcess</code> interface.

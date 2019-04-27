@@ -1,4 +1,4 @@
-import { AsteriaProcessManager } from '../../spec/process/AsteriaProcessManager';
+import { AsteriaProcessManager } from '../../gaia/process/AsteriaProcessManager';
 import { AsteriaProcessManagerImpl } from '../process/AsteriaProcessManagerImpl';
 
 /**
