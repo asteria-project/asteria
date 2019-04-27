@@ -7,12 +7,10 @@ import { CsvToListModule } from './com/asteria/crios/module/im/CsvToListModule';
 import { CsvToListModuleConfig } from './com/asteria/crios/config/im/CsvToListModuleConfig';
 import { AsteriaDataBuilder } from './com/asteria/ouranos/util/builder/AsteriaDataBuilder';
 import { FileLoaderModule } from './com/asteria/cronos/module/im/FileLoaderModule';
-import { DataStorageModule } from './com/asteria/crios/module/im/DataStorageModule';
-import { MergeListByKeyModule } from './com/asteria/crios/module/im/MergeListByKeyModule';
-import { MergeListByKeyModuleConfig } from './com/asteria/crios/config/im/MergeListByKeyModuleConfig';
 import { StringData } from './com/asteria/gaia/data/StringData';
 
 import * as path from 'path';
+import { ListData } from './com/asteria/asteria.index';
 
 const buildFilePath: Function = (fileName: string)=> { 
     return path.join(__dirname, 'temp-data', fileName);
@@ -20,51 +18,27 @@ const buildFilePath: Function = (fileName: string)=> {
 
 const processBuilder: AsteriaProcessBuilder = AsteriaProcessBuilder.getInstance();
 
-const inputPath1: AsteriaData<StringData> = 
-    AsteriaDataBuilder.getInstance().buildStringData( buildFilePath('GeoLite2-City-Blocks-IPv4.csv') );
+const inputPath: AsteriaData<StringData> = 
+    AsteriaDataBuilder.getInstance().buildStringData( buildFilePath('worldcitiespop.csv') );
 
-const loadFile1Process: AsteriaProcess<any> = processBuilder.build<any>(new FileLoaderModule(), null, inputPath1);
+const loadFile1Process: AsteriaProcess<StringData> = 
+    processBuilder.build<StringData>(new FileLoaderModule(), null, inputPath);
 
-const inputPath2: AsteriaData<StringData> = 
-    AsteriaDataBuilder.getInstance().buildStringData( buildFilePath('GeoLite2-City-Locations-en.csv') );
-
-const loadFile2Process: AsteriaProcess<any> = processBuilder.build<any>(new FileLoaderModule(), null, inputPath2);
-
-const csv1ToListConfig: CsvToListModuleConfig = {
+const csvToListConfig: CsvToListModuleConfig = {
     trimFirstRow: true,
+    separator: ';',
     colsMapping: [
-        { index: 1, property: 'geonameId' },
-        { index: 6, property: 'postalCode' },
-        { index: 7, property: 'latitude' },
-        { index: 8, property: 'longitude' }
+        { index: 0, property: 'country' },
+        { index: 2, property: 'city' },
+        { index: 3, property: 'region' },
+        { index: 4, property: 'population' },
+        { index: 5, property: 'Latitude' },
+        { index: 6, property: 'longitude' }
     ]
 };
 
-const csv1ToListProcess: AsteriaProcess<any> = processBuilder.build<any>(new CsvToListModule(), csv1ToListConfig);
-
-const csv2ToListConfig: CsvToListModuleConfig = {
-    trimFirstRow: true,
-    colsMapping: [
-        { index: 0, property: 'geonameId' },
-        { index: 12, property: 'city' }
-    ]
-};
-
-const csv2ToListProcess: AsteriaProcess<any> = processBuilder.build<any>(new CsvToListModule(), csv2ToListConfig);
-
-const storageProcess1: AsteriaProcess<any> = processBuilder.build<any>(new DataStorageModule(), { key: 'csv1' });
-
-const storageProcess2: AsteriaProcess<any> = processBuilder.build<any>(new DataStorageModule(), { key: 'csv2' });
-
-const mergeListByKeyConfig: MergeListByKeyModuleConfig = {
-    key: 'geonameId',
-    source1: 'csv1',
-    source2: 'csv2'
-};
-
-const mergeListByKeyProcess: AsteriaProcess<any> = processBuilder.build<any>(
-    new MergeListByKeyModule(), mergeListByKeyConfig
- );
+const csvToListProcess: AsteriaProcess<StringData> =
+    processBuilder.build<StringData>(new CsvToListModule(), csvToListConfig);
     
 
 /*const filterListModuleConfig: FilterListModuleConfig = {
@@ -79,19 +53,13 @@ const mergeListByKeyProcess: AsteriaProcess<any> = processBuilder.build<any>(
 const filterListProcess: AsteriaProcess<any> =
     processBuilder.build<any>(new FilterListModule(), filterListModuleConfig);*/
 
-const manager: AsteriaProcessManager = AsteriaManagerFactory.getInstance()
-                                                            .getManager();
+const manager: AsteriaProcessManager = AsteriaManagerFactory.getInstance().getManager();
 manager.add(loadFile1Process);
-manager.add(csv1ToListProcess);
-manager.add(storageProcess1);
-manager.add(loadFile2Process);
-manager.add(csv2ToListProcess);
-manager.add(storageProcess2);
-manager.add(mergeListByKeyProcess);
+manager.add(csvToListProcess);
 manager.run()
-        .then((value: AsteriaData<Array<any>>)=> {
+        .then((value: AsteriaData<ListData<any>>)=> {
             console.log(value.data[0]);
+            console.log(value.data.length)
         }).catch((err: any)=> {
             console.log('err=' + err);
         });
-

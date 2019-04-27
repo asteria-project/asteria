@@ -1,4 +1,4 @@
 /**
  * Represents an Asteria data set of the type of <code>array</code>.
  */
-export interface ListData<T> {}
+export interface ListData<T> extends Array<T>{}

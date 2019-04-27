@@ -5,6 +5,8 @@ import { MergeListByKeyModuleConfig } from '../../config/im/MergeListByKeyModule
 import { AsteriaCache } from '../../../gaia/cache/AsteriaCache';
 import { CacheManager } from '../../../ouranos/cache/CacheManager';
 import { AsteriaDataBuilder } from '../../../ouranos/util/builder/AsteriaDataBuilder';
+import { ListData } from '../../../gaia/data/ListData';
+import { ListDataBuilder } from '../../../ouranos/util/builder/ListDataBuilder';
 
 /**
  * An implementation of the <code>AsteriaModule</code> interface that merges all objects in two lists, bu using a key
@@ -22,8 +24,9 @@ export class MergeListByKeyModule extends AbstractAsteriaModule implements Aster
     /**
      * @inheritdoc
      */
-    public process(input: AsteriaData<any>, config: MergeListByKeyModuleConfig): Promise<AsteriaData<any>> {
-        const result: Promise<AsteriaData<any>> = new Promise<AsteriaData<any>>(
+    public process(input: AsteriaData<ListData<any>>,
+                   config: MergeListByKeyModuleConfig): Promise<AsteriaData<ListData<any>>> {
+        const result: Promise<AsteriaData<ListData<any>>> = new Promise<AsteriaData<ListData<any>>>(
             (resolve: Function, reject: Function)=> {
                 resolve(this.doMerge(config));
             }
@@ -31,15 +34,15 @@ export class MergeListByKeyModule extends AbstractAsteriaModule implements Aster
         return result;
     }
 
-    private doMerge(config: MergeListByKeyModuleConfig): AsteriaData<any> {
+    private doMerge(config: MergeListByKeyModuleConfig): AsteriaData<ListData<any>> {
         const cache: AsteriaCache = CacheManager.getInstance().getCache();
-        const src1: any = cache.get(config.source1).data;
-        const src2: any = cache.get(config.source2).data;
+        const target: ListData<any> = cache.get(config.target).data as ListData<any>;
+        const source: ListData<any> = cache.get(config.source).data as ListData<any>;
         const key: string = config.key;
-        return this.buildMergedData(src1, key, this.getBuffer(src2, key));
+        return this.buildMergedData(target, key, this.getBuffer(source, key));
     }
 
-    private getBuffer(src: Array<any>, key: string): Map<string, any> {
+    private getBuffer(src: ListData<any>, key: string): Map<string, any> {
         const buffer: Map<string, any> = new Map<string, any>();
         let len: number = src.length;
         while (len--) {
@@ -49,13 +52,13 @@ export class MergeListByKeyModule extends AbstractAsteriaModule implements Aster
         return buffer;
     }
 
-    private buildMergedData(src: Array<any>, key: string, buffer: Map<string, any>): AsteriaData<any> {
-        const result: Array<any> = new Array<any>();
-        let len: number = src.length;
+    private buildMergedData(tgt: Array<any>, key: string, buffer: Map<string, any>): AsteriaData<ListData<any>> {
+        const result: ListData<any> = ListDataBuilder.getInstance().build<any>();
+        let len: number = tgt.length;
         while (len--) {
-            const source1: any = src[len];
-            const source2: any = buffer.get(source1[key]);
-            result.push(Object.assign({}, source1, source2));
+            const target: any = tgt[len];
+            const source: any = buffer.get(target[key]);
+            result.push(Object.assign({}, target, source));
 
         }
         result.reverse();

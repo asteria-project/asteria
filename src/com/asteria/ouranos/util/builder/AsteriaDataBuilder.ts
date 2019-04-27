@@ -2,6 +2,7 @@ import { AsteriaData } from '../../../gaia/data/AsteriaData';
 import { AsteriaDataBase } from '../../../gaia/data/impl/AsteriaDataBase';
 import { UrlData } from '../../../gaia/data/UrlData';
 import { StringData } from '../../../gaia/data/StringData';
+import { ListData } from '../../../gaia/gaia.index';
 
 /**
  * A utility class for building <code>AsteriaData</code> objects, available as a singleton.
@@ -51,4 +52,11 @@ export class AsteriaDataBuilder {
         asteriaData.data = String(data);
         return asteriaData;
     }
+
+    public buildListData(data: any): AsteriaData<ListData<any>> {
+        const asteriaData: AsteriaData<ListData<any>> = new AsteriaDataBase<ListData<any>>();
+        asteriaData.data = data;
+        return asteriaData;
+    }
+    
 }

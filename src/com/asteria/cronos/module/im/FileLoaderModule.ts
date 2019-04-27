@@ -26,7 +26,7 @@ export class FileLoaderModule extends AbstractAsteriaModule implements AsteriaMo
                 fs.readFile(
                     input.data.toString(),
                     (err: NodeJS.ErrnoException, data: Buffer)=> {
-                        if(err) {
+                        if (err) {
                             reject(err);
                         } else {
                             resolve(

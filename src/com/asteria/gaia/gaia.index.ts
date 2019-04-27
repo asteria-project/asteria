@@ -14,7 +14,6 @@ export { AsteriaModuleConfig } from './config/AsteriaModuleConfig';
 
 //--> com/asteria/gaia/data/impl
 export { AsteriaDataBase } from './data/impl/AsteriaDataBase';
-export { AsteriaList } from './data/impl/AsteriaList';
 export { AsteriaListData } from './data/impl/AsteriaListData';
 
 //--> com/asteria/gaia/data

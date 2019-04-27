@@ -5,6 +5,8 @@ import { AbstractAsteriaModule } from '../../../gaia/module/AbstractAsteriaModul
 import { CsvColumnMapper } from '../../util/CsvColumnMapper';
 import { CsvToListModuleConfig } from '../../config/im/CsvToListModuleConfig';
 import { AsteriaDataBuilder } from '../../../ouranos/util/builder/AsteriaDataBuilder';
+import { ListData} from '../../../gaia/data/ListData';
+import { ListDataBuilder } from '../../../ouranos/util/builder/ListDataBuilder';
 
 /**
  * An Asteria module that takes a CSV string as input and turns it into a list of literal JavaScript objects.
@@ -46,10 +48,11 @@ export class CsvToListModule extends AbstractAsteriaModule implements AsteriaMod
     /**
      * @inheritdoc
      */
-    public process(input: AsteriaData<StringData>, config?: CsvToListModuleConfig): Promise<AsteriaData<Array<any>>> {
-        const result: Promise<AsteriaData<any>> = new Promise<AsteriaData<Array<string>>>(
+    public process(input: AsteriaData<StringData>, 
+                   config?: CsvToListModuleConfig): Promise<AsteriaData<ListData<any>>> {
+        const result: Promise<AsteriaData<ListData<any>>> = new Promise<AsteriaData<ListData<any>>>(
             (resolve, reject)=> {
-                let objArr: Array<string> = null;
+                let objArr: ListData<any> = null;
                 try {
                     let csvArr: Array<string> = this.buildCsvArray(input.data);
                     this.initConfig(config, csvArr);
@@ -58,7 +61,7 @@ export class CsvToListModule extends AbstractAsteriaModule implements AsteriaMod
                     }
                     objArr = this.buildResultArray(csvArr);
                     resolve(
-                        AsteriaDataBuilder.getInstance().build(objArr)
+                        AsteriaDataBuilder.getInstance().buildListData(objArr)
                     );
                 } catch (e) {
                     reject(e);
@@ -125,9 +128,9 @@ export class CsvToListModule extends AbstractAsteriaModule implements AsteriaMod
      * 
      * @return {Array<any>} the array of CSV marshaled rows.
      */
-    private buildResultArray(csvArr: Array<string>): Array<any> {
+    private buildResultArray(csvArr: Array<string>): ListData<any> {
         let len: number = csvArr.length;
-        const objArr: Array<any> = new Array<any>(len);
+        const objArr: ListData<any> = ListDataBuilder.getInstance().build<any>(len);
         while (len--) {
             objArr.splice(len, 1, this.buildObj(csvArr[len]));
         }

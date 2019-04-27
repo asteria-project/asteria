@@ -29,6 +29,7 @@ export { AsteriaProcessManagerImpl } from './process/AsteriaProcessManagerImpl';
 //--> com/asteria/ouranos/util/builder
 export { AsteriaDataBuilder } from './util/builder/AsteriaDataBuilder';
 export { AsteriaProcessBuilder } from './util/builder/AsteriaProcessBuilder';
+export { ListDataBuilder } from './util/builder/ListDataBuilder';
 
 //--> com/asteria/ouranos/util/logging
 export { AsteriaLoggerImpl } from './util/logging/AsteriaLoggerImpl';

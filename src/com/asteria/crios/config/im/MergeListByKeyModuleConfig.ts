@@ -13,12 +13,12 @@ export interface MergeListByKeyModuleConfig extends AsteriaModuleConfig {
     key: string;
 
     /**
-     * The storage key of the first object to merge.
+     * The storage key of the source object to merge.
      */
-    source1: string;
+    source: string;
     
     /**
-     * The storage key of the second object to merge.
+     * The storage key of the target object to merge.
      */
-    source2: string;
+    target: string;
 }
