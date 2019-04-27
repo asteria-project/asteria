@@ -1,10 +1,11 @@
 import { AsteriaData } from '../../gaia/data/AsteriaData';
 import { AsteriaProcessManager } from '../../gaia/process/AsteriaProcessManager';
 import { AsteriaProcess } from '../../gaia/process/AsteriaProcess';
-import { AsteriaLoggerImpl } from '../util/logging/AsteriaLoggerImpl';
+import { OuranosLogger } from '../util/logging/OuranosLogger';
 import { AsteriaLogger } from '../../gaia/util/logging/AsteriaLogger';
 
-const LOGGER: AsteriaLogger = AsteriaLoggerImpl.getLogger();
+// Static logger reference:
+const LOGGER: AsteriaLogger = OuranosLogger.getLogger();
 
 /**
  * The default implementation of the <code>AsteriaProcessManager</code> interface.

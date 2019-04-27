@@ -5,7 +5,7 @@ import * as logger from 'ts-log-debug';
 /**
  * A singleton implementation of the <code>AsteriaLogger</code> interface.
  */
-export class AsteriaLoggerImpl implements AsteriaLogger {
+export class OuranosLogger implements AsteriaLogger {
 
     /**
      * Stores the static reference to this logger.
@@ -41,8 +41,7 @@ export class AsteriaLoggerImpl implements AsteriaLogger {
      * @returns {AsteriaLogger} the reference to this logger.
      */
     public static getLogger(): AsteriaLogger {
-        return AsteriaLoggerImpl._instance ||
-               (AsteriaLoggerImpl._instance = new AsteriaLoggerImpl());
+        return OuranosLogger._instance || (OuranosLogger._instance = new OuranosLogger());
     }
 
     /**

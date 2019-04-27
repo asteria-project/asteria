@@ -32,4 +32,4 @@ export { AsteriaProcessBuilder } from './util/builder/AsteriaProcessBuilder';
 export { ListDataBuilder } from './util/builder/ListDataBuilder';
 
 //--> com/asteria/ouranos/util/logging
-export { AsteriaLoggerImpl } from './util/logging/AsteriaLoggerImpl';
+export { OuranosLogger } from './util/logging/OuranosLogger';
