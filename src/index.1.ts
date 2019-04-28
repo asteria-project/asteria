@@ -6,7 +6,7 @@ import { AsteriaData } from './com/asteria/gaia/data/AsteriaData';
 import { CsvToListModule } from './com/asteria/crios/module/im/CsvToListModule';
 import { CsvToListModuleConfig } from './com/asteria/crios/config/im/CsvToListModuleConfig';
 import { AsteriaDataBuilder } from './com/asteria/ouranos/util/builder/AsteriaDataBuilder';
-import { FileLoaderModule } from './com/asteria/cronos/module/im/FileLoaderModule';
+import { FileReaderModule } from './com/asteria/cronos/module/im/FileReaderModule';
 import { DataStorageModule } from './com/asteria/crios/module/im/DataStorageModule';
 import { MergeListByKeyModule } from './com/asteria/crios/module/im/MergeListByKeyModule';
 import { MergeListByKeyModuleConfig } from './com/asteria/crios/config/im/MergeListByKeyModuleConfig';
@@ -24,14 +24,14 @@ const processBuilder: AsteriaProcessBuilder = AsteriaProcessBuilder.getInstance(
 const inputPath1: AsteriaData<StringData> = 
     AsteriaDataBuilder.getInstance().buildStringData( buildFilePath('GeoLite2-City-Blocks-IPv4.csv') );
 
-const loadFile1Process: AsteriaProcess<StringData> = 
-    processBuilder.build<StringData>(new FileLoaderModule(), null, inputPath1);
+const readFile1Process: AsteriaProcess<StringData> = 
+    processBuilder.build<StringData>(new FileReaderModule(), null, inputPath1);
 
 const inputPath2: AsteriaData<StringData> = 
     AsteriaDataBuilder.getInstance().buildStringData( buildFilePath('GeoLite2-City-Locations-en.csv') );
 
-const loadFile2Process: AsteriaProcess<StringData> =
-    processBuilder.build<any>(new FileLoaderModule(), null, inputPath2);
+const readFile2Process: AsteriaProcess<StringData> =
+    processBuilder.build<any>(new FileReaderModule(), null, inputPath2);
 
 const csv1ToListConfig: CsvToListModuleConfig = {
     trimFirstRow: true,
@@ -86,10 +86,10 @@ const filterListProcess: AsteriaProcess<any> =
     processBuilder.build<any>(new FilterListModule(), filterListModuleConfig);*/
 
 const manager: AsteriaProcessManager = AsteriaManagerFactory.getInstance().getManager();
-manager.add(loadFile1Process);
+manager.add(readFile1Process);
 manager.add(csv1ToListProcess);
 manager.add(storageProcess1);
-manager.add(loadFile2Process);
+manager.add(readFile2Process);
 manager.add(csv2ToListProcess);
 manager.add(storageProcess2);
 manager.add(mergeListByKeyProcess);

@@ -6,11 +6,13 @@ import { AsteriaData } from './com/asteria/gaia/data/AsteriaData';
 import { CsvToListModule } from './com/asteria/crios/module/im/CsvToListModule';
 import { CsvToListModuleConfig } from './com/asteria/crios/config/im/CsvToListModuleConfig';
 import { AsteriaDataBuilder } from './com/asteria/ouranos/util/builder/AsteriaDataBuilder';
-import { FileLoaderModule } from './com/asteria/cronos/module/im/FileLoaderModule';
+import { FileReaderModule } from './com/asteria/cronos/module/im/FileReaderModule';
 import { StringData } from './com/asteria/gaia/data/StringData';
-
+import { ListData } from './com/asteria/gaia/data/ListData';
+import { FilterListModuleConfig } from './com/asteria/crios/config/im/FilterListModuleConfig';
+import { FilterOperator } from './com/asteria/gaia/filter/FilterOperator';
+import { FilterListModule } from './com/asteria/crios/module/im/FilterListModule';
 import * as path from 'path';
-import { ListData } from './com/asteria/asteria.index';
 
 const buildFilePath: Function = (fileName: string)=> { 
     return path.join(__dirname, 'temp-data', fileName);
@@ -18,11 +20,13 @@ const buildFilePath: Function = (fileName: string)=> {
 
 const processBuilder: AsteriaProcessBuilder = AsteriaProcessBuilder.getInstance();
 
-const inputPath: AsteriaData<StringData> = 
-    AsteriaDataBuilder.getInstance().buildStringData( buildFilePath('worldcitiespop.csv') );
+const inputPath: AsteriaData<StringData> = AsteriaDataBuilder.getInstance().buildStringData(
+    buildFilePath('worldcitiespop.csv')
+    //buildFilePath('worldcitiespop-dev.csv')
+);
 
-const loadFile1Process: AsteriaProcess<StringData> = 
-    processBuilder.build<StringData>(new FileLoaderModule(), null, inputPath);
+const readFileProcess: AsteriaProcess<StringData> = 
+    processBuilder.build<StringData>(new FileReaderModule(), null, inputPath);
 
 const csvToListConfig: CsvToListModuleConfig = {
     trimFirstRow: true,
@@ -31,7 +35,7 @@ const csvToListConfig: CsvToListModuleConfig = {
         { index: 0, property: 'country' },
         { index: 2, property: 'city' },
         { index: 3, property: 'region' },
-        { index: 4, property: 'population' },
+        { index: 4, property: 'population', castFunc: Number },
         { index: 5, property: 'Latitude' },
         { index: 6, property: 'longitude' }
     ]
@@ -39,27 +43,26 @@ const csvToListConfig: CsvToListModuleConfig = {
 
 const csvToListProcess: AsteriaProcess<StringData> =
     processBuilder.build<StringData>(new CsvToListModule(), csvToListConfig);
-    
-
-/*const filterListModuleConfig: FilterListModuleConfig = {
+ 
+const filterListModuleConfig: FilterListModuleConfig = {
     filters: [
         {
-            property: 'zipcode',
-            operator: FilterOperator.START_WITH,
-            value: '06'
+            property: 'population',
+            operator: FilterOperator.GREATER_THAN,
+            value: 1000000
         }
     ]
 };
 const filterListProcess: AsteriaProcess<any> =
-    processBuilder.build<any>(new FilterListModule(), filterListModuleConfig);*/
+    processBuilder.build<any>(new FilterListModule(), filterListModuleConfig);
 
 const manager: AsteriaProcessManager = AsteriaManagerFactory.getInstance().getManager();
-manager.add(loadFile1Process);
+manager.add(readFileProcess);
 manager.add(csvToListProcess);
+manager.add(filterListProcess);
 manager.run()
         .then((value: AsteriaData<ListData<any>>)=> {
             console.log(value.data[0]);
-            console.log(value.data.length)
         }).catch((err: any)=> {
             console.log('err=' + err);
         });
