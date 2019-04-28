@@ -26,8 +26,14 @@ export class FilterListModule extends AbstractAsteriaModule implements AsteriaMo
         super('FilterListModule');
     }
 
+    /**
+     * Stores the filtering condition defined for this module.
+     */
     private _condition: FilterCondition = FilterCondition.OR;
 
+    /**
+     * Stores the list of filters defined for this module.
+     */
     private _filters: Array<FilterDefinition> = new Array<FilterDefinition>();
     
     /**
@@ -54,25 +60,55 @@ export class FilterListModule extends AbstractAsteriaModule implements AsteriaMo
         return result;
     }
 
+    /**
+     * Initializes this module with the parameters defined by the module config.
+     *
+     * @param {FilterListModuleConfig} config the config object for this module.
+     */
     private initFilters(config: FilterListModuleConfig): void {
         AsteriaFilterManager.getInstance();
         if (config && config.filters) {
-            config.filters.forEach((value: FilterDefinition)=> {
-                this._filters.push(value);
-            });
+            if (config.condition) {
+                this._condition = config.condition;
+            }
+            if (config.filters) {
+                config.filters.forEach((value: FilterDefinition)=> {
+                    this._filters.push(value);
+                });
+            }
         }
     }
 
+    /**
+     * Applies all filters defines for this module to the input object list and returns the result of the operation.
+     * 
+     * @param {ListData<any>} input the input on which to apply filters.
+     * 
+     * @returns {ListData<any>} tre result of the filtering operation.
+     */
     private doFilters(input: ListData<any>): ListData<any> {
         let result:ListData<any> = ListDataBuilder.getInstance().build<any>();
         let len: number = input.length;
-        while (len--) {
-            this.applyFilters(input[len], result);
+        if (this._condition === FilterCondition.OR) {
+            while (len--) {
+                this.applyFiltersOr(input[len], result);
+            }
+        } else if (this._condition === FilterCondition.AND) {
+            while (len--) {
+                this.applyFiltersAnd(input[len], result);
+            }
         }
         return result;
     }
 
-    private applyFilters(obj: any, result:ListData<any>): void {
+    /**
+     * Applies all filters defines for this module to the specified object, according to the
+     * <code>FilterCondition.OR/code> condition algorithm.
+     * 
+     * @param {any} obj the object on whitch to apply the module filters.
+     * @param {ListData<any>} result the list that contains the result of the module operation.
+     */
+    private applyFiltersOr(obj: any, result:ListData<any>): void {
         const filtersSize: number = this._filters.length - 1;
         let i: number = 0;
         for (; i <= filtersSize; ++i) {
@@ -83,6 +119,38 @@ export class FilterListModule extends AbstractAsteriaModule implements AsteriaMo
         }
     }
 
+    /**
+     * Applies all filters defines for this module to the specified object, according to the
+     * <code>FilterCondition.AND/code> condition algorithm.
+     * 
+     * @param {any} obj the object on whitch to apply the module filters.
+     * @param {ListData<any>} result the list that contains the result of the module operation.
+     */
+    private applyFiltersAnd(obj: any, result:ListData<any>): void {
+        const filtersSize: number = this._filters.length - 1;
+        let i: number = 0;
+        let matchAll: boolean = true;
+        for (; i <= filtersSize; ++i) {
+            if (this.applyFilter(obj, this._filters[i]) === false) {
+                matchAll = false;
+                break;
+            }
+        }
+        if (matchAll) {
+            result.push(obj);
+        }
+    }
+
+    /**
+     * Returns a boolean value that indicates whether the filter matches the specified object (<code>true</code>), or
+     * not (<code>false</code>).
+     * 
+     * @param {any} obj the object on whitch to apply the filter.
+     * @param {FilterDefinition} def the definition that represents the filter to apply.
+     * 
+     * @returns {boolean} <code>true</code> whether the filter matches the specified object; <code>false</code>
+     *                    otherwise.
+     */
     private applyFilter(obj: any, def: FilterDefinition): boolean {
         return AsteriaFilterManager.getInstance()
                                    .getFilter(def.operator)

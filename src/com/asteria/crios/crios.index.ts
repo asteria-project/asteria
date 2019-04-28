@@ -13,8 +13,10 @@ export { MergeListByKeyModuleConfig } from './config/im/MergeListByKeyModuleConf
 
 //--> com/asteria/crios/module/im
 export { CsvToListModule } from './module/im/CsvToListModule';
+export { DataInputModule } from './module/im/DataInputModule';
 export { DataStorageModule } from './module/im/DataStorageModule';
 export { FilterListModule } from './module/im/FilterListModule';
+export { ListToCsvModule } from './module/im/ListToCsvModule';
 export { MergeListByKeyModule } from './module/im/MergeListByKeyModule';
 
 //--> com/asteria/crios/util

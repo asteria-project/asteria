@@ -41,7 +41,7 @@ export class CsvToListModule extends AbstractAsteriaModule implements AsteriaMod
     private static readonly EMPTY_STRING: string = '';
 
     /**
-     * The reference to the CSV separator. Default value is <code>;</code>.
+     * The reference to the CSV separator. Default value is <code>,</code>.
      */
     private _separator: string = CsvToListModule.DEFAULT_SEPARATOR;
 
@@ -188,6 +188,9 @@ export class CsvToListModule extends AbstractAsteriaModule implements AsteriaMod
         return obj;
     }
 
+    /**
+     * Builds the object model used for creating all list items.
+     */
     private buildObjModel(): void {
         this._objModel = {};
         this._mappingRefs.forEach((mapper: CsvColumnMapper)=> {

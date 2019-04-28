@@ -12,6 +12,7 @@ import { ListData } from './com/asteria/gaia/data/ListData';
 import { FilterListModuleConfig } from './com/asteria/crios/config/im/FilterListModuleConfig';
 import { FilterOperator } from './com/asteria/gaia/filter/FilterOperator';
 import { FilterListModule } from './com/asteria/crios/module/im/FilterListModule';
+import { FilterCondition } from './com/asteria/gaia/filter/FilterCondition';
 import * as path from 'path';
 
 const buildFilePath: Function = (fileName: string)=> { 
@@ -45,11 +46,17 @@ const csvToListProcess: AsteriaProcess<StringData> =
     processBuilder.build<StringData>(new CsvToListModule(), csvToListConfig);
  
 const filterListModuleConfig: FilterListModuleConfig = {
+    condition: FilterCondition.AND,
     filters: [
         {
             property: 'population',
             operator: FilterOperator.GREATER_THAN,
             value: 1000000
+        },
+        {
+            property: 'country',
+            operator: FilterOperator.LIKE,
+            value: 'us'
         }
     ]
 };
@@ -62,7 +69,7 @@ manager.add(csvToListProcess);
 manager.add(filterListProcess);
 manager.run()
         .then((value: AsteriaData<ListData<any>>)=> {
-            console.log(value.data[0]);
+            console.log(value.data);
         }).catch((err: any)=> {
             console.log('err=' + err);
         });
