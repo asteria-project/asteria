@@ -7,6 +7,11 @@ import { CsvToListModuleConfig } from '../../config/im/CsvToListModuleConfig';
 import { AsteriaDataBuilder } from '../../../ouranos/util/builder/AsteriaDataBuilder';
 import { ListData} from '../../../gaia/data/ListData';
 import { ListDataBuilder } from '../../../ouranos/util/builder/ListDataBuilder';
+import { OuranosLogger } from '../../../ouranos/util/logging/OuranosLogger';
+import { AsteriaLogger } from '../../../gaia/util/logging/AsteriaLogger';
+
+// Static logger reference:
+const LOGGER: AsteriaLogger = OuranosLogger.getLogger();
 
 /**
  * An Asteria module that takes a CSV string as input and turns it into a list of literal JavaScript objects.
@@ -23,12 +28,17 @@ export class CsvToListModule extends AbstractAsteriaModule implements AsteriaMod
     /**
      * Represents a new line character.
      */
-    private static readonly NEW_LINE_CHAR: string = '\n';
+    private static readonly NEW_LINE_CHAR: string = '\r\n';
     
     /**
      * The reference to the CSV default separator.
      */
     private static readonly DEFAULT_SEPARATOR: string = ',';
+    
+    /**
+     * Represents an empty string character.
+     */
+    private static readonly EMPTY_STRING: string = '';
 
     /**
      * The reference to the CSV separator. Default value is <code>;</code>.
@@ -44,6 +54,8 @@ export class CsvToListModule extends AbstractAsteriaModule implements AsteriaMod
      * The list of references used to create "columns to properties" mapping.
      */
     private _mappingRefs: Array<CsvColumnMapper> = null;
+
+    private _objModel: any = null;
     
     /**
      * @inheritdoc
@@ -52,14 +64,15 @@ export class CsvToListModule extends AbstractAsteriaModule implements AsteriaMod
                    config?: CsvToListModuleConfig): Promise<AsteriaData<ListData<any>>> {
         const result: Promise<AsteriaData<ListData<any>>> = new Promise<AsteriaData<ListData<any>>>(
             (resolve, reject)=> {
-                let objArr: ListData<any> = null;
                 try {
                     let csvArr: Array<string> = this.buildCsvArray(input.data);
+                    LOGGER.info(`CSV file parsed: ${csvArr.length} entries detected`);
                     this.initConfig(config, csvArr);
                     if (this._trimFirstRow) {
                         csvArr.splice(0, 1);
                     }
-                    objArr = this.buildResultArray(csvArr);
+                    const objArr: ListData<any> = this.buildResultArray(csvArr);
+                    LOGGER.info(`CSV conversion complete: ${objArr.length} objects created`);
                     resolve(
                         AsteriaDataBuilder.getInstance().buildListData(objArr)
                     );
@@ -108,6 +121,7 @@ export class CsvToListModule extends AbstractAsteriaModule implements AsteriaMod
                 );
             });
         }
+        this.buildObjModel();
     }
 
     /**
@@ -130,26 +144,54 @@ export class CsvToListModule extends AbstractAsteriaModule implements AsteriaMod
      */
     private buildResultArray(csvArr: Array<string>): ListData<any> {
         let len: number = csvArr.length;
-        const objArr: ListData<any> = ListDataBuilder.getInstance().build<any>(len);
+        const objArr: ListData<any> = ListDataBuilder.getInstance().build<any>();
+        let emptyEntries: number = 0;
         while (len--) {
-            objArr.splice(len, 1, this.buildObj(csvArr[len]));
+            const obj: any = this.buildObj(csvArr[len]);
+            if (obj) {
+                objArr.push(obj);
+            } else {
+                emptyEntries++;
+            }
         }
+        if (emptyEntries > 0) {
+            LOGGER.info(`empty entries detected: ${emptyEntries} removed`);
+        }
+        objArr.reverse();
         return objArr;
     }
 
     /**
-     * Builds and returns an object created from a CSV row.
+     * Builds and returns an object created from a CSV row. Returns <code>null</code> whether the specified row is
+     * empty.
      * 
      * @param {string} csvRow a string that represents a CSV row.
      * 
-     * @return {any} a vanilla JavaScript object created from a CSV row.
+     * @return {any} a vanilla JavaScript object created from a CSV row, or <code>null</code> whether the specified row
+     *               is empty.
      */
     private buildObj(csvRow: string): any {
-        const values: Array<string> = csvRow.split(this._separator);
-        let obj: any = {};
-        this._mappingRefs.forEach((mapper: CsvColumnMapper)=> {
-            obj[mapper.property] = values[mapper.index];
-        });
+        const isEmpty: boolean = csvRow === CsvToListModule.EMPTY_STRING;
+        let obj: any = null;
+        if (!isEmpty) {
+            const values: Array<string> = csvRow.split(this._separator);
+            const len = this._mappingRefs.length - 1;
+            let i: number = 0;
+            obj = Object.create(this._objModel);
+            for (; i <= len; ++i) {
+                const mapper: CsvColumnMapper = this._mappingRefs[i];
+                const value: any = values[mapper.index];
+                const castFunc: Function = mapper.castFunc;
+                obj[mapper.property] = castFunc ? castFunc(value) : value;
+            };
+        }
         return obj;
+    }
+
+    private buildObjModel(): void {
+        this._objModel = {};
+        this._mappingRefs.forEach((mapper: CsvColumnMapper)=> {
+            this._objModel[mapper.property] = undefined;
+        });
     }
 }

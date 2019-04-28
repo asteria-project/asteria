@@ -13,6 +13,7 @@ export { IMCache } from './cache/IMCache';
 export { AsteriaManagerFactory } from './factory/AsteriaManagerFactory';
 
 //--> com/asteria/ouranos/filter/impl
+export { GreaterThanFilter } from './filter/impl/GreaterThanFilter';
 export { LikeFilter } from './filter/impl/LikeFilter';
 export { StartsWithFilter } from './filter/impl/StartsWithFilter';
 

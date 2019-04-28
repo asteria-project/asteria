@@ -11,15 +11,15 @@ import * as fs from 'fs';
 const LOGGER: AsteriaLogger = OuranosLogger.getLogger();
 
 /**
- * A generic implementation of the <code>AsteriaModule</code> interface that loads files from a local path.
+ * A generic implementation of the <code>AsteriaModule</code> interface that reads files from a local path.
  */
-export class FileLoaderModule extends AbstractAsteriaModule implements AsteriaModule {
+export class FileReaderModule extends AbstractAsteriaModule implements AsteriaModule {
 
     /**
-     * Creates a new <code>FileLoaderModule</code> instance.
+     * Creates a new <code>FileReaderModule</code> instance.
      */
     constructor() {
-        super('FileLoaderModule');
+        super('FileReaderModule');
     }                      
     
     /**

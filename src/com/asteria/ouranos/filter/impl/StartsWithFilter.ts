@@ -10,12 +10,13 @@ export class StartsWithFilter implements AsteriaFilter {
     /**
      * @inheritdoc
      */
-    public readonly operator: string = FilterOperator.START_WITH;
+    public readonly operator: FilterOperator = FilterOperator.START_WITH;
     
     /**
      * @inheritdoc
      */
     public apply(obj: any, property: string, value: any): boolean {
-        return obj && obj[property] ? obj[property].startsWith(value) : false;
+        const prop: any = obj[property];
+        return prop ? prop.startsWith(value) : false;
     }
 }

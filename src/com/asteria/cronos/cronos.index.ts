@@ -8,4 +8,4 @@
 //--> com/asteria/cronos/config/im
 
 //--> com/asteria/cronos/module/im
-export { FileLoaderModule } from './module/im/FileLoaderModule';
+export { FileReaderModule } from './module/im/FileReaderModule';

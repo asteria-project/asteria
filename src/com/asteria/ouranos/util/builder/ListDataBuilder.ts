@@ -27,11 +27,9 @@ export class ListDataBuilder {
     /**
      * Builds and returns a new <code>ListData</code> object.
      * 
-     * @param {number} size an optional parameter which specifies the size of the new <code>ListData</code> object.
-     * 
      * @return {ListData<T>} a new <code>ListData</code> object.
      */
-    public build<T>(size?: number): ListData<T> {
-        return new Array<T>(size);
+    public build<T>(): ListData<T> {
+        return new Array<T>();
     }
 }

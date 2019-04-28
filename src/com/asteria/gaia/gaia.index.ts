@@ -28,6 +28,9 @@ export { FilterCondition } from './filter/FilterCondition';
 export { FilterDefinition } from './filter/FilterDefinition';
 export { FilterOperator } from './filter/FilterOperator';
 
+//--> com/asteria/gaia/lang
+export { AsteriaError } from './lang/AsteriaError';
+
 //--> com/asteria/gaia/module
 export { AbstractAsteriaModule } from './module/AbstractAsteriaModule';
 export { AsteriaModule } from './module/AsteriaModule';

@@ -8,6 +8,11 @@ import { AsteriaDataBuilder } from '../../../ouranos/util/builder/AsteriaDataBui
 import { AsteriaFilterManager } from '../../../ouranos/filter/AsteriaFilterManager';
 import { ListData } from '../../../gaia/data/ListData';
 import { ListDataBuilder } from '../../../ouranos/util/builder/ListDataBuilder';
+import { OuranosLogger } from '../../../ouranos/util/logging/OuranosLogger';
+import { AsteriaLogger } from '../../../gaia/util/logging/AsteriaLogger';
+
+// Static logger reference:
+const LOGGER: AsteriaLogger = OuranosLogger.getLogger();
 
 /**
  * An Asteria module that filters list of literal JavaScript objects.
@@ -33,8 +38,11 @@ export class FilterListModule extends AbstractAsteriaModule implements AsteriaMo
         this.initFilters(config);
         const result: Promise<AsteriaData<ListData<any>>> = new Promise<AsteriaData<ListData<any>>>(
             (resolve, reject)=> {
-                const objArr: ListData<any> = this.doFilters(input.data);
+                const data: ListData<any> = input.data;
+                LOGGER.info(`entries detected: ${data.length}`);
+                const objArr: ListData<any> = this.doFilters(data);
                 try {
+                    LOGGER.info(`entries filtered: ${objArr.length}`);
                     resolve(
                         AsteriaDataBuilder.getInstance().buildListData(objArr)
                     );
@@ -55,22 +63,24 @@ export class FilterListModule extends AbstractAsteriaModule implements AsteriaMo
         }
     }
 
-    private doFilters(input: Array<any>): ListData<any> {
+    private doFilters(input: ListData<any>): ListData<any> {
         let result:ListData<any> = ListDataBuilder.getInstance().build<any>();
         let len: number = input.length;
-        const filtersSize: number = this._filters.length - 1;
-        let obj: any = null;
         while (len--) {
-            let i: number = 0;
-            obj = input[len];
-            for (; i <= filtersSize; ++i) {
-                if (this.applyFilter(obj, this._filters[i])) {
-                    result.push(obj);
-                    break;
-                }
-            }
+            this.applyFilters(input[len], result);
         }
         return result;
+    }
+
+    private applyFilters(obj: any, result:ListData<any>): void {
+        const filtersSize: number = this._filters.length - 1;
+        let i: number = 0;
+        for (; i <= filtersSize; ++i) {
+            if (this.applyFilter(obj, this._filters[i])) {
+                result.push(obj);
+                break;
+            }
+        }
     }
 
     private applyFilter(obj: any, def: FilterDefinition): boolean {

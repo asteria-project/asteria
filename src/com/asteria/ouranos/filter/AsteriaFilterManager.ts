@@ -1,6 +1,7 @@
 import { AsteriaFilter } from '../../gaia/filter/AsteriaFilter';
 import { StartsWithFilter } from './impl/StartsWithFilter';
 import { LikeFilter } from './impl/LikeFilter';
+import { GreaterThanFilter } from './impl/GreaterThanFilter';
 
 /**
  * Provides functionality to work with new <code>AsteriaFilter</code> instances through a singleton implementation.
@@ -40,6 +41,7 @@ export class AsteriaFilterManager {
         this._filterMap = new Map<string, AsteriaFilter>();
         this.register(new StartsWithFilter());
         this.register(new LikeFilter());
+        this.register(new GreaterThanFilter());
     }
 
     /**

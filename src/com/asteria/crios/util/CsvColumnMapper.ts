@@ -12,4 +12,9 @@ export class CsvColumnMapper {
      * The name of the property used for mapping.
      */
     property: string;
+
+    /**
+     * The function used to cast the value of the column to map.
+     */
+    castFunc?: Function;
 }
