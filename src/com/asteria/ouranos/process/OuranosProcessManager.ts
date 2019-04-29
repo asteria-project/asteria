@@ -8,9 +8,9 @@ import { AsteriaLogger } from '../../gaia/util/logging/AsteriaLogger';
 const LOGGER: AsteriaLogger = OuranosLogger.getLogger();
 
 /**
- * The default implementation of the <code>AsteriaProcessManager</code> interface.
+ * The Ouranos implementation of the <code>AsteriaProcessManager</code> interface.
  */
-export class AsteriaProcessManagerImpl implements AsteriaProcessManager {
+export class OuranosProcessManager implements AsteriaProcessManager {
 
     /**
      * The list of <code>AsteriaModule</code> objects registered whithin this Asteria module processor.
@@ -28,20 +28,30 @@ export class AsteriaProcessManagerImpl implements AsteriaProcessManager {
      */
     private _data: AsteriaData<any> = null;
 
+    /**
+     * Stores the global data processing start time.
+     */
     private _timestamp: number = 0;
+
+    /**
+     * Stores the current module data processing start time.
+     */
+    private _processTimestamp: number = 0;
 
     /**
      * @inheritdoc
      */
-    public add(process: AsteriaProcess<any>): void {
+    public add(process: AsteriaProcess<any>): AsteriaProcessManager {
         this.PROCESSES.push(process);
+        return this;
     }
 
     /**
      * @inheritdoc
      */
-    public remove(process: AsteriaProcess<any>): void {
+    public remove(process: AsteriaProcess<any>): AsteriaProcessManager {
         this.PROCESSES.splice(this.getProcessIndex(process), 1);
+        return this;
     }
 
     /**
@@ -50,15 +60,16 @@ export class AsteriaProcessManagerImpl implements AsteriaProcessManager {
     public reset(): void {
         this._data = null;
         this._cursor = -1;
-        this._timestamp = 0;
+        this._processTimestamp = this._timestamp = 0;
     }
     
     /**
      * @inheritdoc
      */
     public run(): Promise<AsteriaData<any>> {
+        this._timestamp = Date.now();
         const len: number = this.PROCESSES.length;
-        LOGGER.info('ouranos processing start');
+        LOGGER.info('asteria processing start');
         LOGGER.info(`processing ${len} module${ len !== 1 ? 's' : ''}`);
         const result: Promise<AsteriaData<any>> = new Promise<AsteriaData<any>>(
             (resolve: Function, reject: Function)=> {
@@ -70,13 +81,13 @@ export class AsteriaProcessManagerImpl implements AsteriaProcessManager {
 
     private resolveProcess(resolve: Function, reject: Function): void {
         if (this._cursor === -1) {
-            this._timestamp = Date.now();
+            this._processTimestamp = Date.now();
         } else {
             const currTime: number = Date.now();
-            LOGGER.info(`process duration: ${currTime - this._timestamp} ms`);
+            LOGGER.info(`process duration: ${currTime - this._processTimestamp} ms`);
         }
         if (this.hasNext()) {
-            this._timestamp = Date.now();
+            this._processTimestamp = Date.now();
             this.processNext()
                 .then((output: AsteriaData<any>)=> {
                     this._data = output;
@@ -86,12 +97,18 @@ export class AsteriaProcessManagerImpl implements AsteriaProcessManager {
                     reject(err);
                 });
         } else {
-            LOGGER.info('ouranos processing complete');
+            const completeTs: number = Date.now() - this._timestamp;
+            LOGGER.info(`asteria processing completed in ${completeTs} ms`);
             resolve(this._data);
             this.reset();
         }
     }
 
+    /**
+     * Runs the nex process in the processes stack.
+     * 
+     * @returns {Promise<AsteriaData<any>>} the promise that holds the result of the operation.
+     */
     private processNext(): Promise<AsteriaData<any>> {
         const next: AsteriaProcess<any> = this.PROCESSES[++this._cursor];
         const input: AsteriaData<any> = next.input || this._data;

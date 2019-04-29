@@ -72,7 +72,7 @@ export class CsvToListModule extends AbstractAsteriaModule implements AsteriaMod
                         csvArr.splice(0, 1);
                     }
                     const objArr: ListData<any> = this.buildResultArray(csvArr);
-                    LOGGER.info(`CSV conversion complete: ${objArr.length} objects created`);
+                    LOGGER.info(`CSV conversion completed: ${objArr.length} objects created`);
                     resolve(
                         AsteriaDataBuilder.getInstance().buildListData(objArr)
                     );

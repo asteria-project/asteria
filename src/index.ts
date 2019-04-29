@@ -1,5 +1,3 @@
-import { AsteriaProcessManager } from './com/asteria/gaia/process/AsteriaProcessManager';
-import { AsteriaManagerFactory } from './com/asteria/ouranos/factory/AsteriaManagerFactory';
 import { AsteriaProcess } from './com/asteria/gaia/process/AsteriaProcess';
 import { AsteriaProcessBuilder } from './com/asteria/ouranos/util/builder/AsteriaProcessBuilder';
 import { AsteriaData } from './com/asteria/gaia/data/AsteriaData';
@@ -14,6 +12,8 @@ import { FilterOperator } from './com/asteria/gaia/filter/FilterOperator';
 import { FilterListModule } from './com/asteria/crios/module/im/FilterListModule';
 import { FilterCondition } from './com/asteria/gaia/filter/FilterCondition';
 import * as path from 'path';
+import { Ouranos } from './com/asteria/asteria.index';
+
 
 const buildFilePath: Function = (fileName: string)=> { 
     return path.join(__dirname, 'temp-data', fileName);
@@ -63,11 +63,13 @@ const filterListModuleConfig: FilterListModuleConfig = {
 const filterListProcess: AsteriaProcess<any> =
     processBuilder.build<any>(new FilterListModule(), filterListModuleConfig);
 
-const manager: AsteriaProcessManager = AsteriaManagerFactory.getInstance().getManager();
-manager.add(readFileProcess);
-manager.add(csvToListProcess);
-manager.add(filterListProcess);
-manager.run()
+Ouranos.buildSession('UsMegaCities')
+       .getContext()
+       .getProcessManager()
+       .add(readFileProcess)
+       .add(csvToListProcess)
+       .add(filterListProcess)
+       .run()
         .then((value: AsteriaData<ListData<any>>)=> {
             console.log(value.data);
         }).catch((err: any)=> {

@@ -1,6 +1,6 @@
 import { AsteriaData } from '../../../gaia/data/AsteriaData';
 import { AsteriaProcess } from '../../../gaia/process/AsteriaProcess';
-import { AsteriaProcessImpl } from '../../process/AsteriaProcessImpl';
+import { OuranosProcess } from '../../process/OuranosProcess';
 import { AsteriaModule } from '../../../gaia/module/AsteriaModule';
 import { AsteriaModuleConfig } from '../../../gaia/config/AsteriaModuleConfig';
 
@@ -38,7 +38,7 @@ export class AsteriaProcessBuilder {
      * @return {AsteriaProcess<T>} a new <code>AsteriaProcess</code> object.
      */
     public build<T>(module: AsteriaModule, config?: AsteriaModuleConfig, input?: AsteriaData<T>): AsteriaProcess<T> {
-        const process: AsteriaProcess<T> = new AsteriaProcessImpl<T>();
+        const process: AsteriaProcess<T> = new OuranosProcess<T>();
         process.module = module;
         process.input = input;
         process.config = config;

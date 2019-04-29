@@ -4,9 +4,9 @@ import { AsteriaModuleConfig } from '../../gaia/config/AsteriaModuleConfig';
 import { AsteriaProcess } from '../../gaia/process/AsteriaProcess';
 
 /**
- * The default implementation of the <code>AsteriaProcess</code> interface.
+ * The Ouranos implementation of the <code>AsteriaProcess</code> interface.
  */
-export class AsteriaProcessImpl<T> implements AsteriaProcess<T> {
+export class OuranosProcess<T> implements AsteriaProcess<T> {
 
     /**
      * @inheritdoc

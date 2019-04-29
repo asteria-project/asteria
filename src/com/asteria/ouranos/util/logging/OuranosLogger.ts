@@ -21,7 +21,7 @@ export class OuranosLogger implements AsteriaLogger {
      * Creates a new <code>Logger</code> instance.
      */
     private constructor() {
-        this._logger = new logger.Logger('AsteriaLogger');
+        this._logger = new logger.Logger('Asteria');
         this._logger.appenders.set(
             'stdout',
             {

@@ -1,5 +1,5 @@
 import { AsteriaProcessManager } from '../../gaia/process/AsteriaProcessManager';
-import { AsteriaProcessManagerImpl } from '../process/AsteriaProcessManagerImpl';
+import { OuranosProcessManager } from '../process/OuranosProcessManager';
 
 /**
  * Provides functionality to create new <code>AsteriaProcessManager</code> instances through a singleton implementation.
@@ -31,6 +31,6 @@ export class AsteriaManagerFactory {
      * @returns {AsteriaProcessManager} a new <code>AsteriaProcessManager</code> object.
      */
     public getManager(): AsteriaProcessManager {
-        return new AsteriaProcessManagerImpl();
+        return new OuranosProcessManager();
     }
 }

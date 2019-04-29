@@ -29,7 +29,9 @@ export { FilterDefinition } from './filter/FilterDefinition';
 export { FilterOperator } from './filter/FilterOperator';
 
 //--> com/asteria/gaia/lang
+export { AsteriaContext } from './lang/AsteriaContext';
 export { AsteriaError } from './lang/AsteriaError';
+export { AsteriaSession } from './lang/AsteriaSession';
 
 //--> com/asteria/gaia/module
 export { AbstractAsteriaModule } from './module/AbstractAsteriaModule';

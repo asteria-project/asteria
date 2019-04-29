@@ -11,15 +11,19 @@ export interface AsteriaProcessManager {
      * Adds the specified Asteria process to this manager.
      * 
      * @param {AsteriaProcess<any>} module the Asteria process to add to this manager.
+     * 
+     * @return {AsteriaProcessManager} a reference to this <code>AsteriaProcessManager</code> object.
      */
-    add(process: AsteriaProcess<any>): void;
+    add(process: AsteriaProcess<any>): AsteriaProcessManager;
 
     /**
      * Removes the specified Asteria process from this manager.
      * 
      * @param {AsteriaProcess<any>} module the Asteria process to remove from this manager.
+     * 
+     * @return {AsteriaProcessManager} a reference to this <code>AsteriaProcessManager</code> object.
      */
-    remove(process: AsteriaProcess<any>): void;
+    remove(process: AsteriaProcess<any>): AsteriaProcessManager;
 
     /**
      * Runs all processes registered in this manager and returns the result of these operations.
