@@ -1,4 +1,4 @@
-import { AsteriaModuleConfig } from '../../../gaia/config/AsteriaModuleConfig';
+import { AsteriaModuleConfig } from '../../../gaia/gaia.index';
 import { CsvColumnMapper } from '../../util/CsvColumnMapper';
 
 /**

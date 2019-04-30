@@ -1,12 +1,6 @@
-import { AsteriaModule } from '../../../gaia/module/AsteriaModule';
-import { AsteriaData } from '../../../gaia/data/AsteriaData';
-import { AbstractAsteriaModule } from '../../../gaia/module/AbstractAsteriaModule';
+import { AsteriaModule, AsteriaData, AbstractAsteriaModule, AsteriaCache, ListData } from '../../../gaia/gaia.index';
 import { MergeListByKeyModuleConfig } from '../../config/im/MergeListByKeyModuleConfig';
-import { AsteriaCache } from '../../../gaia/cache/AsteriaCache';
-import { CacheManager } from '../../../ouranos/cache/CacheManager';
-import { AsteriaDataBuilder } from '../../../ouranos/util/builder/AsteriaDataBuilder';
-import { ListData } from '../../../gaia/data/ListData';
-import { ListDataBuilder } from '../../../ouranos/util/builder/ListDataBuilder';
+import { CacheManager, AsteriaDataBuilder, ListDataBuilder } from '../../../ouranos/ouranos.index';
 
 /**
  * An implementation of the <code>AsteriaModule</code> interface that merges all objects in two lists, bu using a key

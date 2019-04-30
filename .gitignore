@@ -63,3 +63,4 @@ test/**/*.js
 #src/temp-data/*.csv
 src/temp-data/*.ts
 src/temp-data/*.js
+src/temp-data/worldcitiespop.csv

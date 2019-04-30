@@ -2,6 +2,38 @@
 
 Asteria is a specification for building data analytics modules that are executed through sequential data processors.
 
+## Motivation
+
+## Example
+
+In this sample application, we use the Hyperion processor to load a CSV file of all cities over the world and extract only US cities that have more than 1,000,000 people.
+
+```javascript
+const config: HyperionConfig = {
+    name: 'UsMegaCities',
+    processes: [
+        {
+            type: 'read-file',
+            config: 'worldcitiespop.csv'
+        },
+        {
+            type: 'csv-to-list',
+            config: {
+                separator: ';',
+                cast: [
+                    { col: 'Population', type: 'number' }
+                ]
+            }
+        },
+        {
+            type: 'filter',
+            config: `Population > 1000000 AND Country = 'us'`
+        }
+    ]
+};
+Hyperion.build(config).show();
+```
+
 ## Understanding the Theogony
 
 | Project | Module | Description |

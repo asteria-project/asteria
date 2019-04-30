@@ -1,15 +1,6 @@
-import { AsteriaModule } from '../../../gaia/module/AsteriaModule';
-import { AsteriaData } from '../../../gaia/data/AsteriaData';
-import { AbstractAsteriaModule } from '../../../gaia/module/AbstractAsteriaModule';
+import { AsteriaModule, AsteriaData, AbstractAsteriaModule, FilterDefinition, FilterCondition, ListData, AsteriaLogger } from '../../../gaia/gaia.index';
 import { FilterListModuleConfig } from '../../config/im/FilterListModuleConfig';
-import { FilterDefinition } from '../../../gaia/filter/FilterDefinition';
-import { FilterCondition } from '../../../gaia/filter/FilterCondition';
-import { AsteriaDataBuilder } from '../../../ouranos/util/builder/AsteriaDataBuilder';
-import { AsteriaFilterManager } from '../../../ouranos/filter/AsteriaFilterManager';
-import { ListData } from '../../../gaia/data/ListData';
-import { ListDataBuilder } from '../../../ouranos/util/builder/ListDataBuilder';
-import { OuranosLogger } from '../../../ouranos/util/logging/OuranosLogger';
-import { AsteriaLogger } from '../../../gaia/util/logging/AsteriaLogger';
+import { AsteriaDataBuilder, AsteriaFilterManager, ListDataBuilder, OuranosLogger } from '../../../ouranos/ouranos.index';
 
 // Static logger reference:
 const LOGGER: AsteriaLogger = OuranosLogger.getLogger();

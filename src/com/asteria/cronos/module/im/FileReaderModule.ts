@@ -1,10 +1,5 @@
-import { AsteriaModule } from '../../../gaia/module/AsteriaModule';
-import { AsteriaData } from '../../../gaia/data/AsteriaData';
-import { AbstractAsteriaModule } from '../../../gaia/module/AbstractAsteriaModule';
-import { AsteriaDataBuilder } from '../../../ouranos/util/builder/AsteriaDataBuilder';
-import { StringData } from '../../../gaia/data/StringData';
-import { OuranosLogger } from '../../../ouranos/util/logging/OuranosLogger';
-import { AsteriaLogger } from '../../../gaia/util/logging/AsteriaLogger';
+import { AsteriaModule, AsteriaData, AbstractAsteriaModule, StringData, AsteriaLogger } from '../../../gaia/gaia.index';
+import { AsteriaDataBuilder, OuranosLogger, AsteriaErrorBuilder } from '../../../ouranos/ouranos.index';
 import * as fs from 'fs';
 
 // Static logger reference:
@@ -26,7 +21,7 @@ export class FileReaderModule extends AbstractAsteriaModule implements AsteriaMo
      * @inheritdoc
      */
     public process(input: AsteriaData<StringData>): Promise<AsteriaData<StringData>> {
-        const filePath: string = input.data.toString()
+        const filePath: string = input.data.toString();
         LOGGER.info(`loading file: ${filePath}`);
         const result: Promise<AsteriaData<StringData>> = new Promise<AsteriaData<StringData>>(
             (resolve: Function, reject: Function)=> {
@@ -34,7 +29,9 @@ export class FileReaderModule extends AbstractAsteriaModule implements AsteriaMo
                     filePath,
                     (err: NodeJS.ErrnoException, data: Buffer)=> {
                         if (err) {
-                            reject(err);
+                            reject(
+                                AsteriaErrorBuilder.getInstance().build(0, err.message, err.stack)
+                            );
                         } else {
                             resolve(
                                 AsteriaDataBuilder.getInstance().build(

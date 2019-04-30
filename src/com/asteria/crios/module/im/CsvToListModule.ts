@@ -1,14 +1,7 @@
-import { AsteriaModule } from '../../../gaia/module/AsteriaModule';
-import { AsteriaData } from '../../../gaia/data/AsteriaData';
-import { StringData } from '../../../gaia/data/StringData';
-import { AbstractAsteriaModule } from '../../../gaia/module/AbstractAsteriaModule';
+import { AsteriaModule, AsteriaData, StringData, AbstractAsteriaModule, ListData, AsteriaLogger } from '../../../gaia/gaia.index';
+import { OuranosLogger, ListDataBuilder, AsteriaDataBuilder } from '../../../ouranos/ouranos.index';
 import { CsvColumnMapper } from '../../util/CsvColumnMapper';
 import { CsvToListModuleConfig } from '../../config/im/CsvToListModuleConfig';
-import { AsteriaDataBuilder } from '../../../ouranos/util/builder/AsteriaDataBuilder';
-import { ListData} from '../../../gaia/data/ListData';
-import { ListDataBuilder } from '../../../ouranos/util/builder/ListDataBuilder';
-import { OuranosLogger } from '../../../ouranos/util/logging/OuranosLogger';
-import { AsteriaLogger } from '../../../gaia/util/logging/AsteriaLogger';
 
 // Static logger reference:
 const LOGGER: AsteriaLogger = OuranosLogger.getLogger();
