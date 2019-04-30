@@ -1,6 +1,6 @@
 # Asteria Project
 
-Asteria is a specification for building data analytics modules that are executed through sequential data processors.
+Asteria is a specification for building data analytics modules that are executed through sequential data processors in a JavaScript environment.
 
 ## Motivation
 
