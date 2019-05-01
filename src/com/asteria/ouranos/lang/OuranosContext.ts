@@ -1,7 +1,7 @@
 import { AsteriaContext, AsteriaProcessManager, AsteriaLogger } from '../../gaia/gaia.index';
 import { Uuid } from './Uuid';
 import { AsteriaManagerFactory } from '../factory/AsteriaManagerFactory';
-import { OuranosLogger } from '../../ouranos/ouranos.index';
+import { OuranosLogger } from '../util/logging/OuranosLogger';
 
 // Static logger reference:
 const LOGGER: AsteriaLogger = OuranosLogger.getLogger();
