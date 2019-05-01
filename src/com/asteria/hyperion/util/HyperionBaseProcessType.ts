@@ -1,3 +1,6 @@
+// Class name reference:
+const CLASS_NAME: string = 'com.asteria.hyperion.util::HyperionBaseProcessType';
+
 /**
  * The <code>HyperionBaseProcessType</code> enum contains a list of constants that represent the default process types
  * provided by the Hyperion framework.

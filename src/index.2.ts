@@ -10,7 +10,7 @@ const hyperionSample: any /*HyperionConfig*/ = {
         processList: [
             {
                 name: 'FileReaderModule',
-                input: buildFilePath('worldcitiespop.csv')
+                path: buildFilePath('worldcitiespop.csv')
             },
             {
                 name: 'CsvToListModule',
@@ -22,7 +22,7 @@ const hyperionSample: any /*HyperionConfig*/ = {
                         { index: 2, property: 'city' },
                         { index: 3, property: 'region' },
                         { index: 4, property: 'population', castFuncRef: 'number' },
-                        { index: 5, property: 'Latitude' },
+                        { index: 5, property: 'latitude' },
                         { index: 6, property: 'longitude' }
                     ]
                 }

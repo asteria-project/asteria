@@ -1,6 +1,9 @@
-import { AsteriaModule, AsteriaData, AbstractAsteriaModule, StringData, AsteriaLogger } from '../../../gaia/gaia.index';
+import { AsteriaModule, AsteriaData, AbstractAsteriaModule, StringData, AsteriaLogger, AsteriaError, AsteriaErrorCode } from '../../../gaia/gaia.index';
 import { AsteriaDataBuilder, OuranosLogger, AsteriaErrorBuilder } from '../../../ouranos/ouranos.index';
 import * as fs from 'fs';
+
+// Class name reference:
+const CLASS_NAME: string = 'com.asteria.cronos.module.im::FileReaderModule';
 
 // Static logger reference:
 const LOGGER: AsteriaLogger = OuranosLogger.getLogger();
@@ -29,9 +32,13 @@ export class FileReaderModule extends AbstractAsteriaModule implements AsteriaMo
                     filePath,
                     (err: NodeJS.ErrnoException, data: Buffer)=> {
                         if (err) {
-                            reject(
-                                AsteriaErrorBuilder.getInstance().build(0, err.message, err.stack)
+                            const error: AsteriaError = AsteriaErrorBuilder.getInstance().build(
+                                AsteriaErrorCode.PROCESS_FAILURE,
+                                CLASS_NAME,
+                                'asteria process failed: ' + err.message,
+                                err.stack
                             );
+                            reject(error);
                         } else {
                             resolve(
                                 AsteriaDataBuilder.getInstance().build(

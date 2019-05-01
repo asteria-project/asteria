@@ -1,4 +1,7 @@
-import { AsteriaError } from '../../../gaia/gaia.index';
+import { AsteriaError, AsteriaErrorCode } from '../../../gaia/gaia.index';
+
+// Class name reference:
+const CLASS_NAME: string = 'com.asteria.ouranos.util.builder::AsteriaErrorBuilder';
 
 /**
  * A utility class for building <code>AsteriaError</code> objects, available as a singleton.
@@ -27,12 +30,12 @@ export class AsteriaErrorBuilder {
     /**
      * Builds and returns a new <code>AsteriaError</code> instance.
      * 
-     * @param {number} code the data set defined by the new <code>AsteriaData</code> instance. 
+     * @param {AsteriaErrorCode} code the error code for this <code>AsteriaError</code> instance.
      * 
      * @return {AsteriaError} a new <code>AsteriaError</code> instance.
      */
-    public build(code: number, message: string, stack: string): AsteriaError {
-        const error: AsteriaError = new AsteriaError(code, message, stack);
+    public build(code: AsteriaErrorCode, className: string, message: string, stack?: string): AsteriaError {
+        const error: AsteriaError = new AsteriaError(code, className, message, stack);
         return error;
     }
 }

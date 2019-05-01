@@ -2,6 +2,9 @@ import { AsteriaModuleConfig } from '../config/AsteriaModuleConfig';
 import { AsteriaData } from '../data/AsteriaData';
 import { AsteriaModule } from './AsteriaModule';
 
+// Class name reference:
+const CLASS_NAME: string = 'com.asteria.gaia.module::AbstractAsteriaModule';
+
 /**
  * The abstract class for all implementations of the <code>AsteriaModule</code> interface.
  */

@@ -1,3 +1,6 @@
+// Class name reference:
+const CLASS_NAME: string = 'com.asteria.gaia.filter::FilterOperator';
+
 /**
  * The <code>FilterOperator</code> enum defines a list of operators that can be  used by an Asteria module to filter
  * objects.

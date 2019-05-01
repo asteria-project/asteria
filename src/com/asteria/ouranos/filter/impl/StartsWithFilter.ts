@@ -1,5 +1,8 @@
 import { AsteriaFilter, FilterOperator } from '../../../gaia/gaia.index';
 
+// Class name reference:
+const CLASS_NAME: string = 'com.asteria.ouranos.filter.impl::StartsWithFilter';
+
 /**
  * The <code>StartsWithFilter</code> filter determines whether an object property string begins with the characters of
  * a specified string.

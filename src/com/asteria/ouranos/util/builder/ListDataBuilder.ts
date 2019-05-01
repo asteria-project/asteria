@@ -1,5 +1,8 @@
 import { ListData } from '../../../gaia/gaia.index';
 
+// Class name reference:
+const CLASS_NAME: string = 'com.asteria.ouranos.util.builder::ListDataBuilder';
+
 /**
  * A utility class for building <code>ListData</code> objects, available as a singleton.
  */

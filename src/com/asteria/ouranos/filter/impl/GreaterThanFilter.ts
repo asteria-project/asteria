@@ -1,5 +1,8 @@
 import { AsteriaFilter, FilterOperator } from '../../../gaia/gaia.index';
 
+// Class name reference:
+const CLASS_NAME: string = 'com.asteria.ouranos.filter.impl::GreaterThanFilter';
+
 /**
  * The <code>GreaterThanFilter</code> filter determines whether an object property value is greater than the specified
  * comparator.

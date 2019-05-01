@@ -1,6 +1,9 @@
 import { AsteriaSession, AsteriaContext } from '../../gaia/gaia.index';
 import { OuranosContext } from './OuranosContext';
 
+// Class name reference:
+const CLASS_NAME: string = 'com.asteria.ouranos.lang::OuranosSession';
+
 /**
  * The Ouranos implementation of the <code>AsteriaSession</code> interface.
  */

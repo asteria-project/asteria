@@ -1,5 +1,6 @@
 import { AsteriaModuleConfig } from '../../../gaia/gaia.index';
 import { CsvColumnMapper } from '../../util/CsvColumnMapper';
+import { PropertyCastMapper } from '../../util/PropertyCastMapper';
 
 /**
  * The <code>CsvToListModuleConfig</code> interface defines the common functionality implemented by context
@@ -21,6 +22,11 @@ export interface CsvToListModuleConfig extends AsteriaModuleConfig {
      * A definition list used to perform object mapping.
      */
     colsMapping?: Array<CsvColumnMapper>;
+    
+    /**
+     * A definition list used to perform object properties casting.
+     */
+    castMapping?: Array<PropertyCastMapper>;
 
     /**
      * The reference to the CSV separator. Default value is <code>,</code>.

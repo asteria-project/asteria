@@ -1,7 +1,11 @@
-import { AsteriaModule, AsteriaData, StringData, AbstractAsteriaModule, ListData, AsteriaLogger } from '../../../gaia/gaia.index';
-import { OuranosLogger, ListDataBuilder, AsteriaDataBuilder } from '../../../ouranos/ouranos.index';
+import { AsteriaModule, AsteriaData, StringData, AbstractAsteriaModule, ListData, AsteriaLogger, AsteriaErrorCode, AsteriaError } from '../../../gaia/gaia.index';
+import { OuranosLogger, ListDataBuilder, AsteriaDataBuilder, AsteriaErrorBuilder } from '../../../ouranos/ouranos.index';
 import { CsvColumnMapper } from '../../util/CsvColumnMapper';
 import { CsvToListModuleConfig } from '../../config/im/CsvToListModuleConfig';
+import { PropertyCastMapper } from '../../util/PropertyCastMapper';
+
+// Class name reference:
+const CLASS_NAME: string = 'com.asteria.crios.module.im::CsvToListModule';
 
 // Static logger reference:
 const LOGGER: AsteriaLogger = OuranosLogger.getLogger();
@@ -48,6 +52,9 @@ export class CsvToListModule extends AbstractAsteriaModule implements AsteriaMod
      */
     private _mappingRefs: Array<CsvColumnMapper> = null;
 
+    /**
+     * The reference to the object used as prototype for all list entries.
+     */
     private _objModel: any = null;
     
     /**
@@ -70,7 +77,13 @@ export class CsvToListModule extends AbstractAsteriaModule implements AsteriaMod
                         AsteriaDataBuilder.getInstance().buildListData(objArr)
                     );
                 } catch (e) {
-                    reject(e);
+                    const error: AsteriaError = AsteriaErrorBuilder.getInstance().build(
+                        AsteriaErrorCode.PROCESS_FAILURE,
+                        CLASS_NAME,
+                        'asteria process failed: ' + e.message,
+                        e.stack
+                    );
+                    reject(error);
                 }
             }
         );
@@ -88,8 +101,52 @@ export class CsvToListModule extends AbstractAsteriaModule implements AsteriaMod
             this._trimFirstRow = config.trimFirstRow;
             this._separator = config.separator || CsvToListModule.DEFAULT_SEPARATOR;
             this.initColsMapping(config.colsMapping, input);
+            this.initPropsCasting(config.castMapping);
         } else {
             this.initColsMapping(null, input);
+        }
+    }
+
+    /**
+     * Initializes casting function by using the <code>castMapping</code> list of the module config object.
+     * 
+     * @param {Array<PropertyCastMapper>} mapping the list of casting functions for this module.
+     */
+    private initPropsCasting(mapping: Array<PropertyCastMapper>): void {
+        if (mapping) {
+            mapping.forEach((value: PropertyCastMapper)=> {
+                this.mapProperty(value);
+            });
+        }
+    }
+
+    /**
+     * Maps the specified <code>PropertyCastMapper</code> object with a reference registered within the internal
+     * <code>CsvColumnMapper</code> list.
+     *
+     * @param {PropertyCastMapper} value the value to map.
+     */
+    private mapProperty(value: PropertyCastMapper): void {
+        const prop: string = value.property;
+        let found: boolean = false;
+        let i: number = 0;
+        for(; i <= this._mappingRefs.length - 1; ++i) {
+            const mapRef: CsvColumnMapper = this._mappingRefs[i];
+            if (mapRef.property === prop) {
+                mapRef.castFunc = value.castFunc;
+                found = true;
+                break;
+            }
+        }
+        if (!found) {
+            LOGGER.warn(
+                AsteriaErrorBuilder.getInstance()
+                                   .build(
+                                        AsteriaErrorCode.INVALID_PARAMETER,
+                                        CLASS_NAME,
+                                        `property '${prop}' does not exist in CSV file`
+                                    ).toString()
+            );
         }
     }
 

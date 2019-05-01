@@ -1,5 +1,8 @@
-import { AsteriaData, AsteriaProcessManager, AsteriaProcess, AsteriaLogger } from '../../gaia/gaia.index';
+import { AsteriaData, AsteriaProcessManager, AsteriaProcess, AsteriaLogger, AsteriaError } from '../../gaia/gaia.index';
 import { OuranosLogger } from '../util/logging/OuranosLogger';
+
+// Class name reference:
+const CLASS_NAME: string = 'com.asteria.ouranos.process::OuranosProcessManager';
 
 // Static logger reference:
 const LOGGER: AsteriaLogger = OuranosLogger.getLogger();
@@ -89,8 +92,8 @@ export class OuranosProcessManager implements AsteriaProcessManager {
                 .then((output: AsteriaData<any>)=> {
                     this._data = output;
                     this.resolveProcess(resolve, reject);
-                }).catch((err: any)=> {
-                    LOGGER.fatal(err);
+                }).catch((err: AsteriaError)=> {
+                    LOGGER.fatal(err.toString());
                     reject(err);
                 });
         } else {

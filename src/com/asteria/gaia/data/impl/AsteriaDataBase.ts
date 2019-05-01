@@ -1,5 +1,8 @@
 import { AsteriaData } from '../AsteriaData';
 
+// Class name reference:
+const CLASS_NAME: string = 'com.asteria.gaia.data.impl::AsteriaDataBase';
+
 /**
  * The default implementation of the <code>AsteriaData</code> interface.
  */

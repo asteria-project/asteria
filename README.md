@@ -23,7 +23,7 @@ const config: HyperionConfig = {
             config: {
                 separator: ';',
                 cast: [
-                    { col: 'Population', type: 'number' }
+                    { prop: 'Population', ref: 'number' }
                 ]
             }
         },
@@ -51,7 +51,7 @@ Notice that the Hyperion config object specified above can be defined as a JSON 
             "config": {
                 "separator": ";",
                 "cast": [
-                    { "col": "Population", "type": "number" }
+                    { "col": "Population", "ref": "number" }
                 ]
             }
         },

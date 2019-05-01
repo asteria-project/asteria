@@ -1,6 +1,9 @@
 import { AsteriaCache, AsteriaData } from '../../gaia/gaia.index';
 import { Uuid } from '../lang/Uuid';
 
+// Class name reference:
+const CLASS_NAME: string = 'com.asteria.ouranos.cache::IMCache';
+
 /**
  * An <code>AsteriaCache</code> interface implementation that provides "in memory" data storage.
  */

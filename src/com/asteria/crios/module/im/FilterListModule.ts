@@ -1,6 +1,9 @@
-import { AsteriaModule, AsteriaData, AbstractAsteriaModule, FilterDefinition, FilterCondition, ListData, AsteriaLogger } from '../../../gaia/gaia.index';
+import { AsteriaModule, AsteriaData, AbstractAsteriaModule, FilterDefinition, FilterCondition, ListData, AsteriaLogger, AsteriaError, AsteriaErrorCode } from '../../../gaia/gaia.index';
 import { FilterListModuleConfig } from '../../config/im/FilterListModuleConfig';
-import { AsteriaDataBuilder, AsteriaFilterManager, ListDataBuilder, OuranosLogger } from '../../../ouranos/ouranos.index';
+import { AsteriaDataBuilder, AsteriaFilterManager, ListDataBuilder, OuranosLogger, AsteriaErrorBuilder } from '../../../ouranos/ouranos.index';
+
+// Class name reference:
+const CLASS_NAME: string = 'com.asteria.crios.module.im::FilterListModule';
 
 // Static logger reference:
 const LOGGER: AsteriaLogger = OuranosLogger.getLogger();
@@ -44,7 +47,13 @@ export class FilterListModule extends AbstractAsteriaModule implements AsteriaMo
                         AsteriaDataBuilder.getInstance().buildListData(objArr)
                     );
                 } catch (e) {
-                    reject(e);
+                    const error: AsteriaError = AsteriaErrorBuilder.getInstance().build(
+                        AsteriaErrorCode.PROCESS_FAILURE,
+                        CLASS_NAME,
+                        'asteria process failed: ' + e.message,
+                        e.stack
+                    );
+                    reject(error);
                 }
             }
         );

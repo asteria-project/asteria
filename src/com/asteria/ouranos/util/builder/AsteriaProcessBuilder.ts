@@ -1,6 +1,9 @@
 import { AsteriaData, AsteriaProcess, AsteriaModule, AsteriaModuleConfig } from '../../../gaia/gaia.index';
 import { OuranosProcess } from '../../process/OuranosProcess';
 
+// Class name reference:
+const CLASS_NAME: string = 'com.asteria.ouranos.util.builder::AsteriaProcessBuilder';
+
 /**
  * A utility class for building <code>AsteriaProcess</code> objects, available as a singleton.
  */

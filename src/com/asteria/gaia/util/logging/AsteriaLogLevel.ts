@@ -1,3 +1,6 @@
+// Class name reference:
+const CLASS_NAME: string = 'com.asteria.gaia.util::AsteriaLogLevel';
+
 /**
  * The <code>AsteriaLogLevel</code> enum defines a set of standard logging
  * levels that can be used to control logging output. 

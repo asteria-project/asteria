@@ -21,3 +21,4 @@ export { MergeListByKeyModule } from './module/im/MergeListByKeyModule';
 
 //--> com/asteria/crios/util
 export { CsvColumnMapper } from './util/CsvColumnMapper';
+export { PropertyCastMapper } from './util/PropertyCastMapper';

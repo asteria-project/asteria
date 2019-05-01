@@ -1,5 +1,8 @@
 import * as uuid from 'uuid';
 
+// Class name reference:
+const CLASS_NAME: string = 'com.asteria.ouranos.lang::Uuid';
+
 /**
  * A utility that generates and returns genuine unique identifier strings.
  */

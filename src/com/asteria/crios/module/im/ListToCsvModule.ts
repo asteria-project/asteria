@@ -2,6 +2,9 @@ import { AsteriaModule, AsteriaData, StringData, AsteriaLogger, AbstractAsteriaM
 import { CsvColumnMapper } from '../../util/CsvColumnMapper';
 import { OuranosLogger } from '../../../ouranos/ouranos.index';
 
+// Class name reference:
+const CLASS_NAME: string = 'com.asteria.crios.module.im::ListToCsvModule';
+
 // Static logger reference:
 const LOGGER: AsteriaLogger = OuranosLogger.getLogger();
 

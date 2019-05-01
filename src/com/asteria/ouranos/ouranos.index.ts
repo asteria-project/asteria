@@ -38,3 +38,7 @@ export { ListDataBuilder } from './util/builder/ListDataBuilder';
 
 //--> com/asteria/ouranos/util/logging
 export { OuranosLogger } from './util/logging/OuranosLogger';
+
+//--> com/asteria/ouranos/util
+export { AsteriaBooleanUtil } from './util/AsteriaBooleanUtil';
+export { PrimitiveType } from './util/PrimitiveType';

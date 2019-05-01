@@ -31,6 +31,7 @@ export { FilterOperator } from './filter/FilterOperator';
 //--> com/asteria/gaia/lang
 export { AsteriaContext } from './lang/AsteriaContext';
 export { AsteriaError } from './lang/AsteriaError';
+export { AsteriaErrorCode } from './lang/AsteriaErrorCode';
 export { AsteriaSession } from './lang/AsteriaSession';
 
 //--> com/asteria/gaia/module

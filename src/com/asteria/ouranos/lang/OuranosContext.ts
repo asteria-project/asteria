@@ -3,6 +3,9 @@ import { Uuid } from './Uuid';
 import { AsteriaManagerFactory } from '../factory/AsteriaManagerFactory';
 import { OuranosLogger } from '../util/logging/OuranosLogger';
 
+// Class name reference:
+const CLASS_NAME: string = 'com.asteria.ouranos.lang::OuranosContext';
+
 // Static logger reference:
 const LOGGER: AsteriaLogger = OuranosLogger.getLogger();
 

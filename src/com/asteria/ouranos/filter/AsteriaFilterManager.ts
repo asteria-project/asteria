@@ -3,6 +3,9 @@ import { StartsWithFilter } from './impl/StartsWithFilter';
 import { LikeFilter } from './impl/LikeFilter';
 import { GreaterThanFilter } from './impl/GreaterThanFilter';
 
+// Class name reference:
+const CLASS_NAME: string = 'com.asteria.ouranos.filter::AsteriaFilterManager';
+
 /**
  * Provides functionality to work with new <code>AsteriaFilter</code> instances through a singleton implementation.
  */

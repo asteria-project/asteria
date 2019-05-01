@@ -1,6 +1,9 @@
 import { AsteriaCacheManager, AsteriaCache } from '../../gaia/gaia.index';
 import { IMCache } from './IMCache';
 
+// Class name reference:
+const CLASS_NAME: string = 'com.asteria.ouranos.cache::CacheManager';
+
 /**
  * The Ouranos implementation of the <code>AsteriaCacheManager</code> interface.
  */

@@ -1,5 +1,8 @@
 import { AsteriaFilter, FilterOperator } from '../../../gaia/gaia.index';
 
+// Class name reference:
+const CLASS_NAME: string = 'com.asteria.ouranos.filter.impl::LikeFilter';
+
 /**
  * The <code>LikeFilter</code> filter determines whether an object property string contains the characters of a
  * specified string.

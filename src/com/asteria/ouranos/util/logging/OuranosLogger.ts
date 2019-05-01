@@ -1,6 +1,9 @@
 import { AsteriaLogger, AsteriaLogLevel } from '../../../gaia/gaia.index';
 import * as logger from 'ts-log-debug';
 
+// Class name reference:
+const CLASS_NAME: string = 'com.asteria.ouranos.util.logging::OuranosLogger';
+
 /**
  * A singleton implementation of the <code>AsteriaLogger</code> interface.
  */

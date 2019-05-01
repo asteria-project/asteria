@@ -1,6 +1,9 @@
 import { OuranosSession } from './OuranosSession';
 import { AsteriaSession } from '../../gaia/gaia.index';
 
+// Class name reference:
+const CLASS_NAME: string = 'com.asteria.ouranos.lang::Ouranos';
+
 /**
  * The <code>Ouranos</code> static class represents the entry point for creating as Asteria application.
  */

@@ -1,6 +1,9 @@
 import { AsteriaProcessManager } from '../../gaia/gaia.index';
 import { OuranosProcessManager } from '../process/OuranosProcessManager';
 
+// Class name reference:
+const CLASS_NAME: string = 'com.asteria.ouranos.factory::AsteriaManagerFactory';
+
 /**
  * Provides functionality to create new <code>AsteriaProcessManager</code> instances through a singleton implementation.
  */
