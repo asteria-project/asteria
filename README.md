@@ -29,20 +29,45 @@ const config: HyperionConfig = {
         },
         {
             type: 'filter',
-            config: `Population > 1000000 AND Country = 'us'`
+            config: "Population > 1000000 AND Country = 'us'"
         }
     ]
 };
 Hyperion.build(config).show();
 ```
 
+Notice that the Hyperion config object specified above can be defined as a JSON string as shown below:
+
+```json
+{
+    "name": "UsMegaCities",
+    "processes": [
+        {
+            "type": "read-file",
+            "config": "worldcitiespop.csv"
+        },
+        {
+            "type": "csv-to-list",
+            "config": {
+                "separator": ";",
+                "cast": [
+                    { "col": "Population", "type": "number" }
+                ]
+            }
+        },
+        {
+            "type": "filter",
+            "config": "Population > 1000000 AND Country = 'us'"
+        }
+    ]
+}
+```
+
 ## Understanding the Theogony
 
 The Asteria project ships with a large set of modules that can be combined together to create different kind of applications.
 
-Developer typically use high level modules to create workflows based on the Asteria base processes (_e.g. Hyperion_).
-
-Other modules can be used to create custom process implementations. (_e.g. Ouranos, Cronos_).
+Developer typically use high level modules to create workflows based on the Asteria base processes (_e.g. Hyperion_). Low level modules can be used to create custom process implementations and well designed complex applications (_e.g. Ouranos, Cronos_).
 
 | Project | Module | Description |
 | ------- | ------ | ----------- |
