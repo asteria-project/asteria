@@ -1,8 +1,5 @@
-import { AsteriaData } from '../../../gaia/data/AsteriaData';
-import { AsteriaProcess } from '../../../gaia/process/AsteriaProcess';
+import { AsteriaData, AsteriaProcess, AsteriaModule, AsteriaModuleConfig } from '../../../gaia/gaia.index';
 import { OuranosProcess } from '../../process/OuranosProcess';
-import { AsteriaModule } from '../../../gaia/module/AsteriaModule';
-import { AsteriaModuleConfig } from '../../../gaia/config/AsteriaModuleConfig';
 
 /**
  * A utility class for building <code>AsteriaProcess</code> objects, available as a singleton.

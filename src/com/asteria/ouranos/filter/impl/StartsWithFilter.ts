@@ -1,5 +1,4 @@
-import { AsteriaFilter } from '../../../gaia/filter/AsteriaFilter';
-import { FilterOperator } from '../../../gaia/filter/FilterOperator';
+import { AsteriaFilter, FilterOperator } from '../../../gaia/gaia.index';
 
 /**
  * The <code>StartsWithFilter</code> filter determines whether an object property string begins with the characters of

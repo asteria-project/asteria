@@ -1,8 +1,4 @@
-import { AsteriaData } from '../../../gaia/data/AsteriaData';
-import { AsteriaDataBase } from '../../../gaia/data/impl/AsteriaDataBase';
-import { UrlData } from '../../../gaia/data/UrlData';
-import { StringData } from '../../../gaia/data/StringData';
-import { ListData } from '../../../gaia/gaia.index';
+import { AsteriaData, AsteriaDataBase, UrlData, StringData, ListData } from '../../../gaia/gaia.index';
 
 /**
  * A utility class for building <code>AsteriaData</code> objects, available as a singleton.

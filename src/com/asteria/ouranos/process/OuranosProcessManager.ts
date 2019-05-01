@@ -1,8 +1,5 @@
-import { AsteriaData } from '../../gaia/data/AsteriaData';
-import { AsteriaProcessManager } from '../../gaia/process/AsteriaProcessManager';
-import { AsteriaProcess } from '../../gaia/process/AsteriaProcess';
+import { AsteriaData, AsteriaProcessManager, AsteriaProcess, AsteriaLogger } from '../../gaia/gaia.index';
 import { OuranosLogger } from '../util/logging/OuranosLogger';
-import { AsteriaLogger } from '../../gaia/util/logging/AsteriaLogger';
 
 // Static logger reference:
 const LOGGER: AsteriaLogger = OuranosLogger.getLogger();

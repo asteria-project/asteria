@@ -1,5 +1,4 @@
-import { AsteriaCacheManager } from '../../gaia/cache/AsteriaCacheManager';
-import { AsteriaCache } from '../../gaia/cache/AsteriaCache';
+import { AsteriaCacheManager, AsteriaCache } from '../../gaia/gaia.index';
 import { IMCache } from './IMCache';
 
 /**

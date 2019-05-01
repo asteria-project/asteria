@@ -1,4 +1,4 @@
-import { AsteriaFilter } from '../../gaia/filter/AsteriaFilter';
+import { AsteriaFilter } from '../../gaia/gaia.index';
 import { StartsWithFilter } from './impl/StartsWithFilter';
 import { LikeFilter } from './impl/LikeFilter';
 import { GreaterThanFilter } from './impl/GreaterThanFilter';

@@ -1,5 +1,4 @@
-import { AsteriaSession } from '../../gaia/lang/AsteriaSession';
-import { AsteriaContext } from '../../gaia/gaia.index';
+import { AsteriaSession, AsteriaContext } from '../../gaia/gaia.index';
 import { OuranosContext } from './OuranosContext';
 
 /**

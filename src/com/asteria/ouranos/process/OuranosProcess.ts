@@ -1,7 +1,4 @@
-import { AsteriaModule } from '../../gaia/module/AsteriaModule';
-import { AsteriaData } from '../../gaia/data/AsteriaData';
-import { AsteriaModuleConfig } from '../../gaia/config/AsteriaModuleConfig';
-import { AsteriaProcess } from '../../gaia/process/AsteriaProcess';
+import { AsteriaModule, AsteriaData, AsteriaModuleConfig, AsteriaProcess } from '../../gaia/gaia.index';
 
 /**
  * The Ouranos implementation of the <code>AsteriaProcess</code> interface.

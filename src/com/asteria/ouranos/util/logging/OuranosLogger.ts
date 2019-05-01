@@ -1,5 +1,4 @@
-import { AsteriaLogger } from '../../../gaia/util/logging/AsteriaLogger';
-import { AsteriaLogLevel } from '../../../gaia/util/logging/AsteriaLogLevel';
+import { AsteriaLogger, AsteriaLogLevel } from '../../../gaia/gaia.index';
 import * as logger from 'ts-log-debug';
 
 /**

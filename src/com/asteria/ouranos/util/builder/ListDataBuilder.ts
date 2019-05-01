@@ -1,4 +1,4 @@
-import { ListData } from '../../../gaia/data/ListData';
+import { ListData } from '../../../gaia/gaia.index';
 
 /**
  * A utility class for building <code>ListData</code> objects, available as a singleton.

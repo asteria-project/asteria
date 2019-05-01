@@ -1,4 +1,4 @@
-import { AsteriaProcessManager } from '../../gaia/process/AsteriaProcessManager';
+import { AsteriaProcessManager } from '../../gaia/gaia.index';
 import { OuranosProcessManager } from '../process/OuranosProcessManager';
 
 /**

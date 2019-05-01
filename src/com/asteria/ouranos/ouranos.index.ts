@@ -5,9 +5,6 @@
  * Please maintain package and alphabetical order!
  */
 
- //--> com/asteria/ouranos
-export { Ouranos } from './Ouranos';
-
 //--> com/asteria/ouranos/cache
 export { CacheManager } from './cache/CacheManager';
 export { IMCache } from './cache/IMCache';
@@ -24,6 +21,7 @@ export { StartsWithFilter } from './filter/impl/StartsWithFilter';
 export { AsteriaFilterManager } from './filter/AsteriaFilterManager';
 
 //--> com/asteria/ouranos/lang
+export { Ouranos } from './lang/Ouranos';
 export { OuranosContext } from './lang/OuranosContext';
 export { OuranosSession } from './lang/OuranosSession';
 export { Uuid } from './lang/Uuid';
@@ -34,6 +32,7 @@ export { OuranosProcessManager } from './process/OuranosProcessManager';
 
 //--> com/asteria/ouranos/util/builder
 export { AsteriaDataBuilder } from './util/builder/AsteriaDataBuilder';
+export { AsteriaErrorBuilder } from './util/builder/AsteriaErrorBuilder';
 export { AsteriaProcessBuilder } from './util/builder/AsteriaProcessBuilder';
 export { ListDataBuilder } from './util/builder/ListDataBuilder';
 
