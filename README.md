@@ -51,7 +51,7 @@ Notice that the Hyperion config object specified above can be defined as a JSON 
             "config": {
                 "separator": ";",
                 "cast": [
-                    { "col": "Population", "ref": "number" }
+                    { "prop": "Population", "ref": "number" }
                 ]
             }
         },
