@@ -2,6 +2,8 @@
 
 Asteria is a specification for building data analytics modules that are executed through sequential data processors in a JavaScript environment.
 
+![Asteria Logo](https://raw.githubusercontent.com/asteria-project/asteria/master/assets/logos/asteria.png)
+
 ## Motivation
 
 ## Example
@@ -35,6 +37,12 @@ Hyperion.build(config).show();
 ```
 
 ## Understanding the Theogony
+
+The Asteria project ships with a large set of modules that can be combined together to create different kind of applications.
+
+Developer typically use high level modules to create workflows based on the Asteria base processes (_e.g. Hyperion_).
+
+Other modules can be used to create custom process implementations. (_e.g. Ouranos, Cronos_).
 
 | Project | Module | Description |
 | ------- | ------ | ----------- |
