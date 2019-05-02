@@ -54,28 +54,28 @@ export class Hyperion {
     }
 
     /**
-     * Runs all processes registered in this code>Hyperion</code> instance and returns the result of these operations.
+     * Runs all processes registered in this<code>Hyperion</code> instance and returns the result of these operations.
      * 
      * @return {Promise<AsteriaData<any>>} the result of these operation defined by all processes registered in this
-     *                                     code>Hyperion</code> instance.
+     *                                    <code>Hyperion</code> instance.
      */
     public run(): Promise<AsteriaData<any>> {
         return this.PROCESSOR.run();
     }
 
     /**
-     * Runs all processes registered in this code>Hyperion</code> instance, display the result of these operations in
+     * Runs all processes registered in this <code>Hyperion</code> instance, display the result of these operations in
      * the standard output and returns the result.
      * 
      * @return {Promise<AsteriaData<any>>} the result of these operation defined by all processes registered in this
-     *                                     code>Hyperion</code> instance.
+     *                                     <code>Hyperion</code> instance.
      */
     public show(): Promise<AsteriaData<any>> {
-        this.PROCESSOR.run();
-        return this.PROCESSOR.run();
-                    /*.then((value: AsteriaData<any>)=> {
-                        console.log(value.data);
-                    });*/
+        return this.PROCESSOR.run()
+                             .then((value: AsteriaData<any>)=> {
+                                console.log(value.data);
+                                return value;
+                             });
     }
     
     /**

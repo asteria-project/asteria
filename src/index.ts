@@ -24,4 +24,4 @@ Hyperion.build({
                     config: `Population > 1000000 AND Country = 'us'`
                 }
             ]
-        }).run();
+        }).show();
