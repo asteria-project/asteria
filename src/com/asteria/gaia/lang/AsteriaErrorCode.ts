@@ -48,7 +48,12 @@ export enum AsteriaErrorCode {
     INVALID_ASQL_QUERY = 301,
     
     /**
-     * Indicates that an AsQL query operant is not well-formed.
+     * Indicates that an AsQL query operand is not well-formed.
      */
-    INVALID_ASQL_OPERAND = 302
+    INVALID_ASQL_OPERAND = 302,
+
+    /**
+     * Indicates that an AsQL query condition is not valid.
+     */
+    INVALID_ASQL_CONDITION = 303
 }

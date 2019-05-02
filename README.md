@@ -29,7 +29,7 @@ const config: HyperionConfig = {
         },
         {
             type: 'filter',
-            config: "Population > 1000000 AND Country = 'us'"
+            config: 'Population > 1000000 AND Country = \'us\''
         }
     ]
 };

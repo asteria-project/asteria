@@ -1,6 +1,6 @@
 import { FilterListModuleConfig } from '../../../crios/crios.index';
 import { HyperionConfigAdapter } from '../HyperionConfigAdapter';
-import { AsqlParser, AsqlToken } from '../../../japet/japet.index';
+import { AsqlParser, AsqlToken, FilterQueryAdapter, AsqlFilterDefinition } from '../../../japet/japet.index';
 import { AsteriaFilter, AsteriaError, AsteriaErrorCode, AsteriaLogger } from '../../../gaia/gaia.index';
 import { AsteriaErrorBuilder, OuranosLogger, PrimitiveType } from '../../../ouranos/ouranos.index';
 
@@ -36,7 +36,13 @@ export class FilterConfigAdapter implements HyperionConfigAdapter {
             );
         } else {
             const parser: AsqlParser = new AsqlParser();
-            const filters: Array<AsqlToken> = parser.parse(config);
+            const tokens: Array<AsqlToken> = parser.parse(config);
+            const adapter: FilterQueryAdapter = new FilterQueryAdapter();
+            const filterDef: AsqlFilterDefinition = adapter.adapt(tokens);
+            result = {
+                condition: filterDef.condition,
+                filters: filterDef.filters
+            };
         }
         return result;
     }

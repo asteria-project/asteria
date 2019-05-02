@@ -1,7 +1,7 @@
 import { Hyperion } from './com/asteria/asteria.index';
 import * as path from 'path';
 
-const csvPath: string = path.join(__dirname, 'temp-data', 'worldcitiespop-dev.csv');
+const csvPath: string = path.join(__dirname, 'temp-data', 'worldcitiespop.csv');
 
 Hyperion.build({
             name: 'UsMegaCities',
@@ -14,14 +14,19 @@ Hyperion.build({
                     type: 'csv-to-list',
                     config: {
                         separator: ';',
-                        cast: [
-                            { prop: 'Population', ref: 'number' }
+                        colsMap: [
+                            { id: 0, prop: 'country' },
+                            { id: 2, prop: 'city' },
+                            { id: 3, prop: 'region' },
+                            { id: 4, prop: 'population', castRef: 'number' },
+                            { id: 5, prop: 'latitude' },
+                            { id: 6, prop: 'longitude' }
                         ]
                     }
                 },
                 {
                     type: 'filter',
-                    config: 'Population > 1000000 AND Country = \'us\''
+                    config: 'population GREATER_THAN 1000000 AND country LIKE \'us\''
                 }
             ]
         }).show();

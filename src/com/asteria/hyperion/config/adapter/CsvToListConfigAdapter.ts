@@ -1,4 +1,4 @@
-import { CsvToListModuleConfig, PropertyCastMapper } from '../../../crios/crios.index';
+import { CsvToListModuleConfig, PropertyCastMapper, CsvColumnMapper } from '../../../crios/crios.index';
 import { HyperionConfigAdapter } from '../HyperionConfigAdapter';
 import { HyperionCastRef } from '../../util/HyperionCastRef';
 import { AsteriaBooleanUtil } from '../../../ouranos/ouranos.index';
@@ -17,6 +17,7 @@ export class CsvToListConfigAdapter implements HyperionConfigAdapter {
     public convert(config: any): CsvToListModuleConfig {
         const trimFirstRow: boolean = config.trimFirstRow;
         const cast: any[] = config.cast;
+        const colsMap: any[] = config.colsMap;
         let result: CsvToListModuleConfig = {};
         if (trimFirstRow !== null && trimFirstRow !== undefined) {
             result.trimFirstRow = trimFirstRow;
@@ -25,6 +26,17 @@ export class CsvToListConfigAdapter implements HyperionConfigAdapter {
         }
         if (config.separator) {
             result.separator = config.separator;
+        }
+        if (colsMap) {
+            const colsMapping: Array<CsvColumnMapper> = new Array<CsvColumnMapper>();
+            colsMap.forEach((value: any)=> {
+                colsMapping.push({
+                    index: value.id,
+                    property: value.prop,
+                    castFunc: this.getCastFunction(value.castRef)
+                });
+            });
+            result.colsMapping = colsMapping;
         }
         if (cast) {
             const castMapping: Array<PropertyCastMapper> = new Array<PropertyCastMapper>();
