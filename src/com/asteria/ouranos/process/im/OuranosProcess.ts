@@ -1,4 +1,4 @@
-import { AsteriaModule, AsteriaData, AsteriaModuleConfig, AsteriaProcess } from '../../gaia/gaia.index';
+import { AsteriaModule, AsteriaData, AsteriaModuleConfig, AsteriaProcess } from '../../../gaia/gaia.index';
 
 // Class name reference:
 const CLASS_NAME: string = 'com.asteria.ouranos.process::OuranosProcess';

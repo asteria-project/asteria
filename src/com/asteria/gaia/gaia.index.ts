@@ -39,9 +39,9 @@ export { CommonChar } from './lang/CommonChar';
 export { AbstractAsteriaModule } from './module/AbstractAsteriaModule';
 export { AsteriaModule } from './module/AsteriaModule';
 
-//--> com/asteria/gaia/process
-export { AsteriaProcess } from './process/AsteriaProcess';
-export { AsteriaProcessManager } from './process/AsteriaProcessManager';
+//--> com/asteria/gaia/process/im
+export { AsteriaProcess } from './process/im/AsteriaProcess';
+export { AsteriaProcessManager } from './process/im/AsteriaProcessManager';
 
 //--> com/asteria/gaia/util/logging
 export { AsteriaLogger } from './util/logging/AsteriaLogger';

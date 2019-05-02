@@ -1,4 +1,4 @@
-import { AsteriaProcessManager } from '../process/AsteriaProcessManager';
+import { AsteriaProcessManager } from '../process/im/AsteriaProcessManager';
 
 /**
  * The <code>AsteriaContext</code> interface represents an execution context for an Asteria session. Asteria context is

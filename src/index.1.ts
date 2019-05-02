@@ -1,16 +1,7 @@
-import { AsteriaProcessManager } from './com/asteria/gaia/process/AsteriaProcessManager';
-import { AsteriaManagerFactory } from './com/asteria/ouranos/factory/AsteriaManagerFactory';
-import { AsteriaProcess } from './com/asteria/gaia/process/AsteriaProcess';
-import { AsteriaProcessBuilder } from './com/asteria/ouranos/util/builder/AsteriaProcessBuilder';
-import { AsteriaData } from './com/asteria/gaia/data/AsteriaData';
-import { CsvToListModule } from './com/asteria/crios/module/im/CsvToListModule';
-import { CsvToListModuleConfig } from './com/asteria/crios/config/im/CsvToListModuleConfig';
-import { AsteriaDataBuilder } from './com/asteria/ouranos/util/builder/AsteriaDataBuilder';
-import { FileReaderModule } from './com/asteria/cronos/module/im/FileReaderModule';
-import { DataStorageModule } from './com/asteria/crios/module/im/DataStorageModule';
-import { MergeListByKeyModule } from './com/asteria/crios/module/im/MergeListByKeyModule';
-import { MergeListByKeyModuleConfig } from './com/asteria/crios/config/im/MergeListByKeyModuleConfig';
-import { StringData } from './com/asteria/gaia/data/StringData';
+import { AsteriaProcessManager, AsteriaProcess, AsteriaData, StringData } from './com/asteria/gaia/gaia.index';
+import { AsteriaManagerFactory, AsteriaProcessBuilder, AsteriaDataBuilder } from './com/asteria/ouranos/ouranos.index';
+import { CsvToListModule, CsvToListModuleConfig, DataStorageModule, MergeListByKeyModule, MergeListByKeyModuleConfig } from './com/asteria/crios/crios.index';
+import { FileReaderModule } from './com/asteria/cronos/cronos.index';
 
 import * as path from 'path';
 import { ListData } from './com/asteria/asteria.index';

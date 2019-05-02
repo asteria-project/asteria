@@ -1,5 +1,5 @@
-import { AsteriaData, AsteriaProcessManager, AsteriaProcess, AsteriaLogger, AsteriaError, CommonChar } from '../../gaia/gaia.index';
-import { OuranosLogger } from '../util/logging/OuranosLogger';
+import { AsteriaData, AsteriaProcessManager, AsteriaProcess, AsteriaLogger, AsteriaError, CommonChar } from '../../../gaia/gaia.index';
+import { OuranosLogger } from '../../util/logging/OuranosLogger';
 
 // Class name reference:
 const CLASS_NAME: string = 'com.asteria.ouranos.process::OuranosProcessManager';

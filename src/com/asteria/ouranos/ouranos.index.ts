@@ -26,9 +26,9 @@ export { OuranosContext } from './lang/OuranosContext';
 export { OuranosSession } from './lang/OuranosSession';
 export { Uuid } from './lang/Uuid';
 
-//--> com/asteria/ouranos/process
-export { OuranosProcess } from './process/OuranosProcess';
-export { OuranosProcessManager } from './process/OuranosProcessManager';
+//--> com/asteria/ouranos/process/im
+export { OuranosProcess } from './process/im/OuranosProcess';
+export { OuranosProcessManager } from './process/im/OuranosProcessManager';
 
 //--> com/asteria/ouranos/util/builder
 export { AsteriaDataBuilder } from './util/builder/AsteriaDataBuilder';

@@ -1,5 +1,5 @@
 import { AsteriaProcess } from './AsteriaProcess';
-import { AsteriaData } from '../data/AsteriaData';
+import { AsteriaData } from '../../data/AsteriaData';
 
 /**
  * The <code>AsteriaProcessManager</code> interface provides operations for working and processing with data as defined

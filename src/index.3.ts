@@ -1,18 +1,8 @@
-import { AsteriaProcess } from './com/asteria/gaia/process/AsteriaProcess';
-import { AsteriaProcessBuilder } from './com/asteria/ouranos/util/builder/AsteriaProcessBuilder';
-import { AsteriaData } from './com/asteria/gaia/data/AsteriaData';
-import { CsvToListModule } from './com/asteria/crios/module/im/CsvToListModule';
-import { CsvToListModuleConfig } from './com/asteria/crios/config/im/CsvToListModuleConfig';
-import { AsteriaDataBuilder } from './com/asteria/ouranos/util/builder/AsteriaDataBuilder';
-import { FileReaderModule } from './com/asteria/cronos/module/im/FileReaderModule';
-import { StringData } from './com/asteria/gaia/data/StringData';
-import { ListData } from './com/asteria/gaia/data/ListData';
-import { FilterListModuleConfig } from './com/asteria/crios/config/im/FilterListModuleConfig';
-import { FilterOperator } from './com/asteria/gaia/filter/FilterOperator';
-import { FilterListModule } from './com/asteria/crios/module/im/FilterListModule';
-import { FilterCondition } from './com/asteria/gaia/filter/FilterCondition';
+import { AsteriaProcess, AsteriaData, StringData, ListData, FilterOperator, FilterCondition } from './com/asteria/gaia/gaia.index';
+import { Ouranos, AsteriaProcessBuilder, AsteriaDataBuilder } from './com/asteria/ouranos/ouranos.index';
+import { CsvToListModule, CsvToListModuleConfig, FilterListModuleConfig, FilterListModule } from './com/asteria/crios/crios.index';
+import { FileReaderModule } from './com/asteria/cronos/cronos.index';
 import * as path from 'path';
-import { Ouranos } from './com/asteria/ouranos/lang/Ouranos';
 
 
 const buildFilePath: Function = (fileName: string)=> { 

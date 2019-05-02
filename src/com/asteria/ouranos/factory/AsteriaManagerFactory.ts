@@ -1,5 +1,5 @@
 import { AsteriaProcessManager } from '../../gaia/gaia.index';
-import { OuranosProcessManager } from '../process/OuranosProcessManager';
+import { OuranosProcessManager } from '../process/im/OuranosProcessManager';
 
 // Class name reference:
 const CLASS_NAME: string = 'com.asteria.ouranos.factory::AsteriaManagerFactory';

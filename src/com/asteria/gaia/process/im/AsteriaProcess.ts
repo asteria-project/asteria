@@ -1,6 +1,6 @@
-import { AsteriaData } from '../data/AsteriaData';
-import { AsteriaModuleConfig } from '../config/AsteriaModuleConfig';
-import { AsteriaModule } from '../module/AsteriaModule';
+import { AsteriaData } from '../../data/AsteriaData';
+import { AsteriaModuleConfig } from '../../config/AsteriaModuleConfig';
+import { AsteriaModule } from '../../module/AsteriaModule';
 
 /**
  * The <code>AsteriaProcess</code> interface provides information about a process executed by the Asteria environment.
