@@ -76,6 +76,13 @@ export class FilterListModule extends AbstractAsteriaModule implements AsteriaMo
                     this._filters.push(value);
                 });
             }
+        } else {
+            const error: AsteriaError = AsteriaErrorBuilder.getInstance().build(
+                AsteriaErrorCode.MISSING_FILTER,
+                CLASS_NAME,
+                'missing filter list'
+            );
+            LOGGER.error(error.toString());
         }
     }
 

@@ -62,7 +62,7 @@ export class HyperionProcessor {
         const adapter: FilterConfigAdapter = new FilterConfigAdapter();
         AsteriaProcessUtil.addProcess(
             this.SESSION,
-            AsteriaProcessUtil.buildProcess<ListData<any>>(new FilterListModule(), config)
+            AsteriaProcessUtil.buildProcess<ListData<any>>(new FilterListModule(), adapter.convert(config))
         );
         return this;
     }

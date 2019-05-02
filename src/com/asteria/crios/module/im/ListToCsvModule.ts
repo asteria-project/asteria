@@ -1,4 +1,4 @@
-import { AsteriaModule, AsteriaData, StringData, AsteriaLogger, AbstractAsteriaModule, ListData, AsteriaModuleConfig } from '../../../gaia/gaia.index';
+import { AsteriaModule, AsteriaData, StringData, AsteriaLogger, AbstractAsteriaModule, ListData, AsteriaModuleConfig, CommonChar } from '../../../gaia/gaia.index';
 import { CsvColumnMapper } from '../../util/CsvColumnMapper';
 import { OuranosLogger } from '../../../ouranos/ouranos.index';
 
@@ -28,12 +28,7 @@ export class ListToCsvModule extends AbstractAsteriaModule implements AsteriaMod
     /**
      * The reference to the CSV default separator.
      */
-    private static readonly DEFAULT_SEPARATOR: string = ',';
-    
-    /**
-     * Represents an empty string character.
-     */
-    private static readonly EMPTY_STRING: string = '';
+    private static readonly DEFAULT_SEPARATOR: string = CommonChar.COMMA;
 
     /**
      * The reference to the CSV separator. Default value is <code>,</code>.

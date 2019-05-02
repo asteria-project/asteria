@@ -33,6 +33,7 @@ export { AsteriaContext } from './lang/AsteriaContext';
 export { AsteriaError } from './lang/AsteriaError';
 export { AsteriaErrorCode } from './lang/AsteriaErrorCode';
 export { AsteriaSession } from './lang/AsteriaSession';
+export { CommonChar } from './lang/CommonChar';
 
 //--> com/asteria/gaia/module
 export { AbstractAsteriaModule } from './module/AbstractAsteriaModule';

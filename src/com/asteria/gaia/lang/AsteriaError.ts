@@ -1,4 +1,5 @@
 import { AsteriaErrorCode } from './AsteriaErrorCode';
+import { CommonChar } from './CommonChar';
 
 // Class name reference:
 const CLASS_NAME: string = 'com.asteria.gaia.lang::AsteriaError';
@@ -21,7 +22,7 @@ export class AsteriaError {
     public readonly stack: string;
 
     public toString(): string {
-        const stack: string = this.stack ? `, stack=${this.message}` : '';
+        const stack: string = this.stack ? `, stack=${this.message}` : CommonChar.EMPTY;
         return `[AsteriaError: code=${this.code}, class=${this.className}, message=${this.message}${stack}]`;
     }
 }

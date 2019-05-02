@@ -1,4 +1,4 @@
-import { AsteriaData, AsteriaProcessManager, AsteriaProcess, AsteriaLogger, AsteriaError } from '../../gaia/gaia.index';
+import { AsteriaData, AsteriaProcessManager, AsteriaProcess, AsteriaLogger, AsteriaError, CommonChar } from '../../gaia/gaia.index';
 import { OuranosLogger } from '../util/logging/OuranosLogger';
 
 // Class name reference:
@@ -70,7 +70,7 @@ export class OuranosProcessManager implements AsteriaProcessManager {
         this._timestamp = Date.now();
         const len: number = this.PROCESSES.length;
         LOGGER.info('asteria processing start');
-        LOGGER.info(`processing ${len} module${ len !== 1 ? 's' : ''}`);
+        LOGGER.info(`processing ${len} module${ len !== 1 ? 's' : CommonChar.EMPTY}`);
         const result: Promise<AsteriaData<any>> = new Promise<AsteriaData<any>>(
             (resolve: Function, reject: Function)=> {
                 this.resolveProcess(resolve, reject);

@@ -1,4 +1,4 @@
-import { AsteriaModule, AsteriaData, StringData, AbstractAsteriaModule, ListData, AsteriaLogger, AsteriaErrorCode, AsteriaError } from '../../../gaia/gaia.index';
+import { AsteriaModule, AsteriaData, StringData, AbstractAsteriaModule, ListData, AsteriaLogger, AsteriaErrorCode, AsteriaError, CommonChar } from '../../../gaia/gaia.index';
 import { OuranosLogger, ListDataBuilder, AsteriaDataBuilder, AsteriaErrorBuilder } from '../../../ouranos/ouranos.index';
 import { CsvColumnMapper } from '../../util/CsvColumnMapper';
 import { CsvToListModuleConfig } from '../../config/im/CsvToListModuleConfig';
@@ -30,12 +30,7 @@ export class CsvToListModule extends AbstractAsteriaModule implements AsteriaMod
     /**
      * The reference to the CSV default separator.
      */
-    private static readonly DEFAULT_SEPARATOR: string = ',';
-    
-    /**
-     * Represents an empty string character.
-     */
-    private static readonly EMPTY_STRING: string = '';
+    private static readonly DEFAULT_SEPARATOR: string = CommonChar.COMMA;
 
     /**
      * The reference to the CSV separator. Default value is <code>,</code>.
@@ -221,7 +216,7 @@ export class CsvToListModule extends AbstractAsteriaModule implements AsteriaMod
      *               is empty.
      */
     private buildObj(csvRow: string): any {
-        const isEmpty: boolean = csvRow === CsvToListModule.EMPTY_STRING;
+        const isEmpty: boolean = csvRow === CommonChar.EMPTY;
         let obj: any = null;
         if (!isEmpty) {
             const values: Array<string> = csvRow.split(this._separator);
