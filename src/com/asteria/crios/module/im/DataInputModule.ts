@@ -1,8 +1,5 @@
 import { AsteriaModule, AsteriaData, AbstractAsteriaModule } from '../../../gaia/gaia.index';
 
-// Class name reference:
-const CLASS_NAME: string = 'com.asteria.crios.module.im::DataInputModule';
-
 /**
  * A generic implementation of the <code>AsteriaModule</code> interface that can be used as entry point of the process
  * treatment.
@@ -14,7 +11,7 @@ export class DataInputModule extends AbstractAsteriaModule
      * Creates a new <code>DataInputModule</code> instance.
      */
     constructor() {
-        super('DataInputModule');
+        super('com.asteria.crios.module.im::DataInputModule');
     }                      
     
     /**

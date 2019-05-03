@@ -2,9 +2,6 @@ import { AsteriaModule, AsteriaData, StringData, AsteriaLogger, AbstractAsteriaM
 import { CsvColumnMapper } from '../../util/CsvColumnMapper';
 import { OuranosLogger } from '../../../ouranos/ouranos.index';
 
-// Class name reference:
-const CLASS_NAME: string = 'com.asteria.crios.module.im::ListToCsvModule';
-
 // Static logger reference:
 const LOGGER: AsteriaLogger = OuranosLogger.getLogger();
 
@@ -17,7 +14,7 @@ export class ListToCsvModule extends AbstractAsteriaModule implements AsteriaMod
      * Creates a new <code>CsvToListModule</code> instance.
      */
     constructor() {
-        super('ListToCsvModule');
+        super('com.asteria.crios.module.im::ListToCsvModule');
     }
 
     /**

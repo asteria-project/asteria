@@ -1,13 +1,18 @@
 import * as uuid from 'uuid';
-
-// Class name reference:
-const CLASS_NAME: string = 'com.asteria.ouranos.lang::Uuid';
+import { AsteriaObject } from '../../gaia/gaia.index';
 
 /**
  * A utility that generates and returns genuine unique identifier strings.
  */
-export class Uuid {
+export class Uuid extends AsteriaObject {
   
+    /**
+     * Creates a new <code>Uuid</code> instance.
+     */
+    constructor() {
+      super('com.asteria.ouranos.lang::Uuid');
+  }
+
   /**
    * Generates and returns a unique identifier string according to the "version 4" RFC4122 specification.
    * 

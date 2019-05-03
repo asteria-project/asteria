@@ -1,12 +1,9 @@
-import { AsteriaError, AsteriaErrorCode } from '../../../gaia/gaia.index';
-
-// Class name reference:
-const CLASS_NAME: string = 'com.asteria.ouranos.util.builder::AsteriaErrorBuilder';
+import { AsteriaError, AsteriaErrorCode, AsteriaObject } from '../../../gaia/gaia.index';
 
 /**
  * A utility class for building <code>AsteriaError</code> objects, available as a singleton.
  */
-export class AsteriaErrorBuilder {
+export class AsteriaErrorBuilder extends AsteriaObject {
 
     /**
      * Stores the static reference to this singleton.
@@ -16,7 +13,9 @@ export class AsteriaErrorBuilder {
     /**
      * Creates a new <code>AsteriaErrorBuilder</code> instance.
      */
-    private constructor() {}
+    private constructor() {
+        super('com.asteria.ouranos.util.builder::AsteriaErrorBuilder');
+    }
 
     /**
      * Returns the reference to this singleton.

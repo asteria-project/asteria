@@ -1,13 +1,10 @@
-import { AsteriaSession, AsteriaContext } from '../../gaia/gaia.index';
+import { AsteriaSession, AsteriaContext, AsteriaObject } from '../../gaia/gaia.index';
 import { OuranosContext } from './OuranosContext';
-
-// Class name reference:
-const CLASS_NAME: string = 'com.asteria.ouranos.lang::OuranosSession';
 
 /**
  * The Ouranos implementation of the <code>AsteriaSession</code> interface.
  */
-export class OuranosSession implements AsteriaSession {
+export class OuranosSession extends AsteriaObject implements AsteriaSession {
 
     /**
      * The context associated with this session.
@@ -18,6 +15,7 @@ export class OuranosSession implements AsteriaSession {
      * Creates a new <code>OuranosSession</code> instance.
      */
     constructor(name: string) {
+        super('com.asteria.ouranos.lang::OuranosSession');
         this.CONTEXT = new OuranosContext(name);
     }
 

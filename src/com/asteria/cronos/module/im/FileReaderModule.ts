@@ -2,9 +2,6 @@ import { AsteriaModule, AsteriaData, AbstractAsteriaModule, StringData, AsteriaL
 import { AsteriaDataBuilder, OuranosLogger, AsteriaErrorBuilder } from '../../../ouranos/ouranos.index';
 import * as fs from 'fs';
 
-// Class name reference:
-const CLASS_NAME: string = 'com.asteria.cronos.module.im::FileReaderModule';
-
 // Static logger reference:
 const LOGGER: AsteriaLogger = OuranosLogger.getLogger();
 
@@ -17,7 +14,7 @@ export class FileReaderModule extends AbstractAsteriaModule implements AsteriaMo
      * Creates a new <code>FileReaderModule</code> instance.
      */
     constructor() {
-        super('FileReaderModule');
+        super('com.asteria.cronos.module.im::FileReaderModule');
     }                      
     
     /**
@@ -34,7 +31,7 @@ export class FileReaderModule extends AbstractAsteriaModule implements AsteriaMo
                         if (err) {
                             const error: AsteriaError = AsteriaErrorBuilder.getInstance().build(
                                 AsteriaErrorCode.PROCESS_FAILURE,
-                                CLASS_NAME,
+                                this.getClassName(),
                                 'asteria process failed: ' + err.message,
                                 err.stack
                             );

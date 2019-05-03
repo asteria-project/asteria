@@ -1,6 +1,3 @@
-// Class name reference:
-const CLASS_NAME: string = 'com.asteria.japet.lang::AsqlTokenType';
-
 /**
  * The <code>AsqlTokenType</code> enum defines the list of AsQL tokens types.
  */

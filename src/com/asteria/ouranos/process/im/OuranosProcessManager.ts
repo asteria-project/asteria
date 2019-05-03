@@ -1,8 +1,5 @@
-import { AsteriaData, AsteriaProcessManager, AsteriaProcess, AsteriaLogger, AsteriaError, CommonChar } from '../../../gaia/gaia.index';
+import { AsteriaData, AsteriaProcessManager, AsteriaProcess, AsteriaLogger, AsteriaError, CommonChar, AsteriaObject } from '../../../gaia/gaia.index';
 import { OuranosLogger } from '../../util/logging/OuranosLogger';
-
-// Class name reference:
-const CLASS_NAME: string = 'com.asteria.ouranos.process::OuranosProcessManager';
 
 // Static logger reference:
 const LOGGER: AsteriaLogger = OuranosLogger.getLogger();
@@ -10,7 +7,7 @@ const LOGGER: AsteriaLogger = OuranosLogger.getLogger();
 /**
  * The Ouranos implementation of the <code>AsteriaProcessManager</code> interface.
  */
-export class OuranosProcessManager implements AsteriaProcessManager {
+export class OuranosProcessManager extends AsteriaObject implements AsteriaProcessManager {
 
     /**
      * The list of <code>AsteriaModule</code> objects registered whithin this Asteria module processor.
@@ -37,6 +34,13 @@ export class OuranosProcessManager implements AsteriaProcessManager {
      * Stores the current module data processing start time.
      */
     private _processTimestamp: number = 0;
+
+    /**
+     * Creates a new <code>OuranosProcessManager</code> instance.
+     */
+    constructor() {
+        super('com.asteria.ouranos.process::OuranosProcessManager');
+    }
 
     /**
      * @inheritdoc

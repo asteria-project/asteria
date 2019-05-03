@@ -2,14 +2,19 @@ import { CsvToListModuleConfig, PropertyCastMapper, CsvColumnMapper } from '../.
 import { HyperionConfigAdapter } from '../HyperionConfigAdapter';
 import { HyperionCastRef } from '../../util/HyperionCastRef';
 import { AsteriaBooleanUtil } from '../../../ouranos/ouranos.index';
-
-// Class name reference:
-const CLASS_NAME: string = 'com.asteria.hyperion.config.adapter::CsvToListConfigAdapter';
+import { AsteriaObject } from '../../../gaia/gaia.index';
 
 /**
  * The <code>CsvToListConfigAdapter</code> class allows to convert <code>cvs-to-lit</code> config objects.
  */
-export class CsvToListConfigAdapter implements HyperionConfigAdapter {
+export class CsvToListConfigAdapter extends AsteriaObject implements HyperionConfigAdapter {
+
+    /**
+     * Creates a new <code>CsvToListConfigAdapter</code> instance.
+     */
+    constructor() {
+        super('com.asteria.hyperion.config.adapter::CsvToListConfigAdapter');
+    }
 
     /**
      * @inheritdoc

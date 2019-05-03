@@ -1,22 +1,21 @@
 import { AsteriaModuleConfig } from '../config/AsteriaModuleConfig';
 import { AsteriaData } from '../data/AsteriaData';
 import { AsteriaModule } from './AsteriaModule';
-
-// Class name reference:
-const CLASS_NAME: string = 'com.asteria.gaia.module::AbstractAsteriaModule';
+import { AsteriaObject } from '../lang/AsteriaObject';
 
 /**
  * The abstract class for all implementations of the <code>AsteriaModule</code> interface.
  */
-export abstract class AbstractAsteriaModule implements AsteriaModule {
+export abstract class AbstractAsteriaModule extends AsteriaObject implements AsteriaModule {
 
     /**
      * Creates a new <code>AbstractAsteriaModule</code> instance.
      * 
-     * @param {string} name the name of this Asteria module.
+     * @param {string} className the fully qualified class name of this Asteria module.
      */
-    protected constructor(name: string) {
-        this.name = name;
+    protected constructor(className: string) {
+        super(className || 'com.asteria.gaia.module::AbstractAsteriaModule');
+        this.name = className.substring(className.lastIndexOf(':') + 1);
     }
 
     /**

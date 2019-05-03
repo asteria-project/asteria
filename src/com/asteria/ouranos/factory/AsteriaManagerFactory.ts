@@ -1,13 +1,10 @@
-import { AsteriaProcessManager } from '../../gaia/gaia.index';
+import { AsteriaProcessManager, AsteriaObject } from '../../gaia/gaia.index';
 import { OuranosProcessManager } from '../process/im/OuranosProcessManager';
-
-// Class name reference:
-const CLASS_NAME: string = 'com.asteria.ouranos.factory::AsteriaManagerFactory';
 
 /**
  * Provides functionality to create new <code>AsteriaProcessManager</code> instances through a singleton implementation.
  */
-export class AsteriaManagerFactory {
+export class AsteriaManagerFactory extends AsteriaObject {
 
     /**
      * Stores the static reference to this singleton.
@@ -17,7 +14,9 @@ export class AsteriaManagerFactory {
     /**
      * Creates a new <code>AsteriaManagerFactory</code> instance.
      */
-    private constructor() {}
+    private constructor() {
+        super('com.asteria.ouranos.factory::AsteriaManagerFactory');
+    }
 
     /**
      * Returns the reference to this singleton.

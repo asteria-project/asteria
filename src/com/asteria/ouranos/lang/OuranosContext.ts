@@ -1,10 +1,7 @@
-import { AsteriaContext, AsteriaProcessManager, AsteriaLogger } from '../../gaia/gaia.index';
+import { AsteriaContext, AsteriaProcessManager, AsteriaLogger, AsteriaObject } from '../../gaia/gaia.index';
 import { Uuid } from './Uuid';
 import { AsteriaManagerFactory } from '../factory/AsteriaManagerFactory';
 import { OuranosLogger } from '../util/logging/OuranosLogger';
-
-// Class name reference:
-const CLASS_NAME: string = 'com.asteria.ouranos.lang::OuranosContext';
 
 // Static logger reference:
 const LOGGER: AsteriaLogger = OuranosLogger.getLogger();
@@ -12,7 +9,7 @@ const LOGGER: AsteriaLogger = OuranosLogger.getLogger();
 /**
  * The Ouranos implementation of the <code>AsteriaContext</code> interface.
  */
-export class OuranosContext implements AsteriaContext {
+export class OuranosContext extends AsteriaObject implements AsteriaContext {
 
     /**
      * The context associated with this session.
@@ -32,9 +29,10 @@ export class OuranosContext implements AsteriaContext {
     /**
      * Creates a new <code>OuranosSession</code> instance.
      * 
-     * @param {string} the name of the session associated with this context.
+     * @param {string} name the name of the session associated with this context.
      */
     constructor(name: string) {
+        super('com.asteria.ouranos.lang::OuranosContext');
         this.SESSION_ID = Uuid.v4();
         this.SESSION_NAME = name;
         this.PROCESS_MANAGER = AsteriaManagerFactory.getInstance().getManager();

@@ -1,6 +1,3 @@
-// Class name reference:
-const CLASS_NAME: string = 'com.asteria.gaia.lang::AsteriaErrorCode';
-
 /**
  * The <code>AsteriaErrorCode</code> enum defines all error code specified by the Asteria project.
  */

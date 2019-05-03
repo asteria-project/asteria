@@ -1,9 +1,17 @@
 import { PrimitiveType } from './PrimitiveType';
+import { AsteriaObject } from '../../gaia/gaia.index';
 
 /**
  * A utility class that provides operations on boolean primitives and <code>Boolean</code> objects.
  */
-export class AsteriaBooleanUtil {
+export class AsteriaBooleanUtil extends AsteriaObject {
+
+    /**
+     * Creates a new <code>AsteriaBooleanUtil</code> instance.
+     */
+    constructor() {
+        super('com.asteria.ouranos.util::AsteriaBooleanUtil');
+    }
 
     /**
      * Turns the specified <code>input</code> into a boolean value.

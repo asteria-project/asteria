@@ -2,9 +2,6 @@ import { AsteriaModule, AsteriaData, AbstractAsteriaModule, FilterDefinition, Fi
 import { FilterListModuleConfig } from '../../config/im/FilterListModuleConfig';
 import { AsteriaDataBuilder, AsteriaFilterManager, ListDataBuilder, OuranosLogger, AsteriaErrorBuilder } from '../../../ouranos/ouranos.index';
 
-// Class name reference:
-const CLASS_NAME: string = 'com.asteria.crios.module.im::FilterListModule';
-
 // Static logger reference:
 const LOGGER: AsteriaLogger = OuranosLogger.getLogger();
 
@@ -17,7 +14,7 @@ export class FilterListModule extends AbstractAsteriaModule implements AsteriaMo
      * Creates a new <code>FilterListModule</code> instance.
      */
     constructor() {
-        super('FilterListModule');
+        super('com.asteria.crios.module.im::FilterListModule');
     }
 
     /**
@@ -49,7 +46,7 @@ export class FilterListModule extends AbstractAsteriaModule implements AsteriaMo
                 } catch (e) {
                     const error: AsteriaError = AsteriaErrorBuilder.getInstance().build(
                         AsteriaErrorCode.PROCESS_FAILURE,
-                        CLASS_NAME,
+                        this.getClassName(),
                         'asteria process failed: ' + e.message,
                         e.stack
                     );
@@ -79,7 +76,7 @@ export class FilterListModule extends AbstractAsteriaModule implements AsteriaMo
         } else {
             const error: AsteriaError = AsteriaErrorBuilder.getInstance().build(
                 AsteriaErrorCode.MISSING_FILTER,
-                CLASS_NAME,
+                this.getClassName(),
                 'missing filter list'
             );
             LOGGER.error(error.toString());

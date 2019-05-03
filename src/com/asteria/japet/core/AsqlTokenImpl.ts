@@ -1,13 +1,11 @@
 import { AsqlToken } from '../lang/AsqlToken';
 import { AsqlTokenType } from '../lang/AsqlTokenType';
-
-// Class name reference:
-const CLASS_NAME: string = 'com.asteria.japet.core::AsqlTokenImpl';
+import { AsteriaObject } from '../../gaia/gaia.index';
 
 /**
  * The default implementation of the <code>AsqlToken</code> interface.
  */
-export class AsqlTokenImpl implements AsqlToken {
+export class AsqlTokenImpl extends AsteriaObject implements AsqlToken {
 
     /**
      * @inheritdoc
@@ -26,6 +24,7 @@ export class AsqlTokenImpl implements AsqlToken {
      * @param {any} value the value for this AsQL token.
      */
     constructor(type: AsqlTokenType, value: any) {
+        super('com.asteria.japet.core::AsqlTokenImpl');
         this.type = type;
         this.value = value;
     }

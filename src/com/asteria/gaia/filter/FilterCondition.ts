@@ -1,6 +1,3 @@
-// Class name reference:
-const CLASS_NAME: string = 'com.asteria.gaia.filter::FilterCondition';
-
 /**
  * The <code>FilterCondition</code> enum defines a list of conditions that can  be used by an Asteria module to filter
  * objects.

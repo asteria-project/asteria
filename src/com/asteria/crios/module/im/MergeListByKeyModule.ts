@@ -2,9 +2,6 @@ import { AsteriaModule, AsteriaData, AbstractAsteriaModule, AsteriaCache, ListDa
 import { MergeListByKeyModuleConfig } from '../../config/im/MergeListByKeyModuleConfig';
 import { CacheManager, AsteriaDataBuilder, ListDataBuilder } from '../../../ouranos/ouranos.index';
 
-// Class name reference:
-const CLASS_NAME: string = 'com.asteria.crios.module.im::MergeListByKeyModule';
-
 /**
  * An implementation of the <code>AsteriaModule</code> interface that merges all objects in two lists, bu using a key
  * correspondence.
@@ -15,7 +12,7 @@ export class MergeListByKeyModule extends AbstractAsteriaModule implements Aster
      * Creates a new <code>MergeListByKeyModule</code> instance.
      */
     constructor() {
-        super('MergeListByKeyModule');
+        super('com.asteria.crios.module.im::MergeListByKeyModule');
     }                      
     
     /**

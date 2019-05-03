@@ -33,7 +33,7 @@ const config: HyperionConfig = {
         }
     ]
 };
-Hyperion.build(config).show();
+Hyperion.build(config).print();
 ```
 
 Notice that the Hyperion config object specified above can be defined as a JSON string as shown below:

@@ -29,4 +29,4 @@ Hyperion.build({
                     config: 'population GREATER_THAN 1000000 AND country LIKE \'us\''
                 }
             ]
-        }).show();
+        }).print();

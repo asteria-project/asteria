@@ -1,13 +1,10 @@
-import { AsteriaCache, AsteriaData } from '../../gaia/gaia.index';
+import { AsteriaCache, AsteriaData, AsteriaObject } from '../../gaia/gaia.index';
 import { Uuid } from '../lang/Uuid';
-
-// Class name reference:
-const CLASS_NAME: string = 'com.asteria.ouranos.cache::IMCache';
 
 /**
  * An <code>AsteriaCache</code> interface implementation that provides "in memory" data storage.
  */
-export class IMCache implements AsteriaCache {
+export class IMCache extends AsteriaObject implements AsteriaCache {
 
     /**
      * The reference to the identifier for this cache object.
@@ -23,6 +20,7 @@ export class IMCache implements AsteriaCache {
      * Creates a new <code>IMCache</code> instance.
      */
     constructor() {
+        super('com.asteria.ouranos.cache::IMCache');
         this.ID = Uuid.v4();
         this.CACHED_OBJ = new Map<string, any>();
     }

@@ -1,6 +1,3 @@
-// Class name reference:
-const CLASS_NAME: string = 'com.asteria.gaia.util::AsteriaLogLevel';
-
 /**
  * The <code>AsteriaLogLevel</code> enum defines a set of standard logging
  * levels that can be used to control logging output. 
@@ -28,7 +25,7 @@ export enum AsteriaLogLevel {
     ERROR = 'ERROR',
 
     /**
-     * <code>ERROR</code> is a message level indicating an unrecoverable application or system crash, or a catastrophic
+     * <code>FATAL</code> is a message level indicating an unrecoverable application or system crash, or a catastrophic
      * failure that requires immediate attention.
      */
     FATAL = 'FATAL'

@@ -1,11 +1,8 @@
 import { AsqlToken } from '../lang/AsqlToken';
 import { AsqlFilterDefinition } from '../lang/AsqlFilterDefinition';
-import { FilterCondition, AsteriaLogger, AsteriaErrorCode, CommonChar, FilterDefinition } from '../../gaia/gaia.index';
+import { FilterCondition, AsteriaLogger, AsteriaErrorCode, CommonChar, FilterDefinition, AsteriaObject } from '../../gaia/gaia.index';
 import { AsqlTokenType } from '../lang/AsqlTokenType';
 import { OuranosLogger, AsteriaErrorBuilder } from '../../ouranos/ouranos.index';
-
-// Class name reference:
-const CLASS_NAME: string = 'com.asteria.japet.lang::FilterQueryAdapter';
 
 // Static logger reference:
 const LOGGER: AsteriaLogger = OuranosLogger.getLogger();
@@ -14,7 +11,7 @@ const LOGGER: AsteriaLogger = OuranosLogger.getLogger();
  * The <code>FilterQueryAdapter</code> class allows to transform a series of AsQL tokens into an Asteria filtering
  * definition object.
  */
-export class FilterQueryAdapter {
+export class FilterQueryAdapter extends AsteriaObject {
 
     /**
      * Sores the reference to the condition clause of the Asteria filtering definition object.
@@ -31,6 +28,13 @@ export class FilterQueryAdapter {
      * references.
      */
     private _filterAcc: Array<AsqlToken> = null; 
+
+    /**
+     * Creates a new <code>AsteriaDataBase</code> instance.
+     */
+    constructor() {
+        super('com.asteria.japet.lang::FilterQueryAdapter');
+    }
 
     /**
      * Turns a list of AsQL tokens into an Asteria filtering definition object.
@@ -69,7 +73,7 @@ export class FilterQueryAdapter {
         if (condition !== FilterCondition.AND && condition !== FilterCondition.OR) {
             errorString = AsteriaErrorBuilder.getInstance().build(
                 AsteriaErrorCode.INVALID_ASQL_CONDITION,
-                CLASS_NAME,
+                this.getClassName(),
                 `filter condition must be AND or OR; found '${condition}'`
             ).toString();
             LOGGER.fatal(errorString);
@@ -81,7 +85,7 @@ export class FilterQueryAdapter {
             if (this._condition !== condition) {
                 errorString = AsteriaErrorBuilder.getInstance().build(
                     AsteriaErrorCode.INVALID_ASQL_CONDITION,
-                    CLASS_NAME,
+                    this.getClassName(),
                     'filters support only one type of condition clause'
                 ).toString();
                 LOGGER.fatal(errorString);

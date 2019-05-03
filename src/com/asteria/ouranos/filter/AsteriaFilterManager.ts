@@ -1,15 +1,12 @@
-import { AsteriaFilter } from '../../gaia/gaia.index';
+import { AsteriaFilter, AsteriaObject } from '../../gaia/gaia.index';
 import { StartsWithFilter } from './impl/StartsWithFilter';
 import { LikeFilter } from './impl/LikeFilter';
 import { GreaterThanFilter } from './impl/GreaterThanFilter';
 
-// Class name reference:
-const CLASS_NAME: string = 'com.asteria.ouranos.filter::AsteriaFilterManager';
-
 /**
  * Provides functionality to work with new <code>AsteriaFilter</code> instances through a singleton implementation.
  */
-export class AsteriaFilterManager {
+export class AsteriaFilterManager extends AsteriaObject {
 
     /**
      * Stores the static reference to this singleton.
@@ -25,6 +22,7 @@ export class AsteriaFilterManager {
      * Creates a new <code>AsteriaFilterManager</code> instance.
      */
     private constructor() {
+        super('com.asteria.ouranos.filter::AsteriaFilterManager');
         this.init();
     }
 

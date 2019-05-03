@@ -1,14 +1,19 @@
 import { AsqlToken } from '../lang/AsqlToken';
 import { AsqlTokenImpl } from '../core/AsqlTokenImpl';
 import { AsqlTokenType } from '../lang/AsqlTokenType';
-
-// Class name reference:
-const CLASS_NAME: string = 'com.asteria.japet.lang::AsqlTokenBuilder';
+import { AsteriaObject } from '../../gaia/gaia.index';
 
 /**
  * A static builder for creating <code>AsqlToken</code> objects.
  */
-export class AsqlTokenBuilder {
+export class AsqlTokenBuilder extends AsteriaObject {
+
+    /**
+     * Creates a new <code>AsteriaDataBase</code> instance.
+     */
+    constructor() {
+        super('com.asteria.japet.lang::AsqlTokenBuilder');
+    }
 
     /**
      * Creates and returns a new <code>AsqlToken</code> object.

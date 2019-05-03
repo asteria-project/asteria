@@ -1,13 +1,10 @@
-import { AsteriaData, AsteriaProcess, AsteriaModule, AsteriaModuleConfig } from '../../../gaia/gaia.index';
+import { AsteriaData, AsteriaProcess, AsteriaModule, AsteriaModuleConfig, AsteriaObject } from '../../../gaia/gaia.index';
 import { OuranosProcess } from '../../process/im/OuranosProcess';
-
-// Class name reference:
-const CLASS_NAME: string = 'com.asteria.ouranos.util.builder::AsteriaProcessBuilder';
 
 /**
  * A utility class for building <code>AsteriaProcess</code> objects, available as a singleton.
  */
-export class AsteriaProcessBuilder {
+export class AsteriaProcessBuilder extends AsteriaObject {
 
     /**
      * Stores the static reference to this singleton.
@@ -17,7 +14,9 @@ export class AsteriaProcessBuilder {
     /**
      * Creates a new <code>AsteriaDataBuilder</code> instance.
      */
-    private constructor() {}
+    private constructor() {
+        super('com.asteria.ouranos.util.builder::AsteriaProcessBuilder');
+    }
 
     /**
      * Returns the reference to this singleton.

@@ -4,8 +4,6 @@ import { CsvColumnMapper } from '../../util/CsvColumnMapper';
 import { CsvToListModuleConfig } from '../../config/im/CsvToListModuleConfig';
 import { PropertyCastMapper } from '../../util/PropertyCastMapper';
 
-// Class name reference:
-const CLASS_NAME: string = 'com.asteria.crios.module.im::CsvToListModule';
 
 // Static logger reference:
 const LOGGER: AsteriaLogger = OuranosLogger.getLogger();
@@ -19,7 +17,7 @@ export class CsvToListModule extends AbstractAsteriaModule implements AsteriaMod
      * Creates a new <code>CsvToListModule</code> instance.
      */
     constructor() {
-        super('CsvToListModule');
+        super('com.asteria.crios.module.im::CsvToListModule');
     }
 
     /**
@@ -74,7 +72,7 @@ export class CsvToListModule extends AbstractAsteriaModule implements AsteriaMod
                 } catch (e) {
                     const error: AsteriaError = AsteriaErrorBuilder.getInstance().build(
                         AsteriaErrorCode.PROCESS_FAILURE,
-                        CLASS_NAME,
+                        this.getClassName(),
                         'asteria process failed: ' + e.message,
                         e.stack
                     );
@@ -138,7 +136,7 @@ export class CsvToListModule extends AbstractAsteriaModule implements AsteriaMod
                 AsteriaErrorBuilder.getInstance()
                                    .build(
                                         AsteriaErrorCode.INVALID_PARAMETER,
-                                        CLASS_NAME,
+                                        this.getClassName(),
                                         `property '${prop}' does not exist in CSV file`
                                     ).toString()
             );

@@ -1,11 +1,8 @@
-import { AsteriaFilter, CommonChar, AsteriaError, AsteriaErrorCode, AsteriaLogger } from '../../gaia/gaia.index';
+import { CommonChar, AsteriaError, AsteriaErrorCode, AsteriaLogger, AsteriaObject } from '../../gaia/gaia.index';
 import { AsqlToken } from './AsqlToken';
 import { AsqlTokenType } from './AsqlTokenType';
 import { AsqlTokenBuilder } from '../util/AsqlTokenBuilder';
 import { AsteriaErrorBuilder, OuranosLogger } from '../../ouranos/ouranos.index';
-
-// Class name reference:
-const CLASS_NAME: string = 'com.asteria.japet.lang::AsqlParser';
 
 // Static logger reference:
 const LOGGER: AsteriaLogger = OuranosLogger.getLogger();
@@ -14,7 +11,7 @@ const LOGGER: AsteriaLogger = OuranosLogger.getLogger();
  * The <code>AsqlParser</code> class allows to parse strings that represent queries as defined by the Asteria Query
  * Lanquage specification (AsQL).
  */
-export class AsqlParser {
+export class AsqlParser extends AsteriaObject {
     
     /**
      * The reference to a single quote character.
@@ -25,6 +22,13 @@ export class AsqlParser {
      * The reference to a double quote character.
      */
     private static readonly DOUBLE_QUOTE: string = '"';
+
+    /**
+     * Creates a new <code>AsteriaDataBase</code> instance.
+     */
+    constructor() {
+        super('com.asteria.japet.lang::AsqlParser');
+    }
 
     /**
      * Parses the specified AsQL string and returns the corresponding array of AsQL tokens.
@@ -109,6 +113,10 @@ export class AsqlParser {
      * @returns {AsteriaError} an asteria error with the specified message.
      */
     private getValueError(errorMsg: string): AsteriaError {
-        return AsteriaErrorBuilder.getInstance().build(AsteriaErrorCode.INVALID_ASQL_OPERAND, CLASS_NAME, errorMsg);
+        return AsteriaErrorBuilder.getInstance().build(
+            AsteriaErrorCode.INVALID_ASQL_OPERAND,
+            this.getClassName(),
+            errorMsg
+        );
     }
 }

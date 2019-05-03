@@ -1,12 +1,11 @@
 import { AsteriaErrorCode } from './AsteriaErrorCode';
 import { CommonChar } from './CommonChar';
+import { AsteriaObject } from './AsteriaObject';
 
-// Class name reference:
-const CLASS_NAME: string = 'com.asteria.gaia.lang::AsteriaError';
-
-export class AsteriaError {
+export class AsteriaError extends AsteriaObject {
 
     constructor(code: AsteriaErrorCode, className: string, message: string, stack?: string) {
+        super('com.asteria.gaia.lang::AsteriaError');
         this.code = code;
         this.className = className;
         this.message = message;

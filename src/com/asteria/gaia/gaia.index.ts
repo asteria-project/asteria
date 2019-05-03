@@ -32,6 +32,7 @@ export { FilterOperator } from './filter/FilterOperator';
 export { AsteriaContext } from './lang/AsteriaContext';
 export { AsteriaError } from './lang/AsteriaError';
 export { AsteriaErrorCode } from './lang/AsteriaErrorCode';
+export { AsteriaObject } from './lang/AsteriaObject';
 export { AsteriaSession } from './lang/AsteriaSession';
 export { CommonChar } from './lang/CommonChar';
 

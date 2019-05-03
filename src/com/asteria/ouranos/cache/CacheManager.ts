@@ -1,13 +1,10 @@
-import { AsteriaCacheManager, AsteriaCache } from '../../gaia/gaia.index';
+import { AsteriaCacheManager, AsteriaCache, AsteriaObject } from '../../gaia/gaia.index';
 import { IMCache } from './IMCache';
-
-// Class name reference:
-const CLASS_NAME: string = 'com.asteria.ouranos.cache::CacheManager';
 
 /**
  * The Ouranos implementation of the <code>AsteriaCacheManager</code> interface.
  */
-export class CacheManager implements AsteriaCacheManager {
+export class CacheManager extends AsteriaObject implements AsteriaCacheManager {
 
     /**
      * Stores the static reference to this singleton.
@@ -28,6 +25,7 @@ export class CacheManager implements AsteriaCacheManager {
      * Creates a new <code>CacheManager</code> instance.
      */
     private constructor() {
+        super('com.asteria.ouranos.cache::CacheManager');
         this.CACHE_MAP = new Map<string, AsteriaCache>();
         const defaultCache: AsteriaCache = new IMCache();
         this.DEFAULT_CACHE_ID = defaultCache.getId();

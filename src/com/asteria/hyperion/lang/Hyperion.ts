@@ -1,4 +1,4 @@
-import { AsteriaData, AsteriaError, AsteriaLogger } from '../../gaia/gaia.index';
+import { AsteriaData, AsteriaError, AsteriaLogger, AsteriaObject } from '../../gaia/gaia.index';
 import { Ouranos, OuranosLogger } from '../../ouranos/ouranos.index';
 import { HyperionProcessor } from '../processor/HyperionProcessor';
 import { HyperionConfig } from '../config/HyperionConfig';
@@ -7,9 +7,6 @@ import { HyperionBaseProcessDef } from '../util/HyperionBaseProcessDef';
 import { HyperionValidatorManager } from '../validator/HyperionValidatorManager';
 import { HyperionValidator } from '../validator/HyperionValidator';
 
-// Class name reference:
-const CLASS_NAME: string = 'com.asteria.hyperion.lang::Hyperion';
-
 // Static logger reference:
 const LOGGER: AsteriaLogger = OuranosLogger.getLogger();
 
@@ -17,7 +14,7 @@ const LOGGER: AsteriaLogger = OuranosLogger.getLogger();
  * The <code>Hyperion</code> class is the entry point of the Hyperion framework. It provides all functionalities needed
  * for running Asteria processes defined by Plain Old JavaScript objects.
  */
-export class Hyperion {
+export class Hyperion extends AsteriaObject {
 
     /**
      * The reference to the processor used by this <code>Hyperion</code> instance to run Asteria modules.
@@ -35,6 +32,7 @@ export class Hyperion {
      * @param {string} name the name of the session associated with the new <code>Hyperion</code> instance.
      */
     private constructor(name: string) {
+        super('com.asteria.hyperion.lang::Hyperion');
         this.PROCESSOR = new HyperionProcessor(Ouranos.buildSession(name));
         this.VALIDATOR_MANAGER = new HyperionValidatorManager();
     }
@@ -70,7 +68,7 @@ export class Hyperion {
      * @return {Promise<AsteriaData<any>>} the result of these operation defined by all processes registered in this
      *                                     <code>Hyperion</code> instance.
      */
-    public show(): Promise<AsteriaData<any>> {
+    public print(): Promise<AsteriaData<any>> {
         return this.PROCESSOR.run()
                              .then((value: AsteriaData<any>)=> {
                                 console.log(value.data);

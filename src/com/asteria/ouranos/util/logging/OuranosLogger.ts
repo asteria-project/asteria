@@ -1,13 +1,10 @@
-import { AsteriaLogger, AsteriaLogLevel } from '../../../gaia/gaia.index';
+import { AsteriaLogger, AsteriaLogLevel, AsteriaObject } from '../../../gaia/gaia.index';
 import * as logger from 'ts-log-debug';
-
-// Class name reference:
-const CLASS_NAME: string = 'com.asteria.ouranos.util.logging::OuranosLogger';
 
 /**
  * A singleton implementation of the <code>AsteriaLogger</code> interface.
  */
-export class OuranosLogger implements AsteriaLogger {
+export class OuranosLogger extends AsteriaObject implements AsteriaLogger {
 
     /**
      * Stores the static reference to this logger.
@@ -23,6 +20,7 @@ export class OuranosLogger implements AsteriaLogger {
      * Creates a new <code>Logger</code> instance.
      */
     private constructor() {
+        super('com.asteria.ouranos.util.logging::OuranosLogger');
         this._logger = new logger.Logger('Asteria');
         this._logger.appenders.set(
             'stdout',

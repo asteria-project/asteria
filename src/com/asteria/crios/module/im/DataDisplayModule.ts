@@ -1,20 +1,16 @@
 import { AsteriaModule, AsteriaData, AbstractAsteriaModule } from '../../../gaia/gaia.index';
 
-// Class name reference:
-const CLASS_NAME: string = 'com.asteria.crios.module.im::DataDisplayModule';
-
 /**
  * A generic implementation of the <code>AsteriaModule</code> interface that displays the data input into the JavaScript
  * console.
  */
-export class DataDisplayModule extends AbstractAsteriaModule
-                               implements AsteriaModule {
+export class DataDisplayModule extends AbstractAsteriaModule implements AsteriaModule {
 
     /**
      * Creates a new <code>DataDisplayModule</code> instance.
      */
     constructor() {
-        super('DataDisplayModule');
+        super('com.asteria.crios.module.im::DataDisplayModule');
     }                      
     
     /**

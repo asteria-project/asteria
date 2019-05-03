@@ -1,11 +1,8 @@
 import { FilterListModuleConfig } from '../../../crios/crios.index';
 import { HyperionConfigAdapter } from '../HyperionConfigAdapter';
 import { AsqlParser, AsqlToken, FilterQueryAdapter, AsqlFilterDefinition } from '../../../japet/japet.index';
-import { AsteriaFilter, AsteriaError, AsteriaErrorCode, AsteriaLogger } from '../../../gaia/gaia.index';
+import { AsteriaFilter, AsteriaError, AsteriaErrorCode, AsteriaLogger, AsteriaObject } from '../../../gaia/gaia.index';
 import { AsteriaErrorBuilder, OuranosLogger, PrimitiveType } from '../../../ouranos/ouranos.index';
-
-// Class name reference:
-const CLASS_NAME: string = 'com.asteria.hyperion.config.adapter::FilterConfigAdapter';
 
 // Static logger reference:
 const LOGGER: AsteriaLogger = OuranosLogger.getLogger();
@@ -13,7 +10,14 @@ const LOGGER: AsteriaLogger = OuranosLogger.getLogger();
 /**
  * The <code>FilterConfigAdapter</code> class allows to convert <code>filter</code> config objects.
  */
-export class FilterConfigAdapter implements HyperionConfigAdapter {
+export class FilterConfigAdapter extends AsteriaObject implements HyperionConfigAdapter {
+
+    /**
+     * Creates a new <code>FilterConfigAdapter</code> instance.
+     */
+    constructor() {
+        super('com.asteria.hyperion.config.adapter::FilterConfigAdapter');
+    }
 
     /**
      * @inheritdoc
@@ -24,14 +28,14 @@ export class FilterConfigAdapter implements HyperionConfigAdapter {
         if (!config) {
             error = AsteriaErrorBuilder.getInstance().build(
                 AsteriaErrorCode.MISSING_ASQL_QUERY,
-                CLASS_NAME,
+                this.getClassName(),
                 'filter query is missing'
             );
             LOGGER.error(error.toString());
         } else if (typeof config !== PrimitiveType.STRING) {
             error = AsteriaErrorBuilder.getInstance().build(
                 AsteriaErrorCode.INVALID_ASQL_QUERY,
-                CLASS_NAME,
+                this.getClassName(),
                 'filter query must be of the type of \'string\''
             );
         } else {

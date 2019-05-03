@@ -1,12 +1,9 @@
-import { ListData } from '../../../gaia/gaia.index';
-
-// Class name reference:
-const CLASS_NAME: string = 'com.asteria.ouranos.util.builder::ListDataBuilder';
+import { ListData, AsteriaObject } from '../../../gaia/gaia.index';
 
 /**
  * A utility class for building <code>ListData</code> objects, available as a singleton.
  */
-export class ListDataBuilder {
+export class ListDataBuilder extends AsteriaObject {
 
     /**
      * Stores the static reference to this singleton.
@@ -16,7 +13,9 @@ export class ListDataBuilder {
     /**
      * Creates a new <code>ListDataBuilder</code> instance.
      */
-    private constructor() {}
+    private constructor() {
+        super('com.asteria.ouranos.util.builder::ListDataBuilder');
+    }
 
     /**
      * Returns the reference to this singleton.
