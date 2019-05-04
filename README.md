@@ -50,7 +50,29 @@ Notice that the Hyperion config object specified above can be defined as a JSON 
         }
     ]
 }
- ```
+```
+
+The previous sample application can be implemented by using the Ouranos framework as shown below:
+
+```javascript
+const fileReaderConfig: FileReaderConfig = { path: 'worldcitiespop.csv') };
+const csvToListConfig: CsvToListConfig = { separator: ';' };
+const filterConfig: FilterConfig = {
+    condition: FilterCondition.AND,
+    filters: [
+        { property: 'Population',   operator: FilterOperator.GREATER_THAN,  value: 1000000 },
+        { property: 'Country',      operator: FilterOperator.LIKE,          value: 'us' }
+    ]
+ };
+
+Ouranos.createSession({ name: 'UsMegaCities'})
+       .getContext()
+       .getProcessor()
+       .add( Ouranos.buildProcess(FileReaderProcess, fileReaderConfig) )
+       .add( Ouranos.buildProcess(CsvToListProcess, csvToListConfig) )
+       .add( Ouranos.buildProcess(FilterProcess, filterConfig) )
+       .print();
+```
 
 ## Understanding the Theogony
 
