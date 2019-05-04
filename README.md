@@ -20,12 +20,7 @@ Hyperion.build({
                 },
                 {
                     type: 'csv-to-list',
-                    config: {
-                        separator: ';',
-                        colsCast: [
-                            { id: 4, castRef: 'number' }
-                        ]
-                    }
+                    config: { separator: ';' }
                 },
                 {
                     type: 'filter',
@@ -45,12 +40,7 @@ Hyperion.build({
         },
         {
             "type": "csv-to-list",
-            "config": {
-                "separator": ";",
-                "colsCast": [
-                    { "id": 4, "castRef": "number" },
-                ]
-            }
+            "config": { "separator": ";" }
         },
         {
             "type": "filter",
