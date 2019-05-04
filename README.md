@@ -16,7 +16,7 @@ Hyperion.build({
             processes: [
                 {
                     type: 'read-file',
-                    config: csvPath
+                    config: 'worldcitiespop.csv'
                 },
                 {
                     type: 'csv-to-list',
@@ -29,6 +29,8 @@ Hyperion.build({
             ]
         }).print();
  ```
+
+Notice that the Hyperion config object specified above can be defined as a JSON string as shown below:
 
  ```json
  {
