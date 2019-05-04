@@ -1,13 +1,12 @@
+import { Ouranos, FileReaderProcess, FileReaderConfig, CsvToListProcess, CsvToListConfig } from './com/asteria/asteria.index';
 import * as path from 'path';
-import { Ouranos, OuranosProcessBuilder, FileReaderProcess, FileReaderConfig, StreamProcessBuilder, CsvToListProcess } from './com/asteria/asteria.index';
 
-const builder: StreamProcessBuilder = OuranosProcessBuilder.getInstance();
 const fileReaderConfig: FileReaderConfig = { path: path.join(__dirname, 'temp-data', 'worldcitiespop-dev.csv') };
-const csvToListConfig: any = {  };
+const csvToListConfig: CsvToListConfig = { separator: ';' };
 
 Ouranos.createSession({ name: 'UsMegaCities'})
        .getContext()
        .getProcessor()
-       .add( builder.build(FileReaderProcess, fileReaderConfig) )
-       .add( builder.build(CsvToListProcess, csvToListConfig) )
+       .add( Ouranos.buildProcess(FileReaderProcess, fileReaderConfig) )
+       .add( Ouranos.buildProcess(CsvToListProcess, csvToListConfig) )
        .run();

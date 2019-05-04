@@ -9,6 +9,9 @@
 export { CsvToListConfig } from './config/CsvToListConfig';
 export { FileReaderConfig } from './config/FileReaderConfig';
 
+//--> com/asteria/cronos/core
+export { CronosTransformStream } from './core/CronosTransformStream';
+
 //--> com/asteria/cronos/process
 export { CsvToListProcess } from './process/CsvToListProcess';
 export { FileReaderProcess } from './process/FileReaderProcess';

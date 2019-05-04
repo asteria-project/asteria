@@ -1,15 +1,11 @@
-import { Transform, TransformCallback } from 'stream';
+import { TransformCallback, TransformOptions } from 'stream';
 import { AsteriaStream, CommonChar } from '../../gaia/gaia.index';
+import { CronosTransformStream } from '../core/CronosTransformStream';
 
 /**
  * The <code>CsvToListStream</code> class is a transformation stream that turns CSV chuncks into a list of POJOs.
  */
-export class CsvToListStream extends Transform implements AsteriaStream {
-
-    /**
-     * The class name reference.
-     */
-    private static readonly CLASS_NAME: string = 'com.asteria.cronos.stream::CsvToListStream';
+export class CsvToListStream extends CronosTransformStream implements AsteriaStream {
 
     /**
      * Represents a new line character.
@@ -37,16 +33,18 @@ export class CsvToListStream extends Transform implements AsteriaStream {
     private _objModel: any = null;
 
     /**
-     * @inheritdoc
+     * Create a new <code>CsvToListStream</code> instance.
+     * 
+     * @param {TransformOptions} opts the list of options for this stream.
      */
-    public getClassName(): string {
-        return CsvToListStream.CLASS_NAME;
+    constructor(opts?: TransformOptions) {
+        super('com.asteria.cronos.stream::CsvToListStream', opts);
     }
 
     /**
      * @inherit
      */
-    public _transform(chunk: any, encoding: string, callback: TransformCallback): void {
+    protected transform(chunk: any, encoding: string, callback: TransformCallback): void {
         const data: Array<string> = this.buildCsvArray('' + chunk);
         // this.push(chunk);
         const result: string = JSON.stringify(data);
