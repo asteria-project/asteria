@@ -1,4 +1,4 @@
-import { StreamProcessConfig } from '../../gaia/gaia.index';
+import { StreamProcessConfig } from '../../../gaia/gaia.index';
 
 /**
  * The <code>FileReaderConfig</code> interface represents the configuration of a <code>FileReaderProcess</code> stream

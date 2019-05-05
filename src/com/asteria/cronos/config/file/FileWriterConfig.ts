@@ -1,4 +1,4 @@
-import { StreamProcessConfig } from '../../gaia/gaia.index';
+import { StreamProcessConfig } from '../../../gaia/gaia.index';
 
 /**
  * The <code>FileWriterConfig</code> interface represents the configuration of a <code>FileWriterProcess</code> stream

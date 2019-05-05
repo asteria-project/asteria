@@ -1,4 +1,4 @@
-import { StreamProcessConfig, FilterCondition, FilterDefinition } from '../../gaia/gaia.index';
+import { StreamProcessConfig, FilterCondition, FilterDefinition } from '../../../gaia/gaia.index';
 
 /**
  * The <code>FilterConfig</code> interface represents the configuration of a <code>FilterProcess</code> stream process.

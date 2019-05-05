@@ -1,5 +1,5 @@
-import { AsteriaStream } from '../../gaia/gaia.index';
-import { FileWriterConfig } from '../config/FileWriterConfig';
+import { AsteriaStream } from '../../../gaia/gaia.index';
+import { FileWriterConfig } from '../../config/file/FileWriterConfig';
 import {  WriteStream } from 'fs';
 
 /**

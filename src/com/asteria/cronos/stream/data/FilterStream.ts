@@ -1,8 +1,8 @@
 import { TransformCallback, TransformOptions } from 'stream';
-import { AsteriaStream, FilterDefinition, FilterCondition, CommonChar } from '../../gaia/gaia.index';
-import { CronosTransformStream } from '../core/CronosTransformStream';
-import { FilterConfig } from '../config/FilterConfig';
-import { OuranosFilterManager } from '../../ouranos/ouranos.index';
+import { AsteriaStream, FilterDefinition, FilterCondition, CommonChar } from '../../../gaia/gaia.index';
+import { CronosTransformStream } from '../../core/CronosTransformStream';
+import { FilterConfig } from '../../config/data/FilterConfig';
+import { OuranosFilterManager } from '../../../ouranos/ouranos.index';
 
 /**
  * The <code>FilterStream</code> class is a transformation stream that allows to filter lists of POJOs.

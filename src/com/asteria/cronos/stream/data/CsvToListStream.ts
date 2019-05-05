@@ -1,8 +1,8 @@
 import { TransformCallback, TransformOptions } from 'stream';
-import { AsteriaStream, CommonChar } from '../../gaia/gaia.index';
-import { CronosTransformStream } from '../core/CronosTransformStream';
-import { CsvToListConfig } from '../config/CsvToListConfig';
-import { CsvColumnMapper } from '../util/CsvColumnMapper';
+import { AsteriaStream, CommonChar } from '../../../gaia/gaia.index';
+import { CronosTransformStream } from '../../core/CronosTransformStream';
+import { CsvToListConfig } from '../../config/data/CsvToListConfig';
+import { CsvColumnMapper } from '../../util/CsvColumnMapper';
 
 /**
  * The <code>CsvToListStream</code> class is a transformation stream that turns CSV chuncks into a list of POJOs.

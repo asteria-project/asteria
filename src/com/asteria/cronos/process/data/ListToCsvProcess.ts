@@ -1,6 +1,6 @@
-import { AbstractAsteriaObject, StreamProcess, StreamProcessType, AsteriaStream } from '../../gaia/gaia.index';
-import { ListToCsvConfig } from '../config/ListToCsvConfig';
-import { ListToCsvStream } from '../stream/ListToCsvStream';
+import { AbstractAsteriaObject, StreamProcess, StreamProcessType, AsteriaStream } from '../../../gaia/gaia.index';
+import { ListToCsvConfig } from '../../config/data/ListToCsvConfig';
+import { ListToCsvStream } from '../../stream/data/ListToCsvStream';
 
 /**
  * A basic stream process that turns list of POJOs into a CSV string.

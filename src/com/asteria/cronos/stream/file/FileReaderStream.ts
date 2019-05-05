@@ -1,5 +1,5 @@
-import { AsteriaStream } from '../../gaia/gaia.index';
-import { FileReaderConfig } from '../config/FileReaderConfig';
+import { AsteriaStream } from '../../../gaia/gaia.index';
+import { FileReaderConfig } from '../../config/file/FileReaderConfig';
 import { ReadStream } from 'fs';
 
 /**

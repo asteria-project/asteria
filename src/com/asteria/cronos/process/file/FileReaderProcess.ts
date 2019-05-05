@@ -1,6 +1,6 @@
-import { AbstractAsteriaObject, StreamProcess, StreamProcessType, AsteriaStream } from '../../gaia/gaia.index';
-import { FileReaderConfig } from '../config/FileReaderConfig';
-import { FileReaderStream } from '../stream/FileReaderStream';
+import { AbstractAsteriaObject, StreamProcess, StreamProcessType, AsteriaStream } from '../../../gaia/gaia.index';
+import { FileReaderConfig } from '../../config/file/FileReaderConfig';
+import { FileReaderStream } from '../../stream/file/FileReaderStream';
 
 /**
  * A basic stream process that allows to read a local file.

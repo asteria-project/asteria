@@ -1,6 +1,6 @@
-import { AbstractAsteriaObject, StreamProcess, StreamProcessType, AsteriaStream } from '../../gaia/gaia.index';
-import { FilterConfig } from '../config/FilterConfig';
-import { FilterStream } from '../stream/FilterStream';
+import { AbstractAsteriaObject, StreamProcess, StreamProcessType, AsteriaStream } from '../../../gaia/gaia.index';
+import { FilterConfig } from '../../config/data/FilterConfig';
+import { FilterStream } from '../../stream/data/FilterStream';
 
 /**
  * A stream process that filters a list of Asteria POJOs.

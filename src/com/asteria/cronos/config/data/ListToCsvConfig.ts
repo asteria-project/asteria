@@ -1,5 +1,5 @@
-import { StreamProcessConfig } from '../../gaia/gaia.index';
-import { CsvColumnMapper } from '../util/CsvColumnMapper';
+import { StreamProcessConfig } from '../../../gaia/gaia.index';
+import { CsvColumnMapper } from '../../util/CsvColumnMapper';
 
 /**
  * The <code>ListToCsvConfig</code> interface represents the configuration of a <code>ListToCsvProcess</code> stream

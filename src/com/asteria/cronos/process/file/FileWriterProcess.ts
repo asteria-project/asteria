@@ -1,6 +1,6 @@
-import { AbstractAsteriaObject, StreamProcess, StreamProcessType, AsteriaStream } from '../../gaia/gaia.index';
-import { FileWriterConfig } from '../config/FileWriterConfig';
-import { FileWriterStream } from '../stream/FileWriterStream';
+import { AbstractAsteriaObject, StreamProcess, StreamProcessType, AsteriaStream } from '../../../gaia/gaia.index';
+import { FileWriterConfig } from '../../config/file/FileWriterConfig';
+import { FileWriterStream } from '../../stream/file/FileWriterStream';
 
 /**
  * A basic stream process that allows to write a local file.
