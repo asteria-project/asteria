@@ -1,10 +1,11 @@
-import { Ouranos, FileReaderProcess, FileReaderConfig, CsvToListProcess, CsvToListConfig, FileWriterProcess, FilterProcess, FilterConfig, FilterCondition, FilterOperator } from './com/asteria/asteria.index';
+import { Ouranos, FileReaderProcess, FileReaderConfig, CsvToListProcess, CsvToListConfig, FileWriterProcess, FilterProcess, FilterConfig, FilterCondition, FilterOperator, ListToCsvProcess, ListToCsvConfig } from './com/asteria/asteria.index';
 import * as path from 'path';
 
 const tempDataPath: string = path.join(__dirname, 'temp-data');
 const fileReaderConfig: FileReaderConfig = { path: path.join(tempDataPath, 'worldcitiespop.csv') };
 const fileWriterProcess: FileReaderConfig = { path: path.join(tempDataPath, 'us-mega-cities.csv') };
 const csvToListConfig: CsvToListConfig = { separator: ';' };
+const listToCsvConfig: ListToCsvConfig = { separator: ';' };
 const filterConfig: FilterConfig = {
     condition: FilterCondition.AND,
     filters: [
@@ -19,6 +20,6 @@ Ouranos.createSession({ name: 'UsMegaCities'})
        .add( Ouranos.buildProcess(FileReaderProcess, fileReaderConfig) )
        .add( Ouranos.buildProcess(CsvToListProcess, csvToListConfig) )
        .add( Ouranos.buildProcess(FilterProcess, filterConfig) )
-       //.add( Ouranos.buildProcess(ListToCsvProcess) )
+       .add( Ouranos.buildProcess(ListToCsvProcess, listToCsvConfig) )
        .add( Ouranos.buildProcess(FileWriterProcess, fileWriterProcess) )
        .run();

@@ -1,35 +1,35 @@
 import { AbstractAsteriaObject, StreamProcess, StreamProcessType, AsteriaStream } from '../../gaia/gaia.index';
-import { CsvToListConfig } from '../config/CsvToListConfig';
-import { CsvToListStream } from '../stream/CsvToListStream';
+import { ListToCsvConfig } from '../config/ListToCsvConfig';
+import { ListToCsvStream } from '../stream/ListToCsvStream';
 
 /**
- * A basic stream process that turns CSV strings into a list of POJOs.
+ * A basic stream process that turns list of POJOs into a CSV string.
  */
-export class CsvToListProcess extends AbstractAsteriaObject implements StreamProcess {
+export class ListToCsvProcess extends AbstractAsteriaObject implements StreamProcess {
     
     /**
      * The config object for this process.
      */
-    private _config: CsvToListConfig = null;
+    private _config: ListToCsvConfig = null;
 
     /**
-     * Create a new <code>CsvToListProcess</code> instance.
+     * Create a new <code>ListToCsvProcess</code> instance.
      */
     constructor() {
-        super('com.asteria.cronos.process::CsvToListProcess');
+        super('com.asteria.cronos.process::ListToCsvProcess');
     }
 
     /**
      * @implements
      */
-    public getConfig(): CsvToListConfig {
+    public getConfig(): ListToCsvConfig {
         return this._config;
     }
 
     /**
      * @implements
      */
-    public setConfig(config: CsvToListConfig): void {
+    public setConfig(config: ListToCsvConfig): void {
         this._config = config;
     }
 
@@ -44,7 +44,7 @@ export class CsvToListProcess extends AbstractAsteriaObject implements StreamPro
      * @implements
      */
     public create(): AsteriaStream {
-        const stream: AsteriaStream = new CsvToListStream();
+        const stream: AsteriaStream = new ListToCsvStream();
         stream.init(this._config);
         return stream;
     }
