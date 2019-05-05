@@ -111,7 +111,7 @@ export class CsvToListStream extends CronosTransformStream implements AsteriaStr
         if (!isEmpty) {
             const values: Array<string> = csvRow.split(this._separator);
             if (values.length === this._numCols) {
-                const len = this._numCols - 1;
+                const len = this._mappingRefs.length - 1;
                 let i: number = 0;
                 obj = Object.create(this._objModel);
                 for (; i <= len; ++i) {
@@ -147,10 +147,11 @@ export class CsvToListStream extends CronosTransformStream implements AsteriaStr
      * 
      *  @param {Array<string>} input the reference to the input CSV rows.
      */
-    private initModel(input: Array<string>): void{
+    private initModel(input: Array<string>): void {
+        const firstRow: Array<string> = input[0].split(this._separator);
+        this._numCols = firstRow.length;
         if (this._mappingRefs === null)  {
             this._mappingRefs = new Array<CsvColumnMapper>();
-            const firstRow: Array<string> = input[0].split(this._separator);
             firstRow.forEach((value: string, index: number)=> {
                 this._mappingRefs.push(
                     {
@@ -160,7 +161,6 @@ export class CsvToListStream extends CronosTransformStream implements AsteriaStr
                 );
             });
         }
-        this._numCols = this._mappingRefs.length;
         this.buildObjModel();
     }
 
