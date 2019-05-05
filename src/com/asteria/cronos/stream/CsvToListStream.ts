@@ -35,6 +35,11 @@ export class CsvToListStream extends CronosTransformStream implements AsteriaStr
     private _mappingRefs: Array<CsvColumnMapper> = null;
 
     /**
+     * The number of columns defined in the input CSV file.
+     */
+    private _numCols: number = 0;
+
+    /**
      * Represents an incomplete row, extracted from the last chunck.
      */
     private _incompleteRow: string = null;
@@ -70,15 +75,19 @@ export class CsvToListStream extends CronosTransformStream implements AsteriaStr
     }
 
     /**
-     * Create and return the array of CSV marshaled rows.
+     * Create and return a string that represent a list of marshaled rows.
      * 
      * @param {string} csvArr the reference to the CSV input array.
      * 
-     * @return {Array<any>} the array of CSV marshaled rows.
+     * @return {Array<any>} a list of marshaled rows.
      */
     private buildResultData(csvArr: Array<string>): string {
         let result: string = CommonChar.EMPTY;
         let i: number = 0;
+        if (this._incompleteRow) {
+            csvArr[0] = this._incompleteRow + csvArr[0];
+            this._incompleteRow = null;
+        }
         for (; i <= csvArr.length - 1; ++i) {
             const obj: any = this.buildObj(csvArr[i]);
             if (obj) {
@@ -101,14 +110,18 @@ export class CsvToListStream extends CronosTransformStream implements AsteriaStr
         let obj: any = null;
         if (!isEmpty) {
             const values: Array<string> = csvRow.split(this._separator);
-            const len = this._mappingRefs.length - 1;
-            let i: number = 0;
-            obj = Object.create(this._objModel);
-            for (; i <= len; ++i) {
-                const mapper: CsvColumnMapper = this._mappingRefs[i];
-                const val: any = values[mapper.index];
-                obj[mapper.property] = isNaN(val) ? val : +val;
-            };
+            if (values.length === this._numCols) {
+                const len = this._numCols - 1;
+                let i: number = 0;
+                obj = Object.create(this._objModel);
+                for (; i <= len; ++i) {
+                    const mapper: CsvColumnMapper = this._mappingRefs[i];
+                    const val: any = values[mapper.index];
+                    obj[mapper.property] = isNaN(val) ? val : +val;
+                };
+            } else {
+                this._incompleteRow = csvRow;
+            }
         }
         return obj;
     }
@@ -147,6 +160,7 @@ export class CsvToListStream extends CronosTransformStream implements AsteriaStr
                 );
             });
         }
+        this._numCols = this._mappingRefs.length;
         this.buildObjModel();
     }
 

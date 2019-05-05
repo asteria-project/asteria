@@ -17,6 +17,7 @@ export { Uuid } from './lang/Uuid';
 export { OuranosProcessor } from './process/OuranosProcessor';
 
 //--> com/asteria/ouranos/util/builder
+export { OuranosErrorBuilder } from './util/builder/OuranosErrorBuilder';
 export { OuranosProcessBuilder } from './util/builder/OuranosProcessBuilder';
 
 //--> com/asteria/ouranos/util/logging
