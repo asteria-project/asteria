@@ -73,15 +73,12 @@ export class OuranosProcessor extends AbstractAsteriaObject implements StreamPro
             stream = streamProcess.create();
             streams.push(stream);
         }
-        (pipeline as Function).apply(this, streams);
+        if (length > 1) {
+            (pipeline as Function).apply(this, streams);
+        }
         /*const completeTs: number = Date.now() - this._timestamp;
         logger.info(`asteria processing completed in ${completeTs} ms`);*/
     }
-    
-    /**
-     * @inheritdoc
-     */
-    public print(): void {}
     
     /**
      * Returns the index of the specified process.

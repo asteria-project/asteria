@@ -11,6 +11,7 @@ export { AsteriaErrorCode } from './common/lang/exception/AsteriaErrorCode';
 
 //--> com/asteria/gaia/common/lang/util
 export { CommonChar } from './common/lang/util/CommonChar';
+export { PrimitiveType } from './common/lang/util/PrimitiveType';
 
  //--> com/asteria/gaia/common/lang
  export { AbstractAsteriaObject } from './common/lang/AbstractAsteriaObject';

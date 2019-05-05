@@ -27,7 +27,7 @@ Hyperion.build({
                     config: 'Population  > 1000000 AND Country = \'us\''
                 }
             ]
-        }).print();
+        }).run();
  ```
 
 Notice that the Hyperion config object specified above can be defined as a JSON string as shown below:
@@ -71,7 +71,7 @@ Ouranos.createSession({ name: 'UsMegaCities'})
        .add( Ouranos.buildProcess(FileReaderProcess, fileReaderConfig) )
        .add( Ouranos.buildProcess(CsvToListProcess, csvToListConfig) )
        .add( Ouranos.buildProcess(FilterProcess, filterConfig) )
-       .print();
+       .run();
 ```
 
 Both preceding Asteria implementations will produce the following output:
