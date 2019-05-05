@@ -16,7 +16,7 @@ export class FilterProcess extends AbstractAsteriaObject implements StreamProces
      * Creates a new <code>FilterProcess</code> instance.
      */
     constructor() {
-        super('com.asteria.cronos.process::FilterProcess');
+        super('com.asteria.cronos.process.data::FilterProcess');
     }
 
     /**

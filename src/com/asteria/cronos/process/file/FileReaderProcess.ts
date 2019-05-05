@@ -16,7 +16,7 @@ export class FileReaderProcess extends AbstractAsteriaObject implements StreamPr
      * Create a new <code>FileLoaderProcess</code> instance.
      */
     constructor() {
-        super('com.asteria.cronos.process::FileReaderProcess');
+        super('com.asteria.cronos.process.file::FileReaderProcess');
     }
 
     /**

@@ -10,7 +10,7 @@ export class FileReaderStream extends ReadStream implements AsteriaStream {
     /**
      * The class name reference.
      */
-    private static readonly CLASS_NAME: string = 'com.asteria.cronos.stream::FileReaderStream';
+    private static readonly CLASS_NAME: string = 'com.asteria.cronos.stream.file::FileReaderStream';
 
     /**
      * Create a new <code>FileReaderStream</code> instance.

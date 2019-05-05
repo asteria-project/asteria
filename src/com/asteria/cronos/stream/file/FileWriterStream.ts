@@ -10,7 +10,7 @@ export class FileWriterStream extends WriteStream implements AsteriaStream {
     /**
      * The class name reference.
      */
-    private static readonly CLASS_NAME: string = 'com.asteria.cronos.stream::FileWriterStream';
+    private static readonly CLASS_NAME: string = 'com.asteria.cronos.stream.file::FileWriterStream';
 
     /**
      * Create a new <code>FileWriterStream</code> instance.

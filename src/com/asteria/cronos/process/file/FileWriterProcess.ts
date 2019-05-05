@@ -16,7 +16,7 @@ export class FileWriterProcess extends AbstractAsteriaObject implements StreamPr
      * Create a new <code>FileWriterProcess</code> instance.
      */
     constructor() {
-        super('com.asteria.cronos.process::FileWriterProcess');
+        super('com.asteria.cronos.process.file::FileWriterProcess');
     }
 
     /**

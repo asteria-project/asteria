@@ -16,7 +16,7 @@ export class ListToCsvProcess extends AbstractAsteriaObject implements StreamPro
      * Create a new <code>ListToCsvProcess</code> instance.
      */
     constructor() {
-        super('com.asteria.cronos.process::ListToCsvProcess');
+        super('com.asteria.cronos.process.data::ListToCsvProcess');
     }
 
     /**

@@ -50,7 +50,7 @@ export class CsvToListStream extends CronosTransformStream implements AsteriaStr
      * @param {TransformOptions} opts the options config for this stream.
      */
     constructor(opts?: TransformOptions) {
-        super('com.asteria.cronos.stream::CsvToListStream', opts);
+        super('com.asteria.cronos.stream.data::CsvToListStream', opts);
     }
 
     /**

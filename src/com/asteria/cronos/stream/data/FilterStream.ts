@@ -30,7 +30,7 @@ export class FilterStream extends CronosTransformStream implements AsteriaStream
      * @param {TransformOptions} opts the options config for this stream.
      */
     constructor(opts?: TransformOptions) {
-        super('com.asteria.cronos.stream::FilterStream', opts);
+        super('com.asteria.cronos.stream.data::FilterStream', opts);
     }
 
     /**
