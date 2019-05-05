@@ -1,5 +1,6 @@
-import { AbstractAsteriaObject, StreamProcessor, StreamProcess, AsteriaLogger, AsteriaStream } from '../../gaia/gaia.index';
+import { AbstractAsteriaObject, StreamProcessor, StreamProcess, AsteriaLogger, AsteriaStream, CommonChar } from '../../gaia/gaia.index';
 import { OuranosContext } from '../core/OuranosContext';
+import { pipeline } from 'stream';
 
 /**
  * The <code>OuranosProcessor</code> class is the default implementation fo the <code>StreamProcessor</code> interface.
@@ -59,20 +60,28 @@ export class OuranosProcessor extends AbstractAsteriaObject implements StreamPro
      */
     public run(): void {
         this._timestamp = Date.now();
-        let from: AsteriaStream = null;
-        this._streams = new Array<AsteriaStream>(this.PROCESSES.length);
-        for (let i: number = 0; i <= this.PROCESSES.length - 1; ++i) {
-            const process: StreamProcess = this.PROCESSES[i];
-            let stream: AsteriaStream = null;
-            stream = process.create();
-            this._streams.push(stream);
-            if (i !== 0) {
-                (from as any).pipe(stream);
-            } else {
-                from = stream;
-            }
+        const logger: AsteriaLogger = this.CONTEXT.getLogger();
+        const length: number = this.PROCESSES.length;
+        logger.info('asteria processing start');
+        logger.info(`streaming ${length} process${ length !== 1 ? 'es' : CommonChar.EMPTY}`);
+        let i: number = 0;
+        this._streams = new Array<AsteriaStream>(length);
+        const streams: Array<any> = new Array<any>();
+        let stream: any = null;
+        for (; i <= length - 1; ++i) {
+            const streamProcess: StreamProcess = this.PROCESSES[i];
+            stream = streamProcess.create();
+            streams.push(stream);
         }
+        (pipeline as Function).apply(this, streams);
+        /*const completeTs: number = Date.now() - this._timestamp;
+        logger.info(`asteria processing completed in ${completeTs} ms`);*/
     }
+    
+    /**
+     * @inheritdoc
+     */
+    public print(): void {}
     
     /**
      * Returns the index of the specified process.

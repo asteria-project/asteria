@@ -45,6 +45,7 @@ export class CsvToListProcess extends AbstractAsteriaObject implements StreamPro
      */
     public create(): AsteriaStream {
         const stream: AsteriaStream = new CsvToListStream();
+        stream.init(this._config);
         return stream;
     }
 }

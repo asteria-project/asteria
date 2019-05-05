@@ -1,35 +1,35 @@
 import { AbstractAsteriaObject, StreamProcess, StreamProcessType, AsteriaStream } from '../../gaia/gaia.index';
-import { FileReaderConfig } from '../config/FileReaderConfig';
-import { FileReaderStream } from '../stream/FileReaderStream';
+import { FileWriterConfig } from '../config/FileWriterConfig';
+import { FileWriterStream } from '../stream/FileWriterStream';
 
 /**
- * A basic stream process that allows to read a local file.
+ * A basic stream process that allows to write a local file.
  */
-export class FileReaderProcess extends AbstractAsteriaObject implements StreamProcess {
+export class FileWriterProcess extends AbstractAsteriaObject implements StreamProcess {
     
     /**
      * The config object for this process.
      */
-    private _config: FileReaderConfig = null;
+    private _config: FileWriterConfig = null;
 
     /**
-     * Create a new <code>FileLoaderProcess</code> instance.
+     * Create a new <code>FileWriterProcess</code> instance.
      */
     constructor() {
-        super('com.asteria.cronos.process::FileReaderProcess');
+        super('com.asteria.cronos.process::FileWriterProcess');
     }
 
     /**
      * @implements
      */
-    public getConfig(): FileReaderConfig {
+    public getConfig(): FileWriterConfig {
         return this._config;
     }
 
     /**
      * @implements
      */
-    public setConfig(config: FileReaderConfig): void {
+    public setConfig(config: FileWriterConfig): void {
         this._config = config;
     }
 
@@ -44,7 +44,7 @@ export class FileReaderProcess extends AbstractAsteriaObject implements StreamPr
      * @implements
      */
     public create(): AsteriaStream {
-        const stream: FileReaderStream = new FileReaderStream(this._config.path);
+        const stream: FileWriterStream = new FileWriterStream(this._config.path);
         stream.init(this._config);
         return stream;
     }

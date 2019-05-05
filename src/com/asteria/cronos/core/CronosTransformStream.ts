@@ -1,5 +1,5 @@
 import { Transform, TransformCallback, TransformOptions } from 'stream';
-import { AsteriaStream } from '../../gaia/gaia.index';
+import { AsteriaStream, StreamProcessConfig } from '../../gaia/gaia.index';
 
 /**
  * The <code>CronosTransformStream</code> class is the base class for all transformation streams in the Cronos 
@@ -8,7 +8,7 @@ import { AsteriaStream } from '../../gaia/gaia.index';
 export abstract class CronosTransformStream extends Transform implements AsteriaStream {
 
     /**
-     * Stores the reference to the fully qualified class name for this object.
+     * Store the reference to the fully qualified class name for this object.
      */
     private readonly _className: string;
 
@@ -31,18 +31,7 @@ export abstract class CronosTransformStream extends Transform implements Asteria
     }
 
     /**
-     * 
-     * 
-     * @param {any} chunk 
-     * @param {string} encoding 
-     * @param {TransformCallback} callback 
+     * @inheritdoc
      */
-    protected abstract transform(chunk: any, encoding: string, callback: TransformCallback): void;
-
-    /**
-     * @private
-     */
-    _transform(chunk: any, encoding: string, callback: TransformCallback): void {
-        this.transform(chunk, encoding, callback);
-    }
+    public abstract init(config: StreamProcessConfig): void;
 }

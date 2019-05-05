@@ -8,6 +8,7 @@
 //--> com/asteria/cronos/config
 export { CsvToListConfig } from './config/CsvToListConfig';
 export { FileReaderConfig } from './config/FileReaderConfig';
+export { FileWriterConfig } from './config/FileWriterConfig';
 
 //--> com/asteria/cronos/core
 export { CronosTransformStream } from './core/CronosTransformStream';
@@ -15,7 +16,12 @@ export { CronosTransformStream } from './core/CronosTransformStream';
 //--> com/asteria/cronos/process
 export { CsvToListProcess } from './process/CsvToListProcess';
 export { FileReaderProcess } from './process/FileReaderProcess';
+export { FileWriterProcess } from './process/FileWriterProcess';
 
 //--> com/asteria/cronos/stream
 export { CsvToListStream } from './stream/CsvToListStream';
 export { FileReaderStream } from './stream/FileReaderStream';
+export { FileWriterStream } from './stream/FileWriterStream';
+
+//--> com/asteria/cronos/util
+export { CsvColumnMapper } from './util/CsvColumnMapper';

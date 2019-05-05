@@ -1,6 +1,8 @@
 import { TransformCallback, TransformOptions } from 'stream';
 import { AsteriaStream, CommonChar } from '../../gaia/gaia.index';
 import { CronosTransformStream } from '../core/CronosTransformStream';
+import { CsvToListConfig } from '../config/CsvToListConfig';
+import { CsvColumnMapper } from '../util/CsvColumnMapper';
 
 /**
  * The <code>CsvToListStream</code> class is a transformation stream that turns CSV chuncks into a list of POJOs.
@@ -23,43 +25,138 @@ export class CsvToListStream extends CronosTransformStream implements AsteriaStr
     private _separator: string = CsvToListStream.DEFAULT_SEPARATOR;
 
     /**
-     * Indicates whether the first row must be removed (<code>true</code>), or not (<code>false</code>).
-     */
-    private _trimFirstRow: boolean = false;
-
-    /**
      * The reference to the object used as prototype for all list entries.
      */
     private _objModel: any = null;
 
     /**
+     * The list of references used to create "column to property" mapping.
+     */
+    private _mappingRefs: Array<CsvColumnMapper> = null;
+
+    /**
+     * Represents an incomplete row, extracted from the last chunck.
+     */
+    private _incompleteRow: string = null;
+
+    /**
      * Create a new <code>CsvToListStream</code> instance.
      * 
-     * @param {TransformOptions} opts the list of options for this stream.
+     * @param {TransformOptions} opts the options config for this stream.
      */
     constructor(opts?: TransformOptions) {
         super('com.asteria.cronos.stream::CsvToListStream', opts);
     }
 
     /**
-     * @inherit
+     * @inheritdoc
      */
-    protected transform(chunk: any, encoding: string, callback: TransformCallback): void {
-        const data: Array<string> = this.buildCsvArray('' + chunk);
-        // this.push(chunk);
-        const result: string = JSON.stringify(data);
-        //console.log(result);
+    public init(config: CsvToListConfig): void {
+        if (config) {
+            this._separator = config.separator || CsvToListStream.DEFAULT_SEPARATOR;
+            if (config.colsMapping)  {
+                this._mappingRefs = config.colsMapping;
+            }
+        }
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public _transform(chunk: any, encoding: string, callback: TransformCallback): void {
+        const data: Array<string> = this.buildCsvArray(CommonChar.EMPTY + chunk);
+        const result: string = this.buildResultData(data);
         callback(null, result);
     }
 
     /**
-     * Builds and returns an array composed of each row of the CSV input.
+     * Create and return the array of CSV marshaled rows.
      * 
-     * @param {StringData} data the string representation fo the CSV input.
+     * @param {string} csvArr the reference to the CSV input array.
+     * 
+     * @return {Array<any>} the array of CSV marshaled rows.
+     */
+    private buildResultData(csvArr: Array<string>): string {
+        let result: string = CommonChar.EMPTY;
+        let i: number = 0;
+        for (; i <= csvArr.length - 1; ++i) {
+            const obj: any = this.buildObj(csvArr[i]);
+            if (obj) {
+                result += JSON.stringify(obj) + CsvToListStream.NEW_LINE_CHAR;
+            }
+        }
+        return result;
+    }
+
+    /**
+     * Build and return an object created from a CSV row. Return <code>null</code> whether the specified row is empty.
+     * 
+     * @param {string} csvRow a string that represents a CSV row.
+     * 
+     * @return {any} a vanilla JavaScript object created from a CSV row, or <code>null</code> whether the specified row
+     *               is empty.
+     */
+    private buildObj(csvRow: string): any {
+        const isEmpty: boolean = csvRow === CommonChar.EMPTY;
+        let obj: any = null;
+        if (!isEmpty) {
+            const values: Array<string> = csvRow.split(this._separator);
+            const len = this._mappingRefs.length - 1;
+            let i: number = 0;
+            obj = Object.create(this._objModel);
+            for (; i <= len; ++i) {
+                const mapper: CsvColumnMapper = this._mappingRefs[i];
+                const val: any = values[mapper.index];
+                obj[mapper.property] = isNaN(val) ? val : +val;
+            };
+        }
+        return obj;
+    }
+
+    /**
+     * Build and return an array composed of each row of the CSV input.
+     * 
+     * @param {string} data the string representation fo the CSV input.
      * 
      * @return {Array<string>} an array composed of each row of the CSV input.
      */
     private buildCsvArray(data: string): Array<string> {
-        return (data as string).split(CsvToListStream.NEW_LINE_CHAR);
+        const arr: Array<string> = data.split(CsvToListStream.NEW_LINE_CHAR);
+        if(!this._objModel) {
+            this.initModel(arr);
+            arr.splice(0, 1);
+        }
+        return arr;
+    }
+
+    /**
+     * Initialize the model used for converting CSV columns to POJOs.
+     * 
+     *  @param {Array<string>} input the reference to the input CSV rows.
+     */
+    private initModel(input: Array<string>): void{
+        if (this._mappingRefs === null)  {
+            this._mappingRefs = new Array<CsvColumnMapper>();
+            const firstRow: Array<string> = input[0].split(this._separator);
+            firstRow.forEach((value: string, index: number)=> {
+                this._mappingRefs.push(
+                    {
+                        index: index,
+                        property: value
+                    }
+                );
+            });
+        }
+        this.buildObjModel();
+    }
+
+    /**
+     * Build the object model used for creating all list items.
+     */
+    private buildObjModel(): void {
+        this._objModel = {};
+        this._mappingRefs.forEach((mapper: CsvColumnMapper)=> {
+            this._objModel[mapper.property] = undefined;
+        });
     }
 }
