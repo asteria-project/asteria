@@ -25,6 +25,12 @@ export { AsteriaContext } from './core/AsteriaContext';
 export { AsteriaSession } from './core/AsteriaSession';
 export { AsteriaStream } from './core/AsteriaStream';
 
+//--> com/asteria/gaia/filter
+export { AsteriaFilter } from './filter/AsteriaFilter';
+export { FilterCondition } from './filter/FilterCondition';
+export { FilterDefinition } from './filter/FilterDefinition';
+export { FilterOperator } from './filter/FilterOperator';
+
 //--> com/asteria/gaia/process
 export { StreamProcess } from './process/StreamProcess';
 export { StreamProcessor } from './process/StreamProcessor';

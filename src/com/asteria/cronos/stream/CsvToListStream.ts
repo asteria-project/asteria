@@ -10,7 +10,7 @@ import { CsvColumnMapper } from '../util/CsvColumnMapper';
 export class CsvToListStream extends CronosTransformStream implements AsteriaStream {
 
     /**
-     * Represents a new line character.
+     * The reference to the new line character.
      */
     private static readonly NEW_LINE_CHAR: string = '\r\n';
     
