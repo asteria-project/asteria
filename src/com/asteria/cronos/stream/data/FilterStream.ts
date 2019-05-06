@@ -58,10 +58,10 @@ export class FilterStream extends CronosTransformStream implements AsteriaStream
     /**
      * @inheritdoc
      */
-    public _transform(chunk: any, encoding: string, callback: TransformCallback): void {
+    public transform(chunk: any): void {
         const data: Array<string> = this.buildJsonArray(CommonChar.EMPTY + chunk);
         const result: string = this.doFilters(data);
-        callback(null, result);
+        this.onComplete(null, result);
     }
 
     /**

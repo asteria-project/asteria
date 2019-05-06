@@ -65,10 +65,10 @@ export class ListToCsvStream extends CronosTransformStream implements AsteriaStr
     /**
      * @inheritdoc
      */
-    public _transform(chunk: any, encoding: string, callback: TransformCallback): void {
+    public transform(chunk: any): void {
         const data: Array<any> = this.buildPojosArray(CommonChar.EMPTY + chunk);
         const result: string = this.buildResultData(data);
-        callback(null, result);
+        this.onComplete(null, result);
     }
 
     /**
