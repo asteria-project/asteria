@@ -1,45 +1,38 @@
-import { Hyperion } from './com/asteria/asteria.index';
+import { Ouranos, FileReaderProcess, FileReaderConfig, CsvToListProcess, CsvToListConfig, FileWriterProcess, FilterProcess, FilterConfig, FilterCondition, FilterOperator, ListToCsvProcess, ListToCsvConfig } from '../src/com/asteria/asteria.index';
 import * as path from 'path';
 
 const tempDataPath: string = path.join(__dirname, 'temp-data');
-const inputPath: string = path.join(tempDataPath, 'worldcitiespop-dev.csv');
-const outputPath: string = path.join(tempDataPath, 'us-mega-cities.csv');
-
-Hyperion.build({
-    name: 'UsMegaCities',
-    processes: [
-        {
-            type: 'read-file',
-            config: inputPath
-        },
-        {
-            type: 'csv-to-list',
-            config: {
-                separator: ';',
-                colsMap: [
-                    { id: 0, prop: 'country' },
-                    { id: 2, prop: 'city' },
-                    { id: 3, prop: 'region' },
-                    { id: 4, prop: 'population' },
-                    { id: 5, prop: 'latitude' },
-                    { id: 6, prop: 'longitude' }
-                ]
-            }
-        },
-        {
-            type: 'filter',
-            config: 'population > 1000000 AND country = \'us\''
-        },
-        {
-            type: 'list-to-csv',
-            config: { separator: ';' }
-        },
-        {
-            type: 'write-file',
-            config: outputPath
-        }
+const fileReaderConfig: FileReaderConfig = { path: path.join(tempDataPath, 'worldcitiespop.csv') };
+const fileWriterProcess: FileReaderConfig = { path: path.join(tempDataPath, 'us-mega-cities.csv') };
+const csvToListConfig: CsvToListConfig = {
+    separator: ';',
+    colsMapping: [
+        { index: 0, property: 'country' },
+        { index: 2, property: 'city' },
+        { index: 3, property: 'region' },
+        { index: 4, property: 'population' },
+        { index: 5, property: 'latitude' },
+        { index: 6, property: 'longitude' }
     ]
-}).run();
+};
+const listToCsvConfig: ListToCsvConfig = { separator: ';' };
+const filterConfig: FilterConfig = {
+    condition: FilterCondition.AND,
+    filters: [
+       { property: 'population',   operator: FilterOperator.GREATER_THAN,  value: 1000000 },
+       { property: 'country',      operator: FilterOperator.EQUAL,          value: 'us' }
+    ]
+};
+
+Ouranos.createSession({ name: 'UsMegaCities'})
+       .getContext()
+       .getProcessor()
+       .add( Ouranos.buildProcess(FileReaderProcess, fileReaderConfig) )
+       .add( Ouranos.buildProcess(CsvToListProcess, csvToListConfig) )
+       .add( Ouranos.buildProcess(FilterProcess, filterConfig) )
+       .add( Ouranos.buildProcess(ListToCsvProcess, listToCsvConfig) )
+       .add( Ouranos.buildProcess(FileWriterProcess, fileWriterProcess) )
+       .run();
 
 /* output:
 *************************************************

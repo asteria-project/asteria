@@ -11,6 +11,7 @@ export { OuranosContext } from './core/OuranosContext';
 export { OuranosSession } from './core/OuranosSession';
 
 //--> com/asteria/ouranos/filter/impl
+export { EqualFilter } from './filter/impl/EqualFilter';
 export { GreaterThanFilter } from './filter/impl/GreaterThanFilter';
 export { LikeFilter } from './filter/impl/LikeFilter';
 export { StartsWithFilter } from './filter/impl/StartsWithFilter';

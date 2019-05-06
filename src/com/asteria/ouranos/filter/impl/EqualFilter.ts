@@ -1,22 +1,21 @@
 import { AsteriaFilter, FilterOperator, AbstractAsteriaObject, FilterOperatorNotation } from '../../../gaia/gaia.index';
 
 /**
- * The <code>LikeFilter</code> filter determines whether an object property string contains the characters of a
- * specified string.
+ * The <code>EqualFilter</code> filter determines whether an object property is equal to the specified value.
  */
-export class LikeFilter extends AbstractAsteriaObject implements AsteriaFilter {
+export class EqualFilter extends AbstractAsteriaObject implements AsteriaFilter {
 
     /**
      * @inheritdoc
      */
     public readonly operators: Array<FilterOperator|FilterOperatorNotation|string> =
-        [FilterOperator.LIKE];
+        [FilterOperator.EQUAL, FilterOperatorNotation.EQUAL];
     
     /**
-     * Create a new <code>LikeFilter</code> instance.
+     * Create a new <code>EqualFilter</code> instance.
      */
     constructor() {
-        super('com.asteria.ouranos.filter.impl::LikeFilter');
+        super('com.asteria.ouranos.filter.impl::EqualFilter');
     }
 
     /**
@@ -24,6 +23,6 @@ export class LikeFilter extends AbstractAsteriaObject implements AsteriaFilter {
      */
     public apply(obj: any, property: string, value: any): boolean {
         const prop: any = obj[property];
-        return prop ? prop.indexOf(value) !== -1 : false;
+        return prop ? (prop === value) : false;
     }
 }

@@ -63,4 +63,6 @@ test/**/*.js
 src/temp-data/*.ts
 src/temp-data/*.js
 src/temp-data/*.csv
+src/temp-data/*.tsv
 src/temp-data/*.json
+src/temp-data/*.txt

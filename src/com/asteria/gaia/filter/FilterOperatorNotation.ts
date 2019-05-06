@@ -6,9 +6,9 @@
 export enum FilterOperatorNotation {
 
     /**
-     * The <code>LIKE</code> operator represents the <code>=</code> notation.
+     * The <code>EQUAL</code> operator represents the <code>=</code> notation.
      */
-    LIKE = '=',
+    EQUAL = '=',
 
     /**
      * The <code>GREATER_THAN</code> operator represents the <code>&gt;</code> notation.

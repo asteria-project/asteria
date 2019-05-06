@@ -1,4 +1,4 @@
-import { TransformCallback, TransformOptions } from 'stream';
+import { TransformOptions } from 'stream';
 import { AsteriaStream, CommonChar, AsteriaContext } from '../../../gaia/gaia.index';
 import { CronosTransformStream } from '../../core/CronosTransformStream';
 import { CsvToListConfig } from '../../config/data/CsvToListConfig';
@@ -10,9 +10,9 @@ import { CsvColumnMapper } from '../../util/CsvColumnMapper';
 export class CsvToListStream extends CronosTransformStream implements AsteriaStream {
 
     /**
-     * The reference to the new line character.
+     * The reference to the new line regular expression.
      */
-    private static readonly NEW_LINE_CHAR: string = '\r\n';
+    private static readonly NEW_LINE: RegExp = /\r\n|\r|\n/g;
     
     /**
      * The reference to the CSV default separator.
@@ -91,7 +91,7 @@ export class CsvToListStream extends CronosTransformStream implements AsteriaStr
         for (; i <= csvArr.length - 1; ++i) {
             const obj: any = this.buildObj(csvArr[i]);
             if (obj) {
-                result += JSON.stringify(obj) + CsvToListStream.NEW_LINE_CHAR;
+                result += JSON.stringify(obj) + CommonChar.NEW_LINE;
             }
         }
         return result;
@@ -134,7 +134,7 @@ export class CsvToListStream extends CronosTransformStream implements AsteriaStr
      * @return {Array<string>} an array composed of each row of the CSV input.
      */
     private buildCsvArray(data: string): Array<string> {
-        const arr: Array<string> = data.split(CsvToListStream.NEW_LINE_CHAR);
+        const arr: Array<string> = data.split(CsvToListStream.NEW_LINE);
         if(!this._objModel) {
             this.initModel(arr);
             arr.splice(0, 1);

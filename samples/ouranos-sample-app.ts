@@ -20,7 +20,7 @@ const filterConfig: FilterConfig = {
     condition: FilterCondition.AND,
     filters: [
        { property: 'population',   operator: FilterOperator.GREATER_THAN,  value: 1000000 },
-       { property: 'country',      operator: FilterOperator.LIKE,          value: 'us' }
+       { property: 'country',      operator: FilterOperator.EQUAL,          value: 'us' }
     ]
 };
 

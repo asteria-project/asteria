@@ -16,5 +16,10 @@ export enum CommonChar {
     /**
      * Represents a comma character.
      */
-    COMMA = ','
+    COMMA = ',',
+
+    /**
+     * Represents a new line character.
+     */
+    NEW_LINE = '\n'
 }

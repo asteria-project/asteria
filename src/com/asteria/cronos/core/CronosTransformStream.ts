@@ -58,6 +58,6 @@ export abstract class CronosTransformStream extends Transform implements Asteria
     public _transform(chunk: any, encoding: string, callback: TransformCallback): void {
         this.onComplete = callback;
         this.encoding = encoding;
-        this.transform(chunk);
+        this.transform.bind(this)(chunk);
     }
 }

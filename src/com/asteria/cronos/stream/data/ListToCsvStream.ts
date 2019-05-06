@@ -1,4 +1,4 @@
-import { TransformCallback, TransformOptions } from 'stream';
+import { TransformOptions } from 'stream';
 import { AsteriaStream, CommonChar, AsteriaContext } from '../../../gaia/gaia.index';
 import { CronosTransformStream } from '../../core/CronosTransformStream';
 import { CsvColumnMapper } from '../../util/CsvColumnMapper';
@@ -11,9 +11,9 @@ import { ListToCsvConfig } from '../../config/data/ListToCsvConfig';
 export class ListToCsvStream extends CronosTransformStream implements AsteriaStream {
 
     /**
-     * The reference to the new line character.
+     * The reference to the new line regular expression.
      */
-    private static readonly NEW_LINE_CHAR: string = '\r\n';
+    private static readonly NEW_LINE: RegExp = /\r\n|\r|\n/g;
     
     /**
      * The reference to the CSV default separator.
@@ -117,7 +117,7 @@ export class ListToCsvStream extends CronosTransformStream implements AsteriaStr
      */
     private buildPojosArray(data: string): Array<any> {
         const arr: Array<any> = new Array<any>();
-        data.split(ListToCsvStream.NEW_LINE_CHAR).forEach((json: string)=> {
+        data.split(ListToCsvStream.NEW_LINE).forEach((json: string)=> {
             if (json !== CommonChar.EMPTY) {
                 arr.push(JSON.parse(json));
             }
@@ -154,7 +154,7 @@ export class ListToCsvStream extends CronosTransformStream implements AsteriaStr
     }
 
     private getLastRowChar(index: number): string {
-        const lastChar: string = (index < this._mappingRefsSize - 1) ? this._separator : ListToCsvStream.NEW_LINE_CHAR;
+        const lastChar: string = (index < this._mappingRefsSize - 1) ? this._separator : CommonChar.NEW_LINE;
         return lastChar;
     }
 }
