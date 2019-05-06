@@ -1,5 +1,5 @@
 import { Transform, TransformCallback, TransformOptions } from 'stream';
-import { AsteriaStream, StreamProcessConfig } from '../../gaia/gaia.index';
+import { AsteriaStream, StreamProcessConfig, AsteriaContext } from '../../gaia/gaia.index';
 
 /**
  * The <code>CronosTransformStream</code> class is the base class for all transformation streams in the Cronos 
@@ -43,7 +43,7 @@ export abstract class CronosTransformStream extends Transform implements Asteria
     /**
      * @inheritdoc
      */
-    public abstract init(config: StreamProcessConfig): void;
+    public abstract init(config: StreamProcessConfig, context: AsteriaContext): void;
     
     /**
      * The <code>transform()</code> must be overridden by develeporer to implement custom transformation stream process.

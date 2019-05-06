@@ -1,4 +1,4 @@
-import { AbstractAsteriaObject, StreamProcess, StreamProcessType, AsteriaStream } from '../../../gaia/gaia.index';
+import { AbstractAsteriaObject, StreamProcess, StreamProcessType, AsteriaStream, AsteriaContext } from '../../../gaia/gaia.index';
 import { FileReaderConfig } from '../../config/file/FileReaderConfig';
 import { FileReaderStream } from '../../stream/file/FileReaderStream';
 
@@ -43,9 +43,9 @@ export class FileReaderProcess extends AbstractAsteriaObject implements StreamPr
     /**
      * @implements
      */
-    public create(): AsteriaStream {
+    public create(context: AsteriaContext): AsteriaStream {
         const stream: FileReaderStream = new FileReaderStream(this._config.path);
-        stream.init(this._config);
+        stream.init(this._config, context);
         return stream;
     }
 }

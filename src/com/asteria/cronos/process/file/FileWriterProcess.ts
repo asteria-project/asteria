@@ -1,4 +1,4 @@
-import { AbstractAsteriaObject, StreamProcess, StreamProcessType, AsteriaStream } from '../../../gaia/gaia.index';
+import { AbstractAsteriaObject, StreamProcess, StreamProcessType, AsteriaStream, AsteriaContext } from '../../../gaia/gaia.index';
 import { FileWriterConfig } from '../../config/file/FileWriterConfig';
 import { FileWriterStream } from '../../stream/file/FileWriterStream';
 
@@ -43,9 +43,9 @@ export class FileWriterProcess extends AbstractAsteriaObject implements StreamPr
     /**
      * @implements
      */
-    public create(): AsteriaStream {
+    public create(context: AsteriaContext): AsteriaStream {
         const stream: FileWriterStream = new FileWriterStream(this._config.path);
-        stream.init(this._config);
+        stream.init(this._config, context);
         return stream;
     }
 }

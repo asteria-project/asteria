@@ -2,6 +2,7 @@ import { StreamProcessType } from './StreamProcessType';
 import { AsteriaStream } from '../core/AsteriaStream';
 import { StreamProcessConfig } from '../config/StreamProcessConfig';
 import { AsteriaObject } from '../common/lang/AsteriaObject';
+import { AsteriaContext } from '../core/AsteriaContext';
 
 /**
  * The <code>StreamProcess</code> interface defines processes that are consumed by an Asteria stream processor.
@@ -32,7 +33,9 @@ export interface StreamProcess extends AsteriaObject {
     /**
      * Create and return the stream object associated with this process.
      * 
+     * @param {AsteriaContext} context the reference to the context in which this process is executed.
+     * 
      * @returns {AsteriaStream} the stream object associated with this process.
      */
-    create(): AsteriaStream;
+    create(context: AsteriaContext): AsteriaStream;
 }

@@ -1,5 +1,5 @@
 import { TransformCallback, TransformOptions } from 'stream';
-import { AsteriaStream, CommonChar } from '../../../gaia/gaia.index';
+import { AsteriaStream, CommonChar, AsteriaContext } from '../../../gaia/gaia.index';
 import { CronosTransformStream } from '../../core/CronosTransformStream';
 import { CsvToListConfig } from '../../config/data/CsvToListConfig';
 import { CsvColumnMapper } from '../../util/CsvColumnMapper';
@@ -56,7 +56,7 @@ export class CsvToListStream extends CronosTransformStream implements AsteriaStr
     /**
      * @inheritdoc
      */
-    public init(config: CsvToListConfig): void {
+    public init(config: CsvToListConfig, context: AsteriaContext): void {
         if (config) {
             this._separator = config.separator || CsvToListStream.DEFAULT_SEPARATOR;
             if (config.colsMapping)  {

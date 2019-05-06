@@ -33,8 +33,8 @@ export class OuranosLogger extends AbstractAsteriaObject implements AsteriaLogge
                 type: 'stdout',
                 level: [
                     AsteriaLogLevel.DEBUG, AsteriaLogLevel.INFO,
-                    AsteriaLogLevel.ERROR, AsteriaLogLevel.FATAL, 
-                    AsteriaLogLevel.WARN
+                    AsteriaLogLevel.WARN, AsteriaLogLevel.ERROR,
+                    AsteriaLogLevel.FATAL,
                 ]
             }
         );

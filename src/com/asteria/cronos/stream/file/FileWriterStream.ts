@@ -1,4 +1,4 @@
-import { AsteriaStream } from '../../../gaia/gaia.index';
+import { AsteriaStream, AsteriaContext } from '../../../gaia/gaia.index';
 import { FileWriterConfig } from '../../config/file/FileWriterConfig';
 import {  WriteStream } from 'fs';
 
@@ -31,5 +31,5 @@ export class FileWriterStream extends WriteStream implements AsteriaStream {
     /**
      * @inheritdoc
      */
-    public init(config: FileWriterConfig): void {}
+    public init(config: FileWriterConfig, context: AsteriaContext): void {}
 }

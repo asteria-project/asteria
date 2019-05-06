@@ -70,7 +70,7 @@ export class OuranosProcessor extends AbstractAsteriaObject implements StreamPro
         let stream: any = null;
         for (; i <= length - 1; ++i) {
             const streamProcess: StreamProcess = this.PROCESSES[i];
-            stream = streamProcess.create();
+            stream = streamProcess.create(this.CONTEXT);
             streams.push(stream);
         }
         if (length > 1) {

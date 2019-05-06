@@ -1,8 +1,8 @@
 import { TransformCallback, TransformOptions } from 'stream';
-import { AsteriaStream, FilterDefinition, FilterCondition, CommonChar } from '../../../gaia/gaia.index';
+import { AsteriaStream, FilterDefinition, FilterCondition, CommonChar, AsteriaContext, AsteriaError, AsteriaErrorCode } from '../../../gaia/gaia.index';
 import { CronosTransformStream } from '../../core/CronosTransformStream';
 import { FilterConfig } from '../../config/data/FilterConfig';
-import { OuranosFilterManager } from '../../../ouranos/ouranos.index';
+import { OuranosFilterManager, OuranosErrorBuilder, OuranosContext } from '../../../ouranos/ouranos.index';
 
 /**
  * The <code>FilterStream</code> class is a transformation stream that allows to filter lists of POJOs.
@@ -36,7 +36,7 @@ export class FilterStream extends CronosTransformStream implements AsteriaStream
     /**
      * @inheritdoc
      */
-    public init(config: FilterConfig): void {
+    public init(config: FilterConfig, context: AsteriaContext): void {
         if (config && config.filters) {
             if (config.condition) {
                 this._condition = config.condition;
@@ -47,11 +47,12 @@ export class FilterStream extends CronosTransformStream implements AsteriaStream
                 });
             }
         } else {
-            /*const error: AsteriaError = AsteriaErrorBuilder.getInstance().build(
+            const error: AsteriaError = OuranosErrorBuilder.getInstance().build(
                 AsteriaErrorCode.MISSING_FILTER,
                 this.getClassName(),
                 'missing filter list'
-            );*/
+            );
+            (context as OuranosContext).getLogger().error(error.toString());
         }
     }
 

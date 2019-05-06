@@ -2,7 +2,7 @@ import { Hyperion } from './com/asteria/asteria.index';
 import * as path from 'path';
 
 const tempDataPath: string = path.join(__dirname, 'temp-data');
-const inputPath: string = path.join(tempDataPath, 'worldcitiespop.csv');
+const inputPath: string = path.join(tempDataPath, 'worldcitiespop-dev.csv');
 const outputPath: string = path.join(tempDataPath, 'us-mega-cities.csv');
 
 Hyperion.build({

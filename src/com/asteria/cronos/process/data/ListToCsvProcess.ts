@@ -1,4 +1,4 @@
-import { AbstractAsteriaObject, StreamProcess, StreamProcessType, AsteriaStream } from '../../../gaia/gaia.index';
+import { AbstractAsteriaObject, StreamProcess, StreamProcessType, AsteriaStream, AsteriaContext } from '../../../gaia/gaia.index';
 import { ListToCsvConfig } from '../../config/data/ListToCsvConfig';
 import { ListToCsvStream } from '../../stream/data/ListToCsvStream';
 
@@ -43,9 +43,9 @@ export class ListToCsvProcess extends AbstractAsteriaObject implements StreamPro
     /**
      * @implements
      */
-    public create(): AsteriaStream {
+    public create(context: AsteriaContext): AsteriaStream {
         const stream: AsteriaStream = new ListToCsvStream();
-        stream.init(this._config);
+        stream.init(this._config, context);
         return stream;
     }
 }

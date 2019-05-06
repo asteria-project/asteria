@@ -1,4 +1,4 @@
-import { AsteriaStream } from '../../../gaia/gaia.index';
+import { AsteriaStream, AsteriaContext } from '../../../gaia/gaia.index';
 import { FileReaderConfig } from '../../config/file/FileReaderConfig';
 import { ReadStream } from 'fs';
 
@@ -31,5 +31,5 @@ export class FileReaderStream extends ReadStream implements AsteriaStream {
     /**
      * @inheritdoc
      */
-    public init(config: FileReaderConfig): void {}
+    public init(config: FileReaderConfig, context: AsteriaContext): void {}
 }

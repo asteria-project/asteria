@@ -1,4 +1,4 @@
-import { AbstractAsteriaObject, StreamProcess, StreamProcessType, AsteriaStream } from '../../../gaia/gaia.index';
+import { AbstractAsteriaObject, StreamProcess, StreamProcessType, AsteriaStream, AsteriaContext } from '../../../gaia/gaia.index';
 import { FilterConfig } from '../../config/data/FilterConfig';
 import { FilterStream } from '../../stream/data/FilterStream';
 
@@ -43,9 +43,9 @@ export class FilterProcess extends AbstractAsteriaObject implements StreamProces
     /**
      * @implements
      */
-    public create(): AsteriaStream {
+    public create(context: AsteriaContext): AsteriaStream {
         const stream: AsteriaStream = new FilterStream();
-        stream.init(this._config);
+        stream.init(this._config, context);
         return stream;
     }
 }
