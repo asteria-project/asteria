@@ -1,4 +1,4 @@
-import { AbstractAsteriaObject, StreamProcessor, StreamProcess, AsteriaLogger, AsteriaStream, CommonChar } from '../../gaia/gaia.index';
+import { AbstractAsteriaObject, StreamProcessor, StreamProcess, AsteriaLogger, AsteriaStream, CommonChar, StreamProcessType } from '../../gaia/gaia.index';
 import { OuranosContext } from '../core/OuranosContext';
 import { pipeline } from 'stream';
 
@@ -73,11 +73,22 @@ export class OuranosProcessor extends AbstractAsteriaObject implements StreamPro
             stream = streamProcess.create(this.CONTEXT);
             streams.push(stream);
         }
-        if (length > 1) {
-            (pipeline as Function).apply(this, streams);
+        streams.push(this.onprocessComplete.bind(this));
+        (pipeline as Function).apply(this, streams);
+    }
+
+    /**
+     * Invoked when all the stream processes are over.
+     * 
+     * @param {any} err an object set only whether an error occured during the execution of the stream processes.
+     */
+    private onprocessComplete(err: any): void {
+        if (!err) {
+            const completeTs: number = Date.now() - this._timestamp;
+            this.CONTEXT.getLogger().info(`asteria processing completed in ${completeTs} ms`);
+        } else {
+            this.CONTEXT.getLogger().fatal(`asteria processingfailed: ${err.toString()}`);
         }
-        /*const completeTs: number = Date.now() - this._timestamp;
-        logger.info(`asteria processing completed in ${completeTs} ms`);*/
     }
     
     /**
