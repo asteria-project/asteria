@@ -1,4 +1,4 @@
-import { AsteriaFilter, AbstractAsteriaObject } from '../../gaia/gaia.index';
+import { AsteriaFilter, AbstractAsteriaObject, FilterOperator, FilterOperatorNotation } from '../../gaia/gaia.index';
 import { StartsWithFilter } from './impl/StartsWithFilter';
 import { LikeFilter } from './impl/LikeFilter';
 import { GreaterThanFilter } from './impl/GreaterThanFilter';
@@ -51,7 +51,9 @@ export class OuranosFilterManager extends AbstractAsteriaObject {
      * @param {AsteriaFilter} filter the filter to register into this manager.
      */
     public register(filter: AsteriaFilter): void {
-        this._filterMap.set(filter.operator, filter);
+        filter.operators.forEach((operator: FilterOperator|FilterOperatorNotation|string)=> {
+            this._filterMap.set(operator, filter);
+        });
     }
 
     /**

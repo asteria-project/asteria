@@ -28,7 +28,7 @@ Hyperion.build({
         },
         {
             type: 'filter',
-            config: 'population GREATER_THAN 1000000 AND country LIKE \'us\''
+            config: 'population > 1000000 AND country = \'us\''
         },
         {
             type: 'list-to-csv',

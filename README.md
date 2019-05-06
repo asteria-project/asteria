@@ -10,6 +10,7 @@ Asteria is a specification for building data analytics streams that are executed
 
 In this sample application, we use the Hyperion processor to load a CSV file of all cities over the world and extract only US cities that have more than 1,000,000 people.
 
+
  ```javascript
 Hyperion.build({
             name: 'UsMegaCities',
@@ -87,6 +88,9 @@ Both preceding Asteria implementations will produce the following output:
 {"Country":"us","City":"dallas","AccentCity":"Dallas","Region":"TX","Population":1211704,"Latitude":32.7833333,"Longitude":-96.8,"geopoint":"32.7833333, -96.8"}
 {"Country":"us","City":"los angeles","AccentCity":"Los Angeles","Region":"CA","Population":3877129,"Latitude":34.0522222,"Longitude":-118.2427778,"geopoint":"34.0522222, -118.2427778"}
 ```
+
+_(The data set used to build this sample is available under OPEN DATA LICENSE at: https://public.opendatasoft.com/explore/dataset/worldcitiespop)_
+
 
 ## Understanding the Theogony
 

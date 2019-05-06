@@ -31,6 +31,7 @@ export { AsteriaFilter } from './filter/AsteriaFilter';
 export { FilterCondition } from './filter/FilterCondition';
 export { FilterDefinition } from './filter/FilterDefinition';
 export { FilterOperator } from './filter/FilterOperator';
+export { FilterOperatorNotation } from './filter/FilterOperatorNotation';
 
 //--> com/asteria/gaia/process
 export { StreamProcess } from './process/StreamProcess';

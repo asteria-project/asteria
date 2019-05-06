@@ -1,6 +1,6 @@
 /**
- * The <code>FilterOperator</code> enum defines a list of operators that can be  used by an Asteria module to filter
- * objects.
+ * The <code>FilterOperator</code> enum defines a list of operators that can be used by an Asteria stream process to 
+ * filter objects.
  */
 export enum FilterOperator {
 

@@ -1,4 +1,5 @@
 import { FilterOperator } from './FilterOperator';
+import { FilterOperatorNotation } from './FilterOperatorNotation';
 
 /**
  * The <code>AsteriaFilter</code> interface provides the minimum set of APIs that you must implement to create Asteria
@@ -7,9 +8,9 @@ import { FilterOperator } from './FilterOperator';
 export interface AsteriaFilter {
 
     /**
-     * The reference to the operator associated with this filter.
+     * The reference to the list of operators associated with this filter.
      */
-    operator: FilterOperator;
+    operators: Array<FilterOperator|FilterOperatorNotation|string>;
 
     /**
      * Return a boolean that indicates whether the specified object matches this filter (<code>true</code>), or not

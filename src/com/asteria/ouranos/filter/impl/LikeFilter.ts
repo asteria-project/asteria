@@ -1,4 +1,4 @@
-import { AsteriaFilter, FilterOperator, AbstractAsteriaObject } from '../../../gaia/gaia.index';
+import { AsteriaFilter, FilterOperator, AbstractAsteriaObject, FilterOperatorNotation } from '../../../gaia/gaia.index';
 
 /**
  * The <code>LikeFilter</code> filter determines whether an object property string contains the characters of a
@@ -9,7 +9,8 @@ export class LikeFilter extends AbstractAsteriaObject implements AsteriaFilter {
     /**
      * @inheritdoc
      */
-    public readonly operator: FilterOperator = FilterOperator.LIKE;
+    public readonly operators: Array<FilterOperator|FilterOperatorNotation|string> =
+        [FilterOperator.LIKE, FilterOperatorNotation.LIKE];
     
     /**
      * Create a new <code>LikeFilter</code> instance.

@@ -1,4 +1,4 @@
-import { AsteriaFilter, FilterOperator, AbstractAsteriaObject } from '../../../gaia/gaia.index';
+import { AsteriaFilter, FilterOperator, AbstractAsteriaObject, FilterOperatorNotation } from '../../../gaia/gaia.index';
 
 /**
  * The <code>GreaterThanFilter</code> filter determines whether an object property value is greater than the specified
@@ -9,7 +9,8 @@ export class GreaterThanFilter extends AbstractAsteriaObject implements AsteriaF
     /**
      * @inheritdoc
      */
-    public readonly operator: FilterOperator = FilterOperator.GREATER_THAN;
+    public readonly operators: Array<FilterOperator|FilterOperatorNotation|string> = 
+        [FilterOperator.GREATER_THAN, FilterOperatorNotation.GREATER_THAN];
     
     /**
      * Create a new <code>GreaterThanFilter</code> instance.

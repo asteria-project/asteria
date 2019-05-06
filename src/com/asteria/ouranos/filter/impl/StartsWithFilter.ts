@@ -1,4 +1,4 @@
-import { AsteriaFilter, FilterOperator, AbstractAsteriaObject } from '../../../gaia/gaia.index';
+import { AsteriaFilter, FilterOperator, AbstractAsteriaObject, FilterOperatorNotation } from '../../../gaia/gaia.index';
 
 /**
  * The <code>StartsWithFilter</code> filter determines whether an object property string begins with the characters of
@@ -9,7 +9,7 @@ export class StartsWithFilter extends AbstractAsteriaObject implements AsteriaFi
     /**
      * @inheritdoc
      */
-    public readonly operator: FilterOperator = FilterOperator.START_WITH;
+    public readonly operators: Array<FilterOperator|FilterOperatorNotation|string> = [FilterOperator.START_WITH];
     
     /**
      * Create a new <code>LikeFilter</code> instance.
