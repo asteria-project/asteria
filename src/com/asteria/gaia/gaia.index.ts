@@ -11,10 +11,12 @@ export { AsteriaErrorCode } from './common/lang/exception/AsteriaErrorCode';
 
 //--> com/asteria/gaia/common/lang/util
 export { CommonChar } from './common/lang/util/CommonChar';
+export { CommonRegExp } from './common/lang/util/CommonRegExp';
 export { PrimitiveType } from './common/lang/util/PrimitiveType';
 
  //--> com/asteria/gaia/common/lang
  export { AbstractAsteriaObject } from './common/lang/AbstractAsteriaObject';
+ export { AsteriaLine } from './common/lang/AsteriaLine';
  export { AsteriaObject } from './common/lang/AsteriaObject';
 
  //--> com/asteria/gaia/config

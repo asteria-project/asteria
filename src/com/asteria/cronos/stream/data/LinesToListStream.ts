@@ -1,5 +1,5 @@
 import { TransformOptions } from 'stream';
-import { AsteriaStream, AsteriaContext, CommonChar } from '../../../gaia/gaia.index';
+import { AsteriaStream, AsteriaContext, CommonChar, CommonRegExp, AsteriaLine } from '../../../gaia/gaia.index';
 import { CronosTransformStream } from '../../core/CronosTransformStream';
 import { LinesToListConfig } from '../../config/data/LinesToListConfig';
 
@@ -10,14 +10,19 @@ import { LinesToListConfig } from '../../config/data/LinesToListConfig';
 export class LinesToListStream extends CronosTransformStream implements AsteriaStream {
 
     /**
-     * The reference to the new line regular expression.
+     * Represents a carriage return character combined with a newline character.
      */
-    private static readonly NEW_LINE: RegExp = /\r\n|\r|\n/g;
+    private static CR_NEW_LINE: string = '\r\n';
+
+    /**
+     * Represents a carriage return character.
+     */
+    private static CR: string = '\r';
 
     /**
      * The reference to the object used as prototype for all list entries.
      */
-    private _objModel: any = {
+    private _objModel: AsteriaLine = {
         index: -1,
         value: CommonChar.EMPTY
     };
@@ -27,6 +32,9 @@ export class LinesToListStream extends CronosTransformStream implements AsteriaS
      */
     private _incompleteLine: string = null;
 
+    /**
+     * The number of lines treated by this stream process.
+     */
     private _lineNum: number = 0;
 
     /**
@@ -49,15 +57,35 @@ export class LinesToListStream extends CronosTransformStream implements AsteriaS
     public transform(chunk: any): void {
         const input: string = CommonChar.EMPTY + chunk;
         const lastLineComplete: boolean = this.checkFinalChar(input);
-        const data: Array<string> = input.split(LinesToListStream.NEW_LINE);
+        const data: Array<string> = input.split(CommonRegExp.NEW_LINE);
         const result: string = this.buildAsteriaList(data, lastLineComplete);
         this.onComplete(null, result);
     }
 
+    /**
+     * Return a boolean that indicates whether the last character of the input string is a new line character
+     * (<code>true</code>), or not (<code>false</code>).
+     * 
+     * @param {string} input the input string to check.
+     * 
+     * @return {boolean} <code>true</code> whether the last character of the input string is a new line character;
+     *                   <code>false</code> otherwise.
+     */
     private checkFinalChar(input: string): boolean {
-        return input.endsWith(CommonChar.NEW_LINE) || input.endsWith('\r\n') || input.endsWith('\r');
+        return input.endsWith(CommonChar.NEW_LINE) ||
+               input.endsWith(LinesToListStream.CR_NEW_LINE) ||
+               input.endsWith(LinesToListStream.CR);
     }
 
+    /**
+     * Build and return a string composed of Asteria list objects.
+     * 
+     * @param {Array<string>} data an array composed of each lines found in the input string.
+     * @param {boolean} lastLineComplete indicates whether the last line of the input data is complete
+     *                                   (<code>true</code>), or not (<code>false</code>).
+     * 
+     * @return {string} a string composed of Asteria list objects.
+     */
     private buildAsteriaList(data: Array<string>, lastLineComplete: boolean): string {
         let result: string = CommonChar.EMPTY;
         if (this._incompleteLine && data[0] !== CommonChar.EMPTY) {
@@ -67,7 +95,7 @@ export class LinesToListStream extends CronosTransformStream implements AsteriaS
         let i: number = 0;
         let to: number = lastLineComplete ? data.length - 2 : data.length - 1;
         for(; i <= to; ++i) {
-            const obj: any = this.buildLineObj(data[i]);
+            const obj: AsteriaLine = this.buildLineObj(data[i]);
             result += JSON.stringify(obj) + CommonChar.NEW_LINE;
             this._lineNum++;
         }
@@ -77,8 +105,15 @@ export class LinesToListStream extends CronosTransformStream implements AsteriaS
         return result;
     }
 
-    private buildLineObj(value: string): any {
-        let result: any = Object.create(this._objModel);
+    /**
+     * Build and return an <code>AsteriaLine</code> object.
+     * 
+     * @param {string} value the content of the line for which to create a new an <code>AsteriaLine</code> object.
+     * 
+     * @returns {any} an <code>AsteriaLine</code> object.
+     */
+    private buildLineObj(value: string): AsteriaLine {
+        let result: AsteriaLine = Object.create(this._objModel);
         result.index = this._lineNum;
         result.value = value;
         return result;

@@ -1,5 +1,5 @@
 import { TransformOptions } from 'stream';
-import { AsteriaStream, CommonChar, AsteriaContext } from '../../../gaia/gaia.index';
+import { AsteriaStream, CommonChar, AsteriaContext, CommonRegExp } from '../../../gaia/gaia.index';
 import { CronosTransformStream } from '../../core/CronosTransformStream';
 import { CsvToListConfig } from '../../config/data/CsvToListConfig';
 import { CsvColumnMapper } from '../../util/CsvColumnMapper';
@@ -9,11 +9,6 @@ import { CsvColumnMapper } from '../../util/CsvColumnMapper';
  */
 export class CsvToListStream extends CronosTransformStream implements AsteriaStream {
 
-    /**
-     * The reference to the new line regular expression.
-     */
-    private static readonly NEW_LINE: RegExp = /\r\n|\r|\n/g;
-    
     /**
      * The reference to the CSV default separator.
      */
@@ -134,7 +129,7 @@ export class CsvToListStream extends CronosTransformStream implements AsteriaStr
      * @return {Array<string>} an array composed of each row of the CSV input.
      */
     private buildCsvArray(data: string): Array<string> {
-        const arr: Array<string> = data.split(CsvToListStream.NEW_LINE);
+        const arr: Array<string> = data.split(CommonRegExp.NEW_LINE);
         if(!this._objModel) {
             this.initModel(arr);
             arr.splice(0, 1);

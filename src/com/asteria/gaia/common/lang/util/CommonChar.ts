@@ -1,5 +1,5 @@
 /**
- * The <code>CommonChar</code> enum defines a set of common characters that ba be used in all Asteria projects.
+ * The <code>CommonChar</code> enum defines a set of common characters that are used in all Asteria projects.
  */
 export enum CommonChar {
 

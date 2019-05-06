@@ -1,5 +1,5 @@
 import { TransformOptions } from 'stream';
-import { AsteriaStream, FilterDefinition, FilterCondition, CommonChar, AsteriaContext, AsteriaError, AsteriaErrorCode } from '../../../gaia/gaia.index';
+import { AsteriaStream, FilterDefinition, FilterCondition, CommonChar, AsteriaContext, AsteriaError, AsteriaErrorCode, CommonRegExp } from '../../../gaia/gaia.index';
 import { CronosTransformStream } from '../../core/CronosTransformStream';
 import { FilterConfig } from '../../config/data/FilterConfig';
 import { OuranosFilterManager, OuranosErrorBuilder, OuranosContext } from '../../../ouranos/ouranos.index';
@@ -9,11 +9,6 @@ import { OuranosFilterManager, OuranosErrorBuilder, OuranosContext } from '../..
  */
 export class FilterStream extends CronosTransformStream implements AsteriaStream {
 
-    /**
-     * The reference to the new line regular expression.
-     */
-    private static readonly NEW_LINE: RegExp = /\r\n|\r|\n/g;
-    
     /**
      * The filtering condition defined for this stream.
      */
@@ -73,7 +68,7 @@ export class FilterStream extends CronosTransformStream implements AsteriaStream
      * @return {Array<string>} an array composed of each object of the Asteria input.
      */
     private buildJsonArray(data: string): Array<string> {
-        return data.split(FilterStream.NEW_LINE);
+        return data.split(CommonRegExp.NEW_LINE);
     }
 
     /**
