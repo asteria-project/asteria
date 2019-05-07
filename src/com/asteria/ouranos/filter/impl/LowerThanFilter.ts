@@ -1,22 +1,22 @@
 import { AsteriaFilter, FilterOperator, AbstractAsteriaObject, FilterOperatorNotation } from '../../../gaia/gaia.index';
 
 /**
- * The <code>GreaterThanFilter</code> filter determines whether an object property value is greater than the specified
+ * The <code>LowerThanFilter</code> filter determines whether an object property value is lower than the specified
  * comparator.
  */
-export class GreaterThanFilter extends AbstractAsteriaObject implements AsteriaFilter {
+export class LowerThanFilter extends AbstractAsteriaObject implements AsteriaFilter {
 
     /**
      * @inheritdoc
      */
     public readonly operators: Array<FilterOperator|FilterOperatorNotation|string> = 
-        [FilterOperator.GREATER_THAN, FilterOperatorNotation.GREATER_THAN];
+        [FilterOperator.LOWER_THAN, FilterOperatorNotation.LOWER_THAN];
     
     /**
-     * Create a new <code>GreaterThanFilter</code> instance.
+     * Create a new <code>LowerThanFilter</code> instance.
      */
     constructor() {
-        super('com.asteria.ouranos.filter.impl::GreaterThanFilter');
+        super('com.asteria.ouranos.filter.impl::LowerThanFilter');
     }
 
     /**
@@ -24,6 +24,6 @@ export class GreaterThanFilter extends AbstractAsteriaObject implements AsteriaF
      */
     public apply(obj: any, property: string, value: any): boolean {
         const prop: any = obj[property];
-        return prop ? prop > value : false;
+        return prop ? prop < value : false;
     }
 }

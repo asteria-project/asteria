@@ -9,8 +9,7 @@ export class LikeFilter extends AbstractAsteriaObject implements AsteriaFilter {
     /**
      * @inheritdoc
      */
-    public readonly operators: Array<FilterOperator|FilterOperatorNotation|string> =
-        [FilterOperator.LIKE];
+    public readonly operators: Array<FilterOperator|FilterOperatorNotation|string> = [FilterOperator.LIKE];
     
     /**
      * Create a new <code>LikeFilter</code> instance.

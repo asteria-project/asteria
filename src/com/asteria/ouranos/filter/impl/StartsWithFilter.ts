@@ -9,10 +9,10 @@ export class StartsWithFilter extends AbstractAsteriaObject implements AsteriaFi
     /**
      * @inheritdoc
      */
-    public readonly operators: Array<FilterOperator|FilterOperatorNotation|string> = [FilterOperator.START_WITH];
+    public readonly operators: Array<FilterOperator|FilterOperatorNotation|string> = [FilterOperator.STARTS_WITH];
     
     /**
-     * Create a new <code>LikeFilter</code> instance.
+     * Create a new <code>StartsWithFilter</code> instance.
      */
     constructor() {
         super('com.asteria.ouranos.filter.impl::StartsWithFilter');

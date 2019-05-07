@@ -1,21 +1,21 @@
 import { AsteriaFilter, FilterOperator, AbstractAsteriaObject, FilterOperatorNotation } from '../../../gaia/gaia.index';
 
 /**
- * The <code>EqualFilter</code> filter determines whether an object property is equal to the specified value.
+ * The <code>NotEqualFilter</code> filter determines whether an object property is not equal to the specified value.
  */
-export class EqualFilter extends AbstractAsteriaObject implements AsteriaFilter {
+export class NotEqualFilter extends AbstractAsteriaObject implements AsteriaFilter {
 
     /**
      * @inheritdoc
      */
     public readonly operators: Array<FilterOperator|FilterOperatorNotation|string> =
-        [FilterOperator.EQUAL, FilterOperatorNotation.EQUAL];
+        [FilterOperator.NOT_EQUAL, FilterOperatorNotation.NOT_EQUAL];
     
     /**
-     * Create a new <code>EqualFilter</code> instance.
+     * Create a new <code>NotEqualFilter</code> instance.
      */
     constructor() {
-        super('com.asteria.ouranos.filter.impl::EqualFilter');
+        super('com.asteria.ouranos.filter.impl::NotEqualFilter');
     }
 
     /**
@@ -23,6 +23,6 @@ export class EqualFilter extends AbstractAsteriaObject implements AsteriaFilter 
      */
     public apply(obj: any, property: string, value: any): boolean {
         const prop: any = obj[property];
-        return prop ? (prop === value) : false;
+        return prop ? (prop !== value) : true;
     }
 }

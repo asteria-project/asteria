@@ -11,9 +11,13 @@ export { OuranosContext } from './core/OuranosContext';
 export { OuranosSession } from './core/OuranosSession';
 
 //--> com/asteria/ouranos/filter/impl
+export { EndsWithFilter } from './filter/impl/EndsWithFilter';
 export { EqualFilter } from './filter/impl/EqualFilter';
 export { GreaterThanFilter } from './filter/impl/GreaterThanFilter';
 export { LikeFilter } from './filter/impl/LikeFilter';
+export { LowerThanFilter } from './filter/impl/LowerThanFilter';
+export { NotEqualFilter } from './filter/impl/NotEqualFilter';
+export { NotLikeFilter } from './filter/impl/NotLikeFilter';
 export { StartsWithFilter } from './filter/impl/StartsWithFilter';
 
 //--> com/asteria/ouranos/filter

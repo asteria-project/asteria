@@ -3,6 +3,10 @@ import { StartsWithFilter } from './impl/StartsWithFilter';
 import { LikeFilter } from './impl/LikeFilter';
 import { GreaterThanFilter } from './impl/GreaterThanFilter';
 import { EqualFilter } from './impl/EqualFilter';
+import { NotEqualFilter } from './impl/NotEqualFilter';
+import { LowerThanFilter } from './impl/LowerThanFilter';
+import { NotLikeFilter } from './impl/NotLikeFilter';
+import { EndsWithFilter } from './impl/EndsWithFilter';
 
 /**
  * Provides functionality to work with new <code>AsteriaFilter</code> instances through a singleton implementation.
@@ -43,8 +47,12 @@ export class OuranosFilterManager extends AbstractAsteriaObject {
         this._filterMap = new Map<string, AsteriaFilter>();
         this.register(new StartsWithFilter());
         this.register(new LikeFilter());
+        this.register(new NotLikeFilter());
         this.register(new GreaterThanFilter());
         this.register(new EqualFilter());
+        this.register(new NotEqualFilter());
+        this.register(new LowerThanFilter());
+        this.register(new EndsWithFilter());
     }
 
     /**

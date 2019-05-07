@@ -11,7 +11,17 @@ export enum FilterOperatorNotation {
     EQUAL = '=',
 
     /**
+     * The <code>NOT_EQUAL</code> operator represents the <code>!=</code> notation.
+     */
+    NOT_EQUAL = '!=',
+
+    /**
      * The <code>GREATER_THAN</code> operator represents the <code>&gt;</code> notation.
      */
-    GREATER_THAN = '>'
+    GREATER_THAN = '>',
+
+    /**
+     * The <code>LOWER_THAN</code> operator represents the <code>&lt;</code> notation.
+     */
+    LOWER_THAN = '<'
 }
