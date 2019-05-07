@@ -1,4 +1,4 @@
-import { AsteriaError, AbstractAsteriaObject } from '../../gaia/gaia.index';
+import { AsteriaError, AbstractAsteriaObject, AsteriaStream } from '../../gaia/gaia.index';
 import { Ouranos, OuranosSession, OuranosContext } from '../../ouranos/ouranos.index';
 import { HyperionProcessor } from '../processor/HyperionProcessor';
 import { HyperionConfig } from '../config/HyperionConfig';
@@ -54,11 +54,11 @@ export class Hyperion extends AbstractAsteriaObject {
     }
 
     /**
-     * Run all stream processes registered in this<code>Hyperion</code> instance and return the result of these
-     * operations.
+     * Run all stream processes registered in this<code>Hyperion</code> instance and return the the reference to the 
+     * last registered stream.
      */
-    public run(): void {
-        this.PROCESSOR.run();
+    public run(): AsteriaStream {
+        return this.PROCESSOR.run();
     }
     
     /**

@@ -1,4 +1,4 @@
-import { AsteriaSession, StreamProcess, AbstractAsteriaObject } from '../../gaia/gaia.index';
+import { AsteriaSession, StreamProcess, AbstractAsteriaObject, AsteriaStream } from '../../gaia/gaia.index';
 import { Ouranos } from '../../ouranos/ouranos.index';
 import { FileReaderProcess, CsvToListProcess, FilterProcess, ListToCsvProcess, FileWriterProcess, LinesToListProcess } from '../../cronos/cronos.index';
 import { HyperionConfigAdapter } from '../config/HyperionConfigAdapter';
@@ -30,11 +30,11 @@ export class HyperionProcessor extends AbstractAsteriaObject {
     }
 
     /**
-     * Runs all processes registered in this code>HyperionProcessor</code> instance and returns the result of these
-     * operations.
+     * Run all processes registered in this code>HyperionProcessor</code> instance and return the reference to the last
+     * registered stream.
      */
-    public run(): void {
-        this.SESSION.getContext().getProcessor().run();
+    public run(): AsteriaStream {
+        return this.SESSION.getContext().getProcessor().run();
     }
 
     public readFile(path: string): HyperionProcessor {

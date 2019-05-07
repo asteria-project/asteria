@@ -1,14 +1,11 @@
 import * as path from 'path';
 import express from 'express';
-import { Hyperion } from './com/asteria/asteria.index';
+import { Hyperion } from '../src/com/asteria/asteria.index';
 
-const tempDataPath: string = path.join(__dirname, 'temp-data');
-const inputPath: string = path.join(tempDataPath, 'worldcitiespop.csv');
-
+const inputPath: string = path.join(__dirname, 'temp-data', 'worldcitiespop.csv');
 const app: express.Express = express();
 
 app.get('/us-mega-cities', (req, res)=> {
-
     (Hyperion.build({
         name: 'UsMegaCities',
         processes: [

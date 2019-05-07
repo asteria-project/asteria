@@ -1,4 +1,5 @@
 import { StreamProcess } from './StreamProcess';
+import { AsteriaStream } from '../core/AsteriaStream';
 
 /**
  * The <code>StreamProcessor</code> interface provides operations for working and processing with data as defined
@@ -25,9 +26,9 @@ export interface StreamProcessor {
     remove(process: StreamProcess): StreamProcessor;
 
     /**
-     * Run all processes registered in this processor and return the result of these operations.
+     * Run all processes registered in this processor and return the last registered stream.
      * 
-     * @return {Promise<any>} the result of these operation defined by all processes registered in this processor.
+     * @return {AsteriaStream} the last stream registered in this processor.
      */
-    run(): void;
+    run(): AsteriaStream;
 }
