@@ -18,6 +18,11 @@ export enum HyperionBaseProcessType {
      * Specifies the reference to the Hyperion process that turns a CSV file to a list of POJOs.
      */
     CSV_TO_LIST = 'csv-to-list',
+    
+    /**
+     * Specifies the reference to the Hyperion process that turns a string file to a list of POJOs.
+     */
+    LINES_TO_LIST = 'lines-to-list',
 
     /**
      * Specifies the reference to the Hyperion process that turns a list of POJOs into a CSV file

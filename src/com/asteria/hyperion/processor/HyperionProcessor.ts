@@ -1,12 +1,13 @@
 import { AsteriaSession, StreamProcess, AbstractAsteriaObject } from '../../gaia/gaia.index';
 import { Ouranos } from '../../ouranos/ouranos.index';
-import { FileReaderProcess, CsvToListProcess, FilterProcess, ListToCsvProcess, FileWriterProcess } from '../../cronos/cronos.index';
+import { FileReaderProcess, CsvToListProcess, FilterProcess, ListToCsvProcess, FileWriterProcess, LinesToListProcess } from '../../cronos/cronos.index';
 import { HyperionConfigAdapter } from '../config/HyperionConfigAdapter';
 import { FileReaderConfigAdapter } from '../config/adapter/file/FileReaderConfigAdapter';
 import { CsvToListConfigAdapter } from '../config/adapter/data/CsvToListConfigAdapter';
 import { FilterConfigAdapter } from '../config/adapter/data/FilterConfigAdapter';
 import { ListToCsvConfigAdapter } from '../config/adapter/data/ListToCsvConfigAdapter';
 import { FileWriterConfigAdapter } from '../config/adapter/file/FileWriterConfigAdapter';
+import { LinesToToListConfigAdapter } from '../config/adapter/data/LinesToToListConfigAdapter';
 
 /**
  * The <code>HyperionProcessor</code> class is the core processor of the Hyperion framework.
@@ -48,6 +49,11 @@ export class HyperionProcessor extends AbstractAsteriaObject {
 
     public csvToList(config: any): HyperionProcessor {
         this.addProcess(CsvToListProcess, CsvToListConfigAdapter, config);
+        return this;
+    }
+
+    public linesToList(config: any): HyperionProcessor {
+        this.addProcess(LinesToListProcess, LinesToToListConfigAdapter, config);
         return this;
     }
     

@@ -13,6 +13,7 @@ export class HyperionBaseProcessDef {
         [HyperionBaseProcessType.READ_FILE, 'readFile'],
         [HyperionBaseProcessType.WRITE_FILE, 'writeFile'],
         [HyperionBaseProcessType.CSV_TO_LIST, 'csvToList'],
+        [HyperionBaseProcessType.LINES_TO_LIST, 'linesToList'],
         [HyperionBaseProcessType.LIST_TO_CSV, 'listToCsv'],
         [HyperionBaseProcessType.FILTER, 'filter']
     ]);

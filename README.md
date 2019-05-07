@@ -75,7 +75,7 @@ Ouranos.createSession({ name: 'UsMegaCities'})
        .run();
 ```
 
-Both preceding Asteria implementations will produce the following output:
+Both preceding Asteria implementations will produce the following data set:
 
 ```json
 {"Country":"us","City":"san diego","AccentCity":"San Diego","Region":"CA","Population":1287050,"Latitude":32.7152778,"Longitude":-117.1563889,"geopoint":"32.7152778, -117.1563889"}

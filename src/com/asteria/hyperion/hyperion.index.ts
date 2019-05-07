@@ -8,6 +8,7 @@
 //--> com/asteria/hyperion/config/adapter/data
 export { CsvToListConfigAdapter } from './config/adapter/data/CsvToListConfigAdapter';
 export { FilterConfigAdapter } from './config/adapter/data/FilterConfigAdapter';
+export { LinesToToListConfigAdapter } from './config/adapter/data/LinesToToListConfigAdapter';
 export { ListToCsvConfigAdapter } from './config/adapter/data/ListToCsvConfigAdapter';
 
 //--> com/asteria/hyperion/config/adapter/file
@@ -33,6 +34,7 @@ export { HyperionCastRef } from './util/HyperionCastRef';
 //--> com/asteria/hyperion/validator/impl/data
 export { CsvToListValidator } from './validator/impl/data/CsvToListValidator';
 export { FilterValidator } from './validator/impl/data/FilterValidator';
+export { LinesToListValidator } from './validator/impl/data/LinesToListValidator';
 export { ListToCsvValidator } from './validator/impl/data/ListToCsvValidator';
 
 //--> com/asteria/hyperion/validator/impl/file

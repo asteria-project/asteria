@@ -6,6 +6,7 @@ import { FilterValidator } from './impl/data/FilterValidator';
 import { ListToCsvValidator } from './impl/data/ListToCsvValidator';
 import { WriteFileValidator } from './impl/file/WriteFileValidator';
 import { AbstractAsteriaObject } from '../../gaia/gaia.index';
+import { LinesToListValidator } from './impl/data/LinesToListValidator';
 
 /**
  * The <code>HyperionValidatorManager</code> class provides method for working with Hyperion config validators.
@@ -26,6 +27,7 @@ export class HyperionValidatorManager extends AbstractAsteriaObject {
         [HyperionBaseProcessType.READ_FILE, ReadFileValidator],
         [HyperionBaseProcessType.WRITE_FILE, WriteFileValidator],
         [HyperionBaseProcessType.CSV_TO_LIST, CsvToListValidator],
+        [HyperionBaseProcessType.LINES_TO_LIST, LinesToListValidator],
         [HyperionBaseProcessType.LIST_TO_CSV, ListToCsvValidator],
         [HyperionBaseProcessType.FILTER, FilterValidator]
     ]);
