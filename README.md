@@ -100,7 +100,7 @@ Developer typically use high level modules to create workflows based on the Aste
 | Project | Module | Description |
 | ------- | ------ | ----------- |
 | Asteria | `asteria` | The specification module of the Asteria Project. |
-| Gaia | `asteria-gaia` | The core module of the Asteria specification for JavaScript implementations. |
+| Gaia | [`asteria-gaia`](https://github.com/asteria-project/asteria-gaia) | The core API of the Asteria specification. |
 | Ouranos | `asteria-ouranos` | Ouranos is the default implementation of the Asteria Project for JavaScript implementations. |
 | Cronos | `asteria-cronos` | Cronos provides the Asteria stream modules for the Ouranos implementation. |
 | Hyperion | `asteria-hyperion` | Hyperion provides the API to create Asteria process definitions in JSON format. The Hyperion files can be used to share any Asteria process over distributed systems. |
