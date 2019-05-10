@@ -1,6 +1,6 @@
 import * as path from 'path';
 import express from 'express';
-import { Hyperion } from '../src/com/asteria/asteria.index';
+import { Hyperion } from 'asteria-hyperion';
 
 const inputPath: string = path.join(__dirname, 'temp-data', 'worldcitiespop.csv');
 const app: express.Express = express();
