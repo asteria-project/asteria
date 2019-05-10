@@ -1,4 +1,4 @@
-import { Hyperion } from '../src/com/asteria/asteria.index';
+import { Hyperion } from 'asteria-hyperion';
 import * as path from 'path';
 
 const tempDataPath: string = path.join(__dirname, 'temp-data');
