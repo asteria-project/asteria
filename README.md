@@ -105,6 +105,8 @@ Developer typically use high level modules to create workflows based on the Aste
 | Cronos | `asteria-cronos` | Cronos provides the Asteria stream modules for the Ouranos implementation. |
 | Hyperion | `asteria-hyperion` | Hyperion provides the API to create Asteria process definitions in JSON format. The Hyperion files can be used to share any Asteria process over distributed systems. |
 | Japet | `asteria-japet` | The Japet framework is the implementation of the query language defined by the Astria specification. |
+| Atlas | `asteria-atlas` | Atlas is an Angular application that allows to easily work with Asteria sessions. |
+| Helios | `asteria-helios` | Helios is a Node.js application that provides full functionalities based upon the Asteria project APIs. |
 
 ## Assets
 
