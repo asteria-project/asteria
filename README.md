@@ -1,5 +1,8 @@
 # Asteria Project
 
+[![JEC version](https://img.shields.io/badge/ASTERIA-1.0-%239966FF.svg)](https://github.com/asteria-project)
+[![MIT](https://img.shields.io/github/license/mashape/apistatus.svg)](https://opensource.org/licenses/mit-license.php)
+
 Asteria is a specification for building data analytics streams that are executed through sequential data processors in a JavaScript environment.
 
 ![Asteria Logo](https://raw.githubusercontent.com/asteria-project/asteria/master/assets/logos/asteria.png)
