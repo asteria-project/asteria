@@ -99,14 +99,14 @@ Developer typically use high level modules to create workflows based on the Aste
 
 | Project | Module | Description |
 | ------- | ------ | ----------- |
-| Asteria | `asteria` | The specification module of the Asteria Project. |
+| Asteria | [`asteria`](https://github.com/asteria-project/asteria) | The specification module of the Asteria Project. |
 | Gaia | [`asteria-gaia`](https://github.com/asteria-project/asteria-gaia) | The core API of the Asteria specification. |
-| Ouranos | `asteria-ouranos` | Ouranos is the default implementation of the Asteria Project for JavaScript implementations. |
-| Cronos | `asteria-cronos` | Cronos provides the Asteria stream modules for the Ouranos implementation. |
+| Ouranos | [`asteria-ouranos`](https://github.com/asteria-project/asteria-ouranos) | Ouranos is the default implementation of the Asteria Project for JavaScript implementations. |
+| Cronos | [`asteria-cronos`](https://github.com/asteria-project/asteria-cronos) | Cronos provides the Asteria stream modules for the Ouranos implementation. |
 | Hyperion | `asteria-hyperion` | Hyperion provides the API to create Asteria process definitions in JSON format. The Hyperion files can be used to share any Asteria process over distributed systems. |
-| Japet | `asteria-japet` | The Japet framework is the implementation of the query language defined by the Astria specification. |
-| Atlas | `asteria-atlas` | Atlas is an Angular application that allows to easily work with Asteria sessions. |
-| Helios | `asteria-helios` | Helios is a Node.js application that provides full functionalities based upon the Asteria project APIs. |
+| Japet | [`asteria-japet`](https://github.com/asteria-project/asteria-japet) | The Japet framework is the implementation of the query language defined by the Astria specification. |
+| Atlas | [`asteria-atlas`](https://github.com/asteria-project/asteria-atlas) | Atlas is an Angular application that allows to easily work with Asteria sessions. |
+| Helios | [`asteria-helios`](https://github.com/asteria-project/asteria-helios) | Helios is a Node.js application that provides full functionalities based upon the Asteria project APIs. |
 
 ## Assets
 

@@ -1,23 +1,7 @@
 {
   "name": "asteria",
-  "version": "0.0.2",
+  "version": "0.3.0",
   "description": "The specification module of the Asteria Project.",
-  "main": "src/asteria/asteria.index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node src/index.js"
-  },
   "author": "Pascal ECHEMANN",
-  "license": "MIT",
-  "devDependencies": {
-    "@types/express": "^4.16.1",
-    "@types/node": "^12.0.0",
-    "@types/uuid": "^3.4.4",
-    "express": "^4.16.4",
-    "typescript": "^3.4.5"
-  },
-  "dependencies": {
-    "ts-log-debug": "^5.1.0",
-    "uuid": "^3.3.2"
-  }
+  "license": "MIT"
 }
