@@ -1,4 +1,4 @@
-:arrow_forward: [Asteria Project Documentation](https://raw.githubusercontent.com/asteria-project/asteria/master/documentation/asteria-documentation.md)
+:arrow_forward: [Asteria Project Documentation](https://github.com/asteria-project/asteria/blob/master/documentation/asteria-documentation.md)
 
 # Asteria Project Documentation
 
@@ -8,4 +8,4 @@
 
 ## Summary
 
-- [Understanding the Theogony](https://raw.githubusercontent.com/asteria-project/asteria/master/documentation/understanding-the-theogony.md)
+- [Understanding the Theogony](https://github.com/asteria-project/asteria/blob/master/documentation/understanding-the-theogony.md)

@@ -102,7 +102,7 @@ Both preceding Asteria implementations will produce the following data set:
 
 ## Documentation
 
-[Asteria Project Documentation](https://raw.githubusercontent.com/asteria-project/asteria/master/documentation/asteria-documentation.md)
+[Asteria Project Documentation](https://github.com/asteria-project/asteria/blob/master/documentation/asteria-documentation.md)
 
 ## Assets
 
