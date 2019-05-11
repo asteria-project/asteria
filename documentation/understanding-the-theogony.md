@@ -1,4 +1,4 @@
-:arrow_forward: [Asteria Project Documentation](https://github.com/asteria-project/asteria/blob/master/documentation/asteria-documentation.md) >> [Understanding the Theogony](https://github.com/asteria-project/asteria/blob/master/documentation/understanding-the-theogony.md)
+:arrow_forward: [Asteria Project Documentation](https://github.com/asteria-project/asteria/blob/master/documentation/asteria-documentation.md) > [Understanding the Theogony](https://github.com/asteria-project/asteria/blob/master/documentation/understanding-the-theogony.md)
 
 # Understanding the Theogony
 
@@ -17,5 +17,3 @@ Developer typically use high level modules to create workflows based on the Aste
 | Helios | [`asteria-helios`](https://github.com/asteria-project/asteria-helios) | Helios is a Node.js application that provides full functionalities based upon the Asteria project APIs. |
 | Atlas | [`asteria-atlas`](https://github.com/asteria-project/asteria-atlas) | Atlas is an Angular application that allows to easily work with Asteria sessions. |
 | Crios | [`asteria-crios`](https://github.com/asteria-project/asteria-crios) | Crios is an easy-to-use Helios environment to deploy Asteria REST APIs compatible with Atlas. |
-
-

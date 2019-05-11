@@ -1,25 +1,6 @@
-# Asteria Project
+:arrow_forward: [Asteria Project Documentation](https://github.com/asteria-project/asteria/blob/master/documentation/asteria-documentation.md) > [Examples](https://github.com/asteria-project/asteria/blob/master/documentation/examples.md)
 
-[![JEC version](https://img.shields.io/badge/ASTERIA-1.0-%239966FF.svg)](https://github.com/asteria-project)
-[![MIT](https://img.shields.io/github/license/mashape/apistatus.svg)](https://opensource.org/licenses/mit-license.php)
-
-Asteria is a specification for building data analytics streams that are executed through sequential data processors in a JavaScript environment.
-
-![Asteria Logo](https://raw.githubusercontent.com/asteria-project/asteria/master/assets/logos/asteria.png)
-
-## Motivation
-
-Asteria Project is a  complete set of data analytics tools built over TypeScript and Node.js. It has been designed with different purposes in mind:
-
-- provide a structure for creating modules-based data analytics processors
-- focus on extensibility and ease-of-use
-- put forward flexibility for many different uses (e.g. big data, signal processing, real-time cryptography, etc.)
-
-## Documentation
-
-[Asteria Project Documentation](https://github.com/asteria-project/asteria/blob/master/documentation/asteria-documentation.md)
-
-## Examples
+# Examples
 
 In this sample application, we use the Hyperion processor to load a CSV file of all cities over the world and extract only US cities that have more than 1,000,000 people.
 
@@ -46,7 +27,51 @@ Hyperion.build({
         }).run();
  ```
 
-Preceding code will produce the following data set:
+Notice that the Hyperion config object specified above can be defined as a JSON string as shown below:
+
+ ```json
+ {
+    "name": "UsMegaCities",
+    "processes": [
+        {
+            "type": "read-file",
+            "config": "worldcitiespop.csv"
+        },
+        {
+            "type": "csv-to-list",
+            "config": { "separator": ";" }
+        },
+        {
+            "type": "filter",
+            "config": "Population  > 1000000 AND Country = 'us'"
+        }
+    ]
+}
+```
+
+The previous sample application can be implemented by using the Ouranos framework as shown below:
+
+```javascript
+const fileReaderConfig: FileReaderConfig = { path: 'worldcitiespop.csv') };
+const csvToListConfig: CsvToListConfig = { separator: ';' };
+const filterConfig: FilterConfig = {
+    condition: FilterCondition.AND,
+    filters: [
+        { property: 'Population',   operator: FilterOperator.GREATER_THAN,  value: 1000000 },
+        { property: 'Country',      operator: FilterOperator.LIKE,          value: 'us' }
+    ]
+ };
+
+Ouranos.createSession({ name: 'UsMegaCities'})
+       .getContext()
+       .getProcessor()
+       .add( Ouranos.buildProcess(FileReaderProcess, fileReaderConfig) )
+       .add( Ouranos.buildProcess(CsvToListProcess, csvToListConfig) )
+       .add( Ouranos.buildProcess(FilterProcess, filterConfig) )
+       .run();
+```
+
+Both preceding Asteria implementations will produce the following data set:
 
 ```json
 {"Country":"us","City":"san diego","AccentCity":"San Diego","Region":"CA","Population":1287050,"Latitude":32.7152778,"Longitude":-117.1563889,"geopoint":"32.7152778, -117.1563889"}
@@ -59,10 +84,3 @@ Preceding code will produce the following data set:
 {"Country":"us","City":"dallas","AccentCity":"Dallas","Region":"TX","Population":1211704,"Latitude":32.7833333,"Longitude":-96.8,"geopoint":"32.7833333, -96.8"}
 {"Country":"us","City":"los angeles","AccentCity":"Los Angeles","Region":"CA","Population":3877129,"Latitude":34.0522222,"Longitude":-118.2427778,"geopoint":"34.0522222, -118.2427778"}
 ```
-
-## Assets
-
-### Logos
-
-- [asteria.ai](#) - The Asteria Project logo in vectorial format (_illustrator_).
-- [asteria.png](#) - The Asteria Project logo in PNG format (_512x512 px_).
