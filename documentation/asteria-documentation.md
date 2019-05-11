@@ -6,7 +6,12 @@
 [![MIT](https://img.shields.io/github/license/mashape/apistatus.svg)](https://opensource.org/licenses/mit-license.php)
 
 
-## Summary
+
+## Where to Go from Here
+
+### Programming Guides:
 
 - [Understanding the Theogony](https://github.com/asteria-project/asteria/blob/master/documentation/understanding-the-theogony.md)
 - [Examples](https://github.com/asteria-project/asteria/blob/master/documentation/examples.md)
+
+### API Docs:
