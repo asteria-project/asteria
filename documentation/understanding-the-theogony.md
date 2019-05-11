@@ -6,6 +6,8 @@ The Asteria project ships with a large set of modules that can be combined toget
 
 Developer typically use high level modules to create workflows based on the Asteria base processes (_e.g. Hyperion_). Low level modules can be used to create custom process implementations and well designed complex applications (_e.g. Ouranos, Cronos_).
 
+## Asteria projects description
+
 | Project | Module | Description |
 | ------- | ------ | ----------- |
 | Asteria | [`asteria`](https://github.com/asteria-project/asteria) | The specification module of the Asteria Project. |
@@ -17,3 +19,8 @@ Developer typically use high level modules to create workflows based on the Aste
 | Helios | [`asteria-helios`](https://github.com/asteria-project/asteria-helios) | Helios is a Node.js application that provides full functionalities based upon the Asteria project APIs. |
 | Atlas | [`asteria-atlas`](https://github.com/asteria-project/asteria-atlas) | Atlas is an Angular application that allows to easily work with Asteria sessions. |
 | Crios | [`asteria-crios`](https://github.com/asteria-project/asteria-crios) | Crios is an easy-to-use Helios environment to deploy Asteria REST APIs compatible with Atlas. |
+
+## Asteria projects architecture
+
+![Asteria projects architecture](https://raw.githubusercontent.com/asteria-project/asteria/master/documentation/media/asteria-package-architecture.png)
+
