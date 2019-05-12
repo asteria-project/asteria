@@ -1,6 +1,6 @@
 :arrow_forward: [Asteria Project Documentation](https://github.com/asteria-project/asteria/blob/master/documentation/asteria-documentation.md) > [Understanding the Theogony](https://github.com/asteria-project/asteria/blob/master/documentation/understanding-the-theogony.md)
 
-#Understanding the Theogony
+# Understanding the Theogony
 
 The Asteria project ships with a large set of modules that can be combined together to create different kind of applications.
 
@@ -27,5 +27,3 @@ The following table gives a brief summary of the Asteria projects:
 The architecture diagram below shows dependency relationships between Asteria projects:
 
 ![Asteria projects architecture](https://raw.githubusercontent.com/asteria-project/asteria/master/documentation/media/asteria-package-architecture.png)
-
-:top: [top](#Understanding the Theogony)

@@ -1,11 +1,13 @@
 :arrow_forward: [Asteria Project Documentation](https://github.com/asteria-project/asteria/blob/master/documentation/asteria-documentation.md)
 
-#Asteria Project Documentation
-
-The official guide assumes intermediate level knowledge of [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript), [Node.js](https://nodejs.org/) and [TypeScript](https://www.typescriptlang.org/). Prior experience with other technologies helps, but is not required.
+# Asteria Project Documentation
 
 [![JEC version](https://img.shields.io/badge/ASTERIA-1.0-%239966FF.svg)](https://github.com/asteria-project)
 [![MIT](https://img.shields.io/github/license/mashape/apistatus.svg)](https://opensource.org/licenses/mit-license.php)
+
+![Asteria Project Documentation](https://raw.githubusercontent.com/asteria-project/asteria/master/documentation/media/asteria-doc-banner.png)
+
+The official guide assumes intermediate level knowledge of [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript), [Node.js](https://nodejs.org/) and [TypeScript](https://www.typescriptlang.org/). Prior experience with other technologies helps, but is not required.
 
 ## Where to Go from Here
 
@@ -24,5 +26,3 @@ Not available yet.
 
 - [asteria.ai](#) - The Asteria Project logo in vectorial format (_illustrator_).
 - [asteria.png](#) - The Asteria Project logo in PNG format (_512x512 px_).
-
-:top: [top](#Asteria Project Documentation)
