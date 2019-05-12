@@ -25,4 +25,4 @@ Not available yet.
 - [asteria.ai](#) - The Asteria Project logo in vectorial format (_illustrator_).
 - [asteria.png](#) - The Asteria Project logo in PNG format (_512x512 px_).
 
-[:top:](#Asteria Project Documentation)
+:top: [top](#Asteria Project Documentation)

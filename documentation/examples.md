@@ -85,4 +85,4 @@ Both preceding Asteria implementations will produce the following data set:
 {"Country":"us","City":"los angeles","AccentCity":"Los Angeles","Region":"CA","Population":3877129,"Latitude":34.0522222,"Longitude":-118.2427778,"geopoint":"34.0522222, -118.2427778"}
 ```
 
-[:top:](#Examples)
+:top: [top](#Examples)

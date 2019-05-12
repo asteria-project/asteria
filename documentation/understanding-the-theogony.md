@@ -28,4 +28,4 @@ The architecture diagram below shows dependency relationships between Asteria pr
 
 ![Asteria projects architecture](https://raw.githubusercontent.com/asteria-project/asteria/master/documentation/media/asteria-package-architecture.png)
 
-[:top:](#Understanding the Theogony)
+:top: [top](#Understanding the Theogony)
