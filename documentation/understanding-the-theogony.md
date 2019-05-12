@@ -1,12 +1,14 @@
 :arrow_forward: [Asteria Project Documentation](https://github.com/asteria-project/asteria/blob/master/documentation/asteria-documentation.md) > [Understanding the Theogony](https://github.com/asteria-project/asteria/blob/master/documentation/understanding-the-theogony.md)
 
-# Understanding the Theogony
+#Understanding the Theogony
 
 The Asteria project ships with a large set of modules that can be combined together to create different kind of applications.
 
 Developer typically use high level modules to create workflows based on the Asteria base processes (_e.g. Hyperion_). Low level modules can be used to create custom process implementations and well designed complex applications (_e.g. Ouranos, Cronos_).
 
 ## Asteria projects description
+
+The following table gives a brief summary of the Asteria projects:
 
 | Project | Module | Description |
 | ------- | ------ | ----------- |
@@ -22,5 +24,8 @@ Developer typically use high level modules to create workflows based on the Aste
 
 ## Asteria projects architecture
 
+The architecture diagram below shows dependency relationships between Asteria projects:
+
 ![Asteria projects architecture](https://raw.githubusercontent.com/asteria-project/asteria/master/documentation/media/asteria-package-architecture.png)
 
+[:top:](#Understanding the Theogony)
