@@ -13,8 +13,18 @@ The official guide assumes intermediate level knowledge of [JavaScript](https://
 
 ### Programming Guides:
 
+- Introduction to Asteria
 - [Understanding the Theogony](https://github.com/asteria-project/asteria/blob/master/documentation/understanding-the-theogony.md)
 - [Examples](https://github.com/asteria-project/asteria/blob/master/documentation/examples.md)
+- Gaia: Asteria core API 
+- Ouranos: Asteria default implementation
+- Hyperion: Asteria simplified processor
+- Helios: Asteria server
+
+### Official Distributions:
+
+- Crios: Helios server built-in distribution
+- Atlas: Asteria server GUI
 
 ### API Docs:
 
