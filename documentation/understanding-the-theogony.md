@@ -19,6 +19,7 @@ The following table gives a brief summary of the Asteria projects:
 | Hyperion | [`asteria-hyperion`](https://github.com/asteria-project/asteria-hyperion) | Hyperion provides the API to create Asteria process definitions in JSON format. The Hyperion files can be used to share any Asteria process over distributed systems. |
 | Japet | [`asteria-japet`](https://github.com/asteria-project/asteria-japet) | The Japet framework is the implementation of the query language defined by the Astria specification. |
 | Helios | [`asteria-helios`](https://github.com/asteria-project/asteria-helios) | Helios is a Node.js application that provides full functionalities based upon the Asteria project APIs. |
+| Eos | [`asteria-eos`](https://github.com/asteria-project/asteria-eos) | Eos is a facade that exposes business objects of the Helios server. |
 | Atlas | [`asteria-atlas`](https://github.com/asteria-project/asteria-atlas) | Atlas is an Angular application that allows to easily work with Asteria sessions. |
 | Crios | [`asteria-crios`](https://github.com/asteria-project/asteria-crios) | Crios is an easy-to-use Helios environment to deploy Asteria REST APIs compatible with Atlas. |
 
