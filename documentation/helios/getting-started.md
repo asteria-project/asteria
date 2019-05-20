@@ -24,3 +24,17 @@ server.start();
 The Helios splash screen should appear in the standard output, which ensure that the server runs correctly:
 
 ![Helios: Asteria Serve](https://raw.githubusercontent.com/asteria-project/asteria/master/documentation/helios/media/helios-splash-screen.png)
+
+
+## Helios execution modes
+
+Helios server can be started in both, development and production modes. Each mode execution uses its own configuration file:
+
+- development mode: `server-config.dev.json`
+- production mode: `server-config.json`
+
+By default Helios instances start in production mode. To launch the server in development mode, you must specify the `dev` parameter in the command line:
+
+```shell
+$ crios start dev
+```
