@@ -14,4 +14,4 @@ Developer can also use [Crios](https://github.com/asteria-project/asteria-crios)
 - Server settings
 - Workspace
 - Helios REST API
-- Working with connectors
+- [Working with service connectors](https://github.com/asteria-project/asteria/blob/master/documentation/helios/working-with-service-connectors.md)
