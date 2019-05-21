@@ -85,11 +85,11 @@ Processes are the fundamental building blocks of Asteria applications. A process
 
 Each process is initialized individually by using specific process config object.
 
-The Ouranos framework ships with several process sets that allow developer to build various kind of applications.
+The Ouranos framework ships with several different process sets that allow developer to build various kind of applications.
 
 ### Declare new process
 
-The `Ouranos` class provides a convenient static method for creating and initializing an new process instance:
+The `Ouranos` class provides a convenient static builder for creating and initializing new process instances:
 
 ```javascript
 import {Ouranos, FileReaderProcess, FileReaderConfig} from 'asteria-ouranos';
