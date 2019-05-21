@@ -19,7 +19,7 @@ The official guide assumes intermediate level knowledge of [JavaScript](https://
 
 ### Tutorials:
 
-- Getting started
+- [Getting started](https://github.com/asteria-project/asteria/blob/master/documentation/getting-started.md)
 
 ### Programming Guides:
 
