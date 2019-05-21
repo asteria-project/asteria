@@ -42,7 +42,7 @@ First create a new directory for your project into your personal workspace. Then
 
 To create a `package.json` file with values that you supply, use the npm init command.
 
-1. On the command line, navigate to the root directory of your package. cd /path/to/package.
+1. On the command line, navigate to the root directory of your package. `cd /path/to/package`.
 2. Run the following command: `npm init`.
 3. Answer the questions in the command line questionnaire.
 4. Run the following command to install TypeScript: `npm install typescript --save-dev`.
@@ -79,6 +79,34 @@ Ouranos.createSession({ name: 'SampleSession'})
        .getProcessor();
 ```
 
-### Declare Asteria processes
+### Working with Asteria processes
 
-Processes are the fundamental building blocks of Asteria applications. 
+Processes are the fundamental building blocks of Asteria applications. A process consists of a component for working with streaming data whithin an Asteria processor. Processes are to be executed in the same order as they are declared.
+
+Each process is initialized individually by using specific process config object.
+
+The Ouranos framework ships with several process sets that allow developer to build various kind of applications.
+
+### Declare new process
+
+The `Ouranos` class provides a convenient static method for creating and initializing an new process instance:
+
+```javascript
+import {Ouranos, FileReaderProcess, FileReaderConfig} from 'asteria-ouranos';
+
+const fileReaderConfig: FileReaderConfig = { path: 'path/to/my/file.csv') };
+
+Ouranos.buildProcess(FileReaderProcess, fileReaderConfig);
+```
+
+Once the process is added to the processor, you start the Asteria processor with the `run()` method:
+
+```javascript
+import {Ouranos} from 'asteria-ouranos';
+
+Ouranos.createSession({ name: 'SampleSession'})
+       .getContext()
+       .getProcessor()
+       .add( Ouranos.buildProcess(FileReaderProcess, fileReaderConfig) )
+       .run();
+```
