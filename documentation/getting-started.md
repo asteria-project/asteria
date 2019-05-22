@@ -99,14 +99,14 @@ const fileReaderConfig: FileReaderConfig = { path: 'path/to/my/file.csv') };
 Ouranos.buildProcess(FileReaderProcess, fileReaderConfig);
 ```
 
-Once the process is added to the processor, you start the Asteria processor with the `run()` method:
+Once the process is added to the application, you start the Asteria processor with the `run()` method:
 
 ```javascript
-import {Ouranos} from 'asteria-ouranos';
-
 Ouranos.createSession({ name: 'SampleSession'})
        .getContext()
        .getProcessor()
        .add( Ouranos.buildProcess(FileReaderProcess, fileReaderConfig) )
        .run();
 ```
+
+For a complete list of all available processes, please refer to the Ouranos documentation.
