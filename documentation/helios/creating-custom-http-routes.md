@@ -12,7 +12,7 @@ The `createRoute()` method defined by `HeliosRouteConfigurator` interface provid
 
 By adding `GET`, `POST`, `PUT` and `DELETE` actions related to new routes, developer have full control over the custom REST API they add to an Helios server instance.
 
-The following sample class show a basic "Hello World!" implementation of the `HeliosRouteConfigurator` interface:
+The following sample class shows a basic "Hello World!" implementation of the `HeliosRouteConfigurator` interface:
 
 ```javascript
 export class HelloWorldRouteConfigurator extends AbstractHeliosRouteConfigurator implements HeliosRouteConfigurator {
@@ -51,3 +51,12 @@ server.getContext()
       .getService(HeliosServiceName.ROUTE_CONFIG_REGISTRY)
       .add(helloWorldRouteConfig);
 ```
+
+Now, when you start the server instance, you should see the log bellow:
+
+```shell
+[2019-05-28T17:25:09.257] [INFO ] [HELIOS] - initializing HTTP routes
+[2019-05-28T17:25:09.257] [INFO ] [HELIOS] - route added: /hello-world
+```
+
+Thus, calling the `http://localhost:3000/asteria/hello-world` URL will return the `Hello World!` message.
