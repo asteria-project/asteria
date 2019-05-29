@@ -17,7 +17,7 @@ The following sample class shows a basic "Hello World!" implementation of the `H
 ```javascript
 export class HelloWorldRouteConfigurator extends AbstractHeliosRouteConfigurator implements HeliosRouteConfigurator {
 
-	constructor() {
+    constructor() {
       super('hello-world');
     }
 
@@ -49,7 +49,7 @@ const server: Helios = HeliosFactory.create();
 server.getContext()
       .getSpiContext()
       .getService(HeliosServiceName.ROUTE_CONFIG_REGISTRY)
-      .add(helloWorldRouteConfig);
+      .add(helloWorldRouteConfig, (err: AsteriaException)=> {});
 ```
 
 Now, when you start the server instance, you should see the log bellow:
