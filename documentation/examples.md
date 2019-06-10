@@ -52,7 +52,7 @@ Notice that the Hyperion config object specified above can be defined as a JSON 
 The previous sample application can be implemented by using the Ouranos framework as shown below:
 
 ```javascript
-const fileReaderConfig: FileReaderConfig = { path: 'worldcitiespop.csv') };
+const fileReaderConfig: FileReaderConfig = { path: 'worldcitiespop.csv' };
 const csvToListConfig: CsvToListConfig = { separator: ';' };
 const filterConfig: FilterConfig = {
     condition: FilterCondition.AND,
