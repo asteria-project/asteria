@@ -11,7 +11,7 @@ Developer can also use [Crios](https://github.com/asteria-project/asteria-crios)
 ## Summary
 
 - [Getting started](https://github.com/asteria-project/asteria/blob/master/documentation/helios/getting-started.md)
-- Server settings
+- [Server settings](https://github.com/asteria-project/asteria/blob/master/documentation/helios/server-settings.md)
 - Workspace
 - Helios REST API
 - [Working with service connectors](https://github.com/asteria-project/asteria/blob/master/documentation/helios/working-with-service-connectors.md)
