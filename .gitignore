@@ -66,3 +66,11 @@ src/temp-data/*.csv
 src/temp-data/*.tsv
 src/temp-data/*.json
 src/temp-data/*.txt
+
+#####################################
+# diagrams
+#####################################
+
+# Ignore Visual Paradigm temp files
+assets/diagrams/Asteria.vpp.bak_*
+assets/diagrams/.Asteria.vpp.lck
